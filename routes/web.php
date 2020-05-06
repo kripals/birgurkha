@@ -18,12 +18,13 @@
 Auth::routes();
 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('/');
-//Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout');
 
 Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/products', 'HomeController@products')->name('products');
+    Route::get('/categories', 'HomeController@categories')->name('categories');
 
     Route::post('/products', 'ApiController@productSearch')->name('products');
+    Route::post('/categories', 'ApiController@categoriesSearch')->name('categories');
 });

@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Magento Products')
+@section('title', 'Magento Categories')
 
 @section('content')
     <section class="no-y-padding">
         <div class="section-body">
             <div class="card">
                 <div class="card-body">
-                    {{ Form::open(['route' =>'products','class'=>'form form-validate','role'=>'form', 'files'=>true, 'novalidate']) }}
+                    {{ Form::open(['route' =>'categories','class'=>'form form-validate','role'=>'form', 'files'=>true, 'novalidate']) }}
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
                                 {{ Form::text('value', old('value'), ['class' => 'form-control', 'required']) }}
-                                {{ Form::label('value', 'Product Name') }}
+                                {{ Form::label('value', 'Category Name') }}
                             </div>
                         </div>
                     </div>
@@ -36,12 +36,12 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-body">
-                    <h3>Magento Products</h3>
+                    <h3>Magento Categories</h3>
                     <div class="col-sm-2">
                         <!-- BEGIN SEARCH RESULTS LIST -->
                         <div class="margin-bottom-xxl">
                             <span
-                                class="text-light text-lg">Total Count: <strong>{{ $content->total_count }}</strong></span>
+                                class="text-light text-lg">Total Count: <strong>{{ isset($content) ? $content->total_count : 0 }}</strong></span>
                         </div>
                     </div>
                     <table class="table table-hover">
@@ -49,7 +49,7 @@
                         <tr>
                             <th width="5%">#</th>
                             <th width="50%">Name</th>
-                            <th width="20%">Sku</th>
+                            <th width="20%">Parent ID</th>
                             <th width="15%" class="text-right">Actions</th>
                         </tr>
                         </thead>
@@ -63,10 +63,9 @@
                                 <tr>
                                     <td>{{ ++$key }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->sku }}</td>
-                                    <td>{{ $item->sku }}</td>
+                                    <td>{{ $item->parent_id }}</td>
+                                    <td>-</td>
                                 </tr>
-
                             @endforeach
                         @endif
                         </tbody>

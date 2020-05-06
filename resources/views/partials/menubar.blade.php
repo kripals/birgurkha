@@ -44,6 +44,15 @@
             </li><!--end /menu-li -->
             <!-- END PODUCTS -->
 
+            <!-- BEGIN CATEGORIES -->
+            <li>
+                <a href="{{ route('categories') }}">
+                    <div class="gui-icon"><i class="md md-home"></i></div>
+                    <span class="title">Categories</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END CATEGORIES -->
+
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
 
