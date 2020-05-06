@@ -39,17 +39,22 @@ class ApiController extends Controller
     }
 
     /**
-     *
+     * @param Request $request
+     * @return string
      */
-    public function productSearch()
+    public function productSearch(Request $request)
     {
         $params['direction']           = 'searchCriteria[sortOrders][0][direction]=DESC';
         $params['condition_type']      = 'searchCriteria[filter_groups][0][filters][0][condition_type]=like';
-        $params['value']               = 'searchCriteria[filter_groups][0][filters][0][value]=%mobile%';
+        $params['value']               = 'searchCriteria[filter_groups][0][filters][0][value]=%' . $request->value . '%';
         $params['filter_groups_field'] = 'searchCriteria[filter_groups][0][filters][0][field]=name';
         $params['sort_orders_field']   = 'searchCriteria[sortOrders][0][field]=created_at';
 
-        $url = $this->url . "rest/V1/products?searchCriteria[filter_groups][0][filters][0][field]=name&searchCriteria[filter_groups][0][filters][0][value]=%dog%&searchCriteria[filter_groups][0][filters][0][condition_type]=like&searchCriteria[sortOrders][0][field]=created_at&searchCriteria[pageSize]=10&searchCriteria[currentPage]=1";
+        $url = $this->url . "rest/V1/products?" . $params['direction'] . '&' .
+            $params['condition_type'] . '&' .
+            $params['value'] . '&' .
+            $params['filter_groups_field'] . '&' .
+            $params['sort_orders_field'];
 
         if (isset($this->token))
         {
@@ -60,7 +65,8 @@ class ApiController extends Controller
             ]);
             $status  = $product->getStatusCode();
             $content = json_decode($product->getBody()->getContents());
-            dd($content);
+
+            return view('products.products', compact('content'));
         }
         else
         {

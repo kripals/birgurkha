@@ -25,4 +25,12 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function products()
+    {
+        return view('products.products');
+    }
 }

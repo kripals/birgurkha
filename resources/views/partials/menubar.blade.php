@@ -37,7 +37,7 @@
 
             <!-- BEGIN PODUCTS -->
             <li>
-                <a href="#">
+                <a href="{{ route('products') }}">
                     <div class="gui-icon"><i class="md md-home"></i></div>
                     <span class="title">Products</span>
                 </a>
