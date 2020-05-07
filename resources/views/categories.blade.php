@@ -44,8 +44,12 @@
                                 class="text-light text-lg">Total Count: <strong>{{ isset($content) ? $content->total_count : 0 }}</strong></span>
                         </div>
                     </div>
+                    {{ Form::open(['route' =>'local.store.category','class'=>'form form-validate', 'novalidate']) }}
                     <table class="table table-hover">
                         <thead>
+                        <tr>
+                            <button type="submit" class="btn btn-flat btn-success ink-reaction">Submit</button>
+                        </tr>
                         <tr>
                             <th width="5%">#</th>
                             <th width="50%">Name</th>
@@ -61,15 +65,28 @@
                         @else
                             @foreach($content->items as $key => $item)
                                 <tr>
-                                    <td>{{ ++$key }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->parent_id }}</td>
-                                    <td>-</td>
+                                <tr>
+                                    <td>
+                                        {{ ++$key }}
+                                    </td>
+                                    <td>
+                                        {{ $item->name }}
+                                        {{ Form::text('name['. $key. ']', $item->name , ['hidden']) }}
+                                        {{ Form::text('id['. $key. ']', $item->id , ['hidden']) }}
+                                    </td>
+                                    <td>
+                                        {{ $item->parent_id }}
+                                        {{ Form::text('sku['. $key. ']', $item->parent_id , ['hidden']) }}
+                                    </td>
+                                    <td>
+                                        {{ Form::select('type['. $key. ']', config('website.local_types'), old('type'), ['class' => 'form-control', 'required']) }}
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif
                         </tbody>
                     </table>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>

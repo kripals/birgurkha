@@ -54,6 +54,32 @@ class LocalController extends Controller
     }
 
     /**
+     * @param StoreClient $request
+     * @return \Illuminate\Http\Response
+     */
+    public function categoryStore(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            foreach ($request->type as $key => $value)
+            {
+                if ( ! empty($value))
+                {
+                    $data = [
+                        'entity_id'    => $request->id[ $key ],
+                        'magento_type' => 'CATEGORY',
+                        'name'         => $request->name[ $key ],
+                        'type'         => $request->type[ $key ]
+                    ];
+
+                    $local = Local::create($data);
+                }
+            }
+        });
+
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Products' ]));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param Client $client
