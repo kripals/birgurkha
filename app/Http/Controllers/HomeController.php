@@ -34,6 +34,9 @@ class HomeController extends Controller
         return view('products');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function categories()
     {
         return view('categories');

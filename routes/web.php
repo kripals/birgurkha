@@ -27,4 +27,8 @@ Route::group([ 'middleware' => 'auth' ], function () {
 
     Route::post('/products', 'ApiController@productSearch')->name('products');
     Route::post('/categories', 'ApiController@categoriesSearch')->name('categories');
+
+    Route::post('/local/product', 'LocalController@productStore')->name('local.store.product');
+    Route::get('/local', 'LocalController@index')->name('local.index');
+    Route::post('/local', 'LocalController@index')->name('local.index');
 });
