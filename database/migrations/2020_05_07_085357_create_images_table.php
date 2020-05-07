@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocalsTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateLocalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('locals', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->integer('entity_id');
-            $table->enum('magento_type', ['PRODUCT', 'CATEGORY'])->default('PRODUCT');
-            $table->string('name');
-            $table->enum('type', ['SLIDER','CATEGORY','PRODUCT'])->default('SLIDER');
-            $table->integer('position')->nullable();
+            $table->string('name')->nullable();
+            $table->integer('size')->nullable();
+            $table->string('path');
+            $table->integer('imageable_id')->unsigned();
+            $table->string('imageable_type');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateLocalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locals');
+        Schema::dropIfExists('images');
     }
 }

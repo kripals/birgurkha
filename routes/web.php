@@ -30,6 +30,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
 
     Route::post('/local/product', 'LocalController@productStore')->name('local.store.product');
     Route::post('/local/category', 'LocalController@categoryStore')->name('local.store.category');
+    Route::post('/local/update', 'LocalController@localUpdate')->name('local.update');
     Route::get('/local', 'LocalController@index')->name('local.index');
     Route::post('/local', 'LocalController@index')->name('local.index');
 });

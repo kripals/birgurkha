@@ -20,7 +20,7 @@
                         <div class="col-sm-4">
                             <div class="card-actionbar">
                                 <div class="card-actionbar-row">
-                                    <button type="submit" class="btn btn-flat btn-primary ink-reaction">search
+                                    <button type="submit" class="btn btn-primary ink-reaction">search
                                     </button>
                                 </div>
                             </div>
@@ -41,19 +41,22 @@
                         <!-- BEGIN SEARCH RESULTS LIST -->
                         <div class="margin-bottom-xxl">
                             <span
-                                class="text-light text-lg">Total Count: <strong></strong></span>
+                                class="text-light text-lg">Total Count: <strong>{{ $content->count() }}</strong></span>
                         </div>
                     </div>
+                    {{ Form::open(['route' =>'local.update','class'=>'form form-validate', 'novalidate', 'role'=>'form', 'files'=>true]) }}
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <button type="submit" class="btn btn-flat btn-success ink-reaction">Submit</button>
+                            <button type="submit" class="btn btn-primary-dark ink-reaction">Submit</button>
                         </tr>
                         <tr>
                             <th width="5%">#</th>
                             <th width="20%">Magento Type</th>
                             <th width="40%">Name</th>
                             <th width="20%">Type</th>
+                            <th width="20%">Position</th>
+                            <th width="20%">Image</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -65,7 +68,11 @@
                             @foreach($content as $key => $item)
                                 <tr>
                                     <td>
-                                        {{ ++$key }}
+                                        <div class="checkbox checkbox-inline checkbox-styled">
+                                            <label>
+                                                {{ Form::checkbox('status[' . $item->id . ']', 1, old('status')) }}
+                                            </label>
+                                        </div>
                                     </td>
                                     <td>
                                         {{ $item->magento_type }}
@@ -76,11 +83,28 @@
                                     <td>
                                         {{ $item->type }}
                                     </td>
+                                    <td>
+                                        {{ Form::text('position[' . $item->id . ']', $item->position ?: '0', ['class' => 'form-control', 'required']) }}
+                                    </td>
+                                    <td>
+                                        {{ dd($item) }}
+                                        @if(isset($item->image))
+                                            <img src="{{ thumbnail(150, $item) }}"
+                                                 data-src="{{ thumbnail(150, $item) }}" class="preview" height="150"
+                                                 width="150">
+                                        @else
+                                            <img src="{{ asset(config('paths.placeholder.default')) }}"
+                                                 data-src="{{ asset(config('paths.placeholder.default')) }}"
+                                                 class="preview" height="150" width="150">
+                                        @endif
+                                        {{ Form::file('image[' . $item->id . ']', ['class' => 'image-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif
                         </tbody>
                     </table>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>

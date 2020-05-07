@@ -20,7 +20,7 @@
                         <div class="col-sm-4">
                             <div class="card-actionbar">
                                 <div class="card-actionbar-row">
-                                    <button type="submit" class="btn btn-flat btn-primary ink-reaction">search
+                                    <button type="submit" class="btn btn-primary ink-reaction">search
                                     </button>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <button type="submit" class="btn btn-flat btn-success ink-reaction">Submit</button>
+                            <button type="submit" class="btn btn-success ink-reaction">Submit</button>
                         </tr>
                         <tr>
                             <th width="5%">#</th>

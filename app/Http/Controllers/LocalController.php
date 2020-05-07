@@ -76,36 +76,33 @@ class LocalController extends Controller
             }
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Products' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Category' ]));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Client $client
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    //    public function edit(Client $client)
-    //    {
-    //        return view('client.edit', compact('client'));
-    //    }
+    public function localUpdate(Request $request)
+    {
+        $data = [];
 
-    /**
-     * @param UpdateClient $request
-     * @param client $client
-     * @return \Illuminate\Http\Response
-     */
-    //    public function update(UpdateClient $request, Client $client)
-    //    {
-    //        DB::transaction(function () use ($request, $client)
-    //        {
-    //            $client->update($request->data());
-    //
-    //            $this->uploadRequestImage($request, $client);
-    //        });
-    //
-    //        return redirect()->route('client.index')->withSuccess(trans('messages.update_success', ['entity' => 'Client']));
-    //    }
+        foreach ($request->status as $id => $value)
+        {
+            DB::transaction(function () use ($request, $id) {
+                $data = [
+                    'position' => $request->position[ $id ]
+                ];
+
+                $local = Local::find($id);
+                $local->update($data);
+
+                $this->uploadRequestImage($request, $request->image[ $id ], $local);
+            });
+        }
+
+        return redirect()->route('local.index')->withSuccess(trans('messages.update_success', [ 'entity' => 'Local Data' ]));
+    }
 
     /**
      * @param Client $client
