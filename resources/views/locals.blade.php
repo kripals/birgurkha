@@ -87,11 +87,9 @@
                                         {{ Form::text('position[' . $item->id . ']', $item->position ?: '0', ['class' => 'form-control', 'required']) }}
                                     </td>
                                     <td>
-                                        {{ dd($item) }}
                                         @if(isset($item->image))
-                                            <img src="{{ thumbnail(150, $item) }}"
-                                                 data-src="{{ thumbnail(150, $item) }}" class="preview" height="150"
-                                                 width="150">
+                                            <img src="{{ asset($item->image->path) }}"
+                                                 class="preview" width="150">
                                         @else
                                             <img src="{{ asset(config('paths.placeholder.default')) }}"
                                                  data-src="{{ asset(config('paths.placeholder.default')) }}"

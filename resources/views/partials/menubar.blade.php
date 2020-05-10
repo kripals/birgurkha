@@ -28,9 +28,9 @@
 
             <!-- BEGIN SLIDER -->
             <li>
-                <a href="#">
+                <a href="local">
                     <div class="gui-icon"><i class="md md-email"></i></div>
-                    <span class="title">Slider</span>
+                    <span class="title">Local</span>
                 </a>
             </li><!--end /menu-li -->
             <!-- END SLIDER -->

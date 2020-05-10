@@ -90,14 +90,19 @@ class LocalController extends Controller
         foreach ($request->status as $id => $value)
         {
             DB::transaction(function () use ($request, $id) {
-                $data = [
-                    'position' => $request->position[ $id ]
-                ];
+                if (isset($request->position[ $id ]))
+                {
+                    $data  = [
+                        'position' => $request->position[ $id ]
+                    ];
+                    $local = Local::find($id);
+                    $local->update($data);
+                }
 
-                $local = Local::find($id);
-                $local->update($data);
-
-                $this->uploadRequestImage($request, $request->image[ $id ], $local);
+                if ($request->image[ $id ])
+                {
+                    $this->uploadRequestImage($request, $request->image[ $id ], $local);
+                }
             });
         }
 

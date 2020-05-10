@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Local;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
@@ -126,5 +127,35 @@ class ApiController extends Controller
         {
             return "error";
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function slidersApi()
+    {
+        $sliders = Local::where('type', 'SLIDER')->get();
+
+        return $sliders;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function categoryApi()
+    {
+        $category = Local::where('type', 'CATEGORY')->get();
+
+        return $category;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function productApi()
+    {
+        $product = Local::where('type', 'PRODUCT')->get();
+
+        return $product;
     }
 }

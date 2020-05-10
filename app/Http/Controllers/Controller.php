@@ -14,6 +14,7 @@ class Controller extends BaseController
 
     /**
      * @param $request
+     * @param $image
      * @param $instance
      * @return array|bool
      */
@@ -21,10 +22,12 @@ class Controller extends BaseController
     {
         if (isset($request))
         {
+            $img = $image->move('storage/local', $image->getClientOriginalName());
+
             $imageDetails = [
                 'name' => $image->getClientOriginalName(),
                 'size' => $image->getSize(),
-                'path' => $request->image[1]->store('local', 'public')
+                'path' => str_replace("storage/", "", (string) $img)
             ];
 
             if ($instance->image)

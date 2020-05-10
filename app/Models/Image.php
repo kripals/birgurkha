@@ -17,7 +17,11 @@ class Image extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'path', 'size'];
+    protected $fillable = [
+        'name',
+        'path',
+        'size'
+    ];
 
     /**
      * @param  string $value
