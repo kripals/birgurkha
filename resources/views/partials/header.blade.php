@@ -27,21 +27,6 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu animation-dock">
-                        <li class="dropdown-header">Config</li>
-                        <li>
-{{--                            <a href="{{ route('user.show', auth()->user()->username) }}">--}}
-                                <i class="md md-account-circle"></i>
-                                My profile
-{{--                            </a>--}}
-                        </li>
-{{--                        @if(auth()->user()->isRole('super'))--}}
-                            <li>
-{{--                                <a href="{{ route('setting.index') }}">--}}
-                                    <i class="md md-settings"></i>
-                                    Settings
-{{--                                </a>--}}
-                            </li>
-{{--                        @endif--}}
                         <li>
                             <a href="{{url('/logout')}}">
                                 <i class="md md-settings-power text-danger"></i>

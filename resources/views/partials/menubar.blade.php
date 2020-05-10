@@ -19,7 +19,7 @@
 
             <!-- BEGIN DASHBOARD -->
             <li>
-                <a href="#" class="active">
+                <a href="home" class="active">
                     <div class="gui-icon"><i class="md md-home"></i></div>
                     <span class="title">Dashboard</span>
                 </a>
@@ -29,7 +29,7 @@
             <!-- BEGIN SLIDER -->
             <li>
                 <a href="local">
-                    <div class="gui-icon"><i class="md md-email"></i></div>
+                    <div class="gui-icon"><i class="md md-cloud"></i></div>
                     <span class="title">Local</span>
                 </a>
             </li><!--end /menu-li -->
@@ -38,7 +38,7 @@
             <!-- BEGIN PODUCTS -->
             <li>
                 <a href="{{ route('products') }}">
-                    <div class="gui-icon"><i class="md md-home"></i></div>
+                    <div class="gui-icon"><i class="md md-folder"></i></div>
                     <span class="title">Products</span>
                 </a>
             </li><!--end /menu-li -->
@@ -47,7 +47,7 @@
             <!-- BEGIN CATEGORIES -->
             <li>
                 <a href="{{ route('categories') }}">
-                    <div class="gui-icon"><i class="md md-home"></i></div>
+                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
                     <span class="title">Categories</span>
                 </a>
             </li><!--end /menu-li -->
