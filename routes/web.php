@@ -33,4 +33,5 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::post('/local/update', 'LocalController@localUpdate')->name('local.update');
     Route::get('/local', 'LocalController@index')->name('local.index');
     Route::post('/local', 'LocalController@index')->name('local.index');
+    Route::delete('/local/{local}', 'LocalController@destroy')->name('local.destroy');
 });

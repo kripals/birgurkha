@@ -18,9 +18,9 @@ class Controller extends BaseController
      * @param $instance
      * @return array|bool
      */
-    public function uploadRequestImage($request, $image, $instance)
+    public function uploadRequestImage($image, $instance)
     {
-        if (isset($request))
+        if (isset($image))
         {
             $img = $image->move('storage/local', $image->getClientOriginalName());
 

@@ -101,7 +101,7 @@ class LocalController extends Controller
 
                 if ($request->image[ $id ])
                 {
-                    $this->uploadRequestImage($request, $request->image[ $id ], $local);
+                    $this->uploadRequestImage($request->image[ $id ], $local);
                 }
             });
         }
@@ -110,13 +110,18 @@ class LocalController extends Controller
     }
 
     /**
-     * @param Client $client
+     * @param Local $local
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    //    public function destroy(Client $client)
-    //    {
-    //        $client->delete();
-    //
-    //        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Client']));
-    //    }
+    public function destroy(Local $local)
+    {
+        $local->delete();
+        if ($local->image)
+        {
+            $local->image->deleteImage();
+        }
+
+        return back()->withSuccess(trans('messages.delete_success', [ 'entity' => 'Local' ]));
+    }
 }

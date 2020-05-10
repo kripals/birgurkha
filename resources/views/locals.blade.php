@@ -57,6 +57,7 @@
                             <th width="20%">Type</th>
                             <th width="20%">Position</th>
                             <th width="20%">Image</th>
+                            <th width="20%">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -96,6 +97,13 @@
                                                  class="preview" height="150" width="150">
                                         @endif
                                         {{ Form::file('image[' . $item->id . ']', ['class' => 'image-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
+                                    </td>
+                                    <td>
+                                        <a role="button" href="javascript:void(0);"
+                                           data-url="{{ route('local.destroy', $item->id) }}"
+                                           class="btn btn-primary btn-flat btn-xs item-delete">
+                                            Delete
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
