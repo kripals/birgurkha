@@ -51,12 +51,7 @@ class ApiController extends Controller
         $params['filter_groups_field'] = 'searchCriteria[filter_groups][0][filters][0][field]=name';
         $params['sort_orders_field']   = 'searchCriteria[sortOrders][0][field]=created_at';
 
-        $url = $this->url . "rest/V1/products?" .
-            $params['direction'] . '&' .
-            $params['condition_type'] . '&' .
-            $params['value'] . '&' .
-            $params['filter_groups_field'] . '&' .
-            $params['sort_orders_field'];
+        $url = $this->url . "rest/V1/products?" . $params['direction'] . '&' . $params['condition_type'] . '&' . $params['value'] . '&' . $params['filter_groups_field'] . '&' . $params['sort_orders_field'];
 
         if (isset($this->token))
         {
@@ -96,12 +91,7 @@ class ApiController extends Controller
         $params['filter_groups_field'] = 'searchCriteria[filter_groups][0][filters][0][field]=name';
         $params['sort_orders_field']   = 'searchCriteria[sortOrders][0][field]=created_at';
 
-        $url = $this->url . "rest/V1/categories/list?" .
-            $params['direction'] . '&' .
-            $params['condition_type'] . '&' .
-            $params['value'] . '&' .
-            $params['filter_groups_field'] . '&' .
-            $params['sort_orders_field'];
+        $url = $this->url . "rest/V1/categories/list?" . $params['direction'] . '&' . $params['condition_type'] . '&' . $params['value'] . '&' . $params['filter_groups_field'] . '&' . $params['sort_orders_field'];
 
         if (isset($this->token))
         {
@@ -132,30 +122,10 @@ class ApiController extends Controller
     /**
      * @return mixed
      */
-    public function slidersApi()
+    public function local()
     {
-        $sliders = Local::where('type', 'SLIDER')->get();
+        $local = Local::with('image')->get();
 
-        return $sliders;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function categoryApi()
-    {
-        $category = Local::where('type', 'CATEGORY')->get();
-
-        return $category;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function productApi()
-    {
-        $product = Local::where('type', 'PRODUCT')->get();
-
-        return $product;
+        return $local;
     }
 }

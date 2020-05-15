@@ -35,3 +35,5 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::post('/local', 'LocalController@index')->name('local.index');
     Route::delete('/local/{local}', 'LocalController@destroy')->name('local.destroy');
 });
+
+Route::get('array', 'UserController@array');
