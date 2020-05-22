@@ -1,0 +1,1045 @@
+{
+    "id": "NP",
+    "two_letter_abbreviation": "NP",
+    "three_letter_abbreviation": "NPL",
+    "full_name_locale": "Nepal",
+    "full_name_english": "Nepal",
+    "province": [
+        {
+            "country_id": "NP",
+            "code": "Provinces No 1",
+            "city": "Jhapa",
+            "area": "Birtamod",
+            "pincode": "57204"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 1",
+            "city": "Jhapa",
+            "area": "Birtamod",
+            "pincode": "57217"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 1",
+            "city": "Morang",
+            "area": "Biratnagar",
+            "pincode": "56613"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 1",
+            "city": "Sunsari",
+            "area": "Dharan",
+            "pincode": "56700"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 1",
+            "city": "Sunsari",
+            "area": "Itahari",
+            "pincode": "56705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 2",
+            "city": "Dhanusha",
+            "area": "Janakpur",
+            "pincode": "45600"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 2",
+            "city": "Parsa",
+            "area": "Birgunj",
+            "pincode": "44300"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Bhaktapur",
+            "area": "Gaththaghar",
+            "pincode": "44800"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Bhaktapur",
+            "area": "Jagati",
+            "pincode": "44800"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Bhaktapur",
+            "area": "Kamalbinayak",
+            "pincode": "44800"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Bhaktapur",
+            "area": "Katunje",
+            "pincode": "44800"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Bhaktapur",
+            "area": "Lohakanthali",
+            "pincode": "44800"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Bhaktapur",
+            "area": "Sallaghari",
+            "pincode": "44800"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Bhaktapur",
+            "area": "Sano Thimi",
+            "pincode": "44800"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Chitwan",
+            "area": "Narayangadh",
+            "pincode": "44207"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Anamnagar (inside ringroad)",
+            "pincode": "44605"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Ason (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Bagbazar (inside ringroad)",
+            "pincode": "44605"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Baluwatar (inside ringroad)",
+            "pincode": "44616"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Basantapur (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Bhotahiti (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Bishalnagar (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Chabahil (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Chhetrapati (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Gaushala (inside ringroad)",
+            "pincode": "44621"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Hanumandhoka (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Indrachowk (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Kalimati (inside ringroad)",
+            "pincode": "44614"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Kamaladi (inside ringroad)",
+            "pincode": "44605"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Koteshwor (inside ringroad)",
+            "pincode": "44617"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Kuleshwor (inside ringroad)",
+            "pincode": "44614"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Lagantole (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Lainchaur (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Lazimpat (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Maharajgunj (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Maitidevi (inside ringroad)",
+            "pincode": "44605"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Maitighar (inside ringroad)",
+            "pincode": "44617"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Marutol (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Minbhawan (inside ringroad)",
+            "pincode": "44617"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Naxal (inside ringroad)",
+            "pincode": "44605"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Nayabazar (inside ringroad)",
+            "pincode": "44620"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "New Baneshwor (inside ringroad)",
+            "pincode": "44617"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Newroad (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Putalisadak (inside ringroad)",
+            "pincode": "44605"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Raktakali (inside ringroad)",
+            "pincode": "44602"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Sinamangal (inside ringroad)",
+            "pincode": "44617"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Swayambhu (inside ringroad)",
+            "pincode": "44620"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Tangal (inside ringroad)",
+            "pincode": "44616"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Teku (inside ringroad)",
+            "pincode": "44614"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Tinkune (inside ringroad)",
+            "pincode": "44617"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Arubari (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Attarkhel (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Boudha (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Budhanilkantha (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Chapali (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Dhapasi (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Golfutar (outside ringroad)",
+            "pincode": "44606"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Gongabu (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Jorpati (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Kalanki (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Kapan (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Kirtipur Buspark (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Manamaiju (outside ringroad)",
+            "pincode": "44610"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Mandikhatar (outside ringroad)",
+            "pincode": "44606"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Nagdhunga (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Nayabazar (outside ringroad)",
+            "pincode": "44620"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Nepaltar (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Panga (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Purano Guheshwari (outside ringroad)",
+            "pincode": "44621"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Sano Bharyang (outside ringroad)",
+            "pincode": "44620"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Satungal (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Sitapaila (outside ringroad)",
+            "pincode": "44620"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Soltee dobato (outside ringroad)",
+            "pincode": "44614"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Thulo Bharyang (outside ringroad)",
+            "pincode": "44620"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Tokha (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "TU (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Tyanglaphat (outside ringroad)",
+            "pincode": "44601"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kathmandu",
+            "area": "Koteshwor (outside ringroad)",
+            "pincode": "44617"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Kavrepalanchok",
+            "area": "Banepa",
+            "pincode": "45210"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Bakhundole (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Balkumari (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Banglamukhi (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Bhanimandal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Bhatbhateni (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Chakupat (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Chyasal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Dhobighat (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Dhumbahal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Ekantakuna (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Gabahal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Guitole (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Gusingal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Gwarko (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Harihar Bhawan (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Jawalakhel (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Jhamsikhel (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Jwagal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Kanibahal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Kopundole (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "KU (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Kumaripati (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Kusunti (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Lagankhel (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Macchindrabahal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Manbhawan (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Mangalbazar (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Nagbahal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Nyachuka (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Patandhoka (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Pulchowk (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Rajtirtha (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Sanchal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Sanepa (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Sankhamul (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Satdobato (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Sundhara (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Sundhara (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Tangal (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Thaina (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Thasikhel (inside ringroad)",
+            "pincode": "44705"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Baghdole (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Bhaisepati  (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Bungamati  (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Chobar (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Dhapakhel  (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Dhobighat Outside ringroad (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Harisiddhi (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Hattiban (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "ICIMOD Area (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Imadole  (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Khokana Karyabinayak (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "KU (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Nakhipot (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Nakhu  (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Ranibu (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Sunakoti  (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Tikhedewal (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Lalitpur",
+            "area": "Ullens School Area (outside ringroad)",
+            "pincode": "44703"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 3",
+            "city": "Makwanpur",
+            "area": "Hetauda",
+            "pincode": "44107"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 4",
+            "city": "Kaski",
+            "area": "Pokhara",
+            "pincode": "33701"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 5",
+            "city": "Banke",
+            "area": "Nepalgunj",
+            "pincode": "21900"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 5",
+            "city": "Dang",
+            "area": "Ghorahi",
+            "pincode": "22415"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 5",
+            "city": "Rupandehi",
+            "area": "Bhairawa",
+            "pincode": "32901"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 5",
+            "city": "Rupandehi",
+            "area": "Butwal",
+            "pincode": "32907"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 6",
+            "city": "Surkhet",
+            "area": "Surkhet",
+            "pincode": "21700"
+        },
+        {
+            "country_id": "NP",
+            "code": "Provinces No 7",
+            "city": "Kailali",
+            "area": "Dhangadi",
+            "pincode": "10900"
+        },
+        {
+            "country_id": null,
+            "code": null,
+            "city": "Chitwan1",
+            "area": "Bharatpur1",
+            "pincode": "44200"
+        },
+        {
+            "country_id": null,
+            "code": null,
+            "city": "Test",
+            "area": "Test",
+            "pincode": "1234567"
+        }
+    ]
+}
