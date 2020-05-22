@@ -12,9 +12,9 @@ return [
     | on sites such as Facebook and Twitter.
     |
     */
-    'name'        => 'Sastodeal Mobile Api',
-    'title'       => 'Sastodeal Mobile Api',
-    'description' => 'Sastodeal Mobile Api Panel',
+    'name'        => env('APP_NAME', 'Laravel'),
+    'title'       => env('APP_NAME', 'Laravel'),
+    'description' => env('APP_NAME', 'Laravel'),
     'email'       => 'support@sastodeal.com',
     'logo'        => '/img/logo.png',
     'favicon'     => '/img/favicon/favicon-32x32.png',
