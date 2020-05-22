@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('login', 'APILoginController@login');
+Route::post('login', 'ApiLoginController@login');
 
 Route::group([ 'middleware' => 'jwt.auth' ], function () {
     Route::get('/slider', 'ApiController@slidersApi');
