@@ -24,6 +24,20 @@ class Image extends Model
     ];
 
     /**
+     * The attributes appended in the JSON form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'url_path'
+    ];
+
+    public function getUrlPathAttribute()
+    {
+        return url($this->path);
+    }
+
+    /**
      * @param  string $value
      * @return string
      */
