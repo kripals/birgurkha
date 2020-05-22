@@ -26,7 +26,7 @@ class Controller extends BaseController
 
             $imageDetails = [
                 'name' => $image->getClientOriginalName(),
-                'size' => $image->getSize(),
+                'size' => $img->getSize(),
                 'path' => str_replace("storage/", "", (string) $img)
             ];
 
