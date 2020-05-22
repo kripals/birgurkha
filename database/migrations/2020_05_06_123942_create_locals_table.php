@@ -16,7 +16,7 @@ class CreateLocalsTable extends Migration
         Schema::create('locals', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->integer('entity_id');
+            $table->string('entity_id', 225);
             $table->enum('magento_type', ['PRODUCT', 'CATEGORY'])->default('PRODUCT');
             $table->string('name');
             $table->enum('type', ['SLIDER','CATEGORY','PRODUCT'])->default('SLIDER');
