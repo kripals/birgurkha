@@ -39,7 +39,7 @@ class LocalController extends Controller
                 if ( ! empty($value))
                 {
                     $data = [
-                        'entity_id'    => $request->id[ $key ],
+                        'entity_id'    => $request->sku[ $key ],
                         'magento_type' => 'PRODUCT',
                         'name'         => $request->name[ $key ],
                         'type'         => $request->type[ $key ]
