@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                {{ Form::select('type', config('website.local_types'), $type, ['class' => 'form-control', 'required']) }}
+                                {{ Form::select('type', typesArray(), $type, ['class' => 'form-control', 'required']) }}
                                 {{ Form::label('value', 'Type') }}
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                         {{ $item->name }}
                                     </td>
                                     <td>
-                                        {{ $item->type }}
+                                        {{ $item->type_name }}
                                     </td>
                                     <td>
                                         {{ Form::text('position[' . $item->id . ']', $item->position ?: '0', ['class' => 'form-control', 'required']) }}

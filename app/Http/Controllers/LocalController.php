@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Local;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,10 +21,10 @@ class LocalController extends Controller
         }
         else
         {
-            $type = 'SLIDER';
+            $type = Type::first()->id;
         }
 
-        $content = Local::where('type', $type)->get();
+        $content = Local::where('type_id', $type)->get();
 
         return view('locals', compact('content', 'type'));
     }

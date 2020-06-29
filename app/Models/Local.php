@@ -33,7 +33,7 @@ class Local extends Model
      */
     public function getTypeNameAttribute()
     {
-        return $this->type()->name;
+        return $this->type->name;
     }
 
     /**
