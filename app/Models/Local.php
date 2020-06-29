@@ -15,7 +15,7 @@ class Local extends Model
         'entity_id',
         'magento_type',
         'name',
-        'type',
+        'type_id',
         'position'
     ];
 
@@ -49,6 +49,6 @@ class Local extends Model
      */
     public function type()
     {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class, 'type_id');
     }
 }

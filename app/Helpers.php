@@ -66,7 +66,7 @@ function thumbnail($width, $entity = null)
 function typesArray()
 {
     $types[0] = '-';
-    $types    = array_merge($types, \App\Models\Type::all()->pluck('name', 'id')->toArray());
+    $types    = $types + \App\Models\Type::all()->pluck('name', 'id')->toArray();
 
     return $types;
 }

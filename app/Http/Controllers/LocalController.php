@@ -43,7 +43,7 @@ class LocalController extends Controller
                         'entity_id'    => $request->sku[ $key ],
                         'magento_type' => 'PRODUCT',
                         'name'         => $request->name[ $key ],
-                        'type'         => $request->type[ $key ]
+                        'type_id'      => $request->type[ $key ]
                     ];
 
                     $local = Local::create($data);
@@ -69,7 +69,7 @@ class LocalController extends Controller
                         'entity_id'    => $request->id[ $key ],
                         'magento_type' => 'CATEGORY',
                         'name'         => $request->name[ $key ],
-                        'type'         => $request->type[ $key ]
+                        'type_id'      => $request->type[ $key ]
                     ];
 
                     $local = Local::create($data);
