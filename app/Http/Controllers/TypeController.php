@@ -33,16 +33,16 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        DB::transaction(function () use ($request)
-        {
+        DB::transaction(function () use ($request) {
             $data = [
-                'name' => $request->name
+                'name'    => $request->name,
+                'visible' => $request->visible
             ];
 
             $type = Type::create($data);
         });
 
-        return redirect()->route('type.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Type' ]));
+        return redirect()->route('types.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Type' ]));
     }
 
     /**
@@ -63,16 +63,16 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        DB::transaction(function () use ($request, $type)
-        {
+        DB::transaction(function () use ($request, $type) {
             $data = [
-                'name' => $request->name
+                'name' => $request->name,
+                'visible' => $request->visible
             ];
 
             $type->update($data);
         });
 
-        return redirect()->route('type.index')->withSuccess(trans('messages.update_success', ['entity' => 'Type']));
+        return redirect()->route('types.index')->withSuccess(trans('messages.update_success', [ 'entity' => 'Type' ]));
     }
 
     /**
@@ -84,8 +84,6 @@ class TypeController extends Controller
     {
         $type->delete();
 
-        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Type']));
+        return back()->withSuccess(trans('messages.delete_success', [ 'entity' => 'Type' ]));
     }
-
-
 }

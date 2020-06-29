@@ -78,7 +78,7 @@
                                         {{ Form::text('sku['. $key. ']', $item->sku , ['hidden']) }}
                                     </td>
                                     <td>
-                                        {{ Form::select('type['. $key. ']', config('website.local_types'), old('type'), ['class' => 'form-control', 'required']) }}
+                                        {{ Form::select('type['. $key. ']', typesArray(), old('type'), ['class' => 'form-control', 'required']) }}
                                     </td>
                                 </tr>
                             @endforeach

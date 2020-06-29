@@ -15,7 +15,7 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::open(['route' =>'type.store','class'=>'form form-validate','files'=>true,'novalidate']) }}
+                {{ Form::open(['route' =>'types.store','class'=>'form form-validate','files'=>true,'novalidate']) }}
                     @include('type.partials.form')
                 {{ Form::close() }}
             </div><!--end .card -->

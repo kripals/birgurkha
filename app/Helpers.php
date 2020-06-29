@@ -59,3 +59,14 @@ function thumbnail($width, $entity = null)
 
     return asset(config('paths.placeholder.default'));
 }
+
+/**
+ * @return \App\Models\Type[]|\Illuminate\Database\Eloquent\Collection
+ */
+function typesArray()
+{
+    $types[0] = '-';
+    $types    = array_merge($types, \App\Models\Type::all()->pluck('name', 'id')->toArray());
+
+    return $types;
+}

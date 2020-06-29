@@ -53,6 +53,15 @@
             </li><!--end /menu-li -->
             <!-- END CATEGORIES -->
 
+            <!-- BEGIN TYPES -->
+            <li>
+                <a href="{{ route('types.index') }}">
+                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <span class="title">Types</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END TYPES -->
+
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
 

@@ -9,14 +9,20 @@
                 <div class="card-head">
                     <header>Edit type</header>
                     <div class="tools">
-                        <a class="btn btn-default" href="{{ route('type.index') }}">
+                        <a class="btn btn-default" onclick="history.go(-1);return false;">
                             <i class="md md-arrow-back"></i>
                             Back
                         </a>
                     </div>
                 </div>
-                {{ Form::model($type,['route'=>['type.update',$type->id],'class'=>'form form-validate','role'=>'form','novalidate','files'=>true,'method'=>'PUT']) }}
-                    @include('type.partials.form')
+                {{ Form::model($type, [
+                                'route'=> [ 'types.update' ,$type->id ],
+                                'class'=>'form form-validate',
+                                'role'=>'form','novalidate',
+                                'files'=>true,
+                                'method'=>'PUT'
+                            ]) }}
+                @include('type.partials.form')
                 {{ Form::close() }}
             </div>
         </div>

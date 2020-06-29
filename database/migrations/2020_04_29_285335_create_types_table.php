@@ -17,6 +17,7 @@ class CreateTypesTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('name', 225);
+            $table->tinyInteger('visible');
             $table->timestamps();
         });
     }

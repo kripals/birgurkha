@@ -7,6 +7,12 @@
                 <label>Name</label>
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                {{ Form::select('visible', [ 1 => 'Show', 0 => 'Dont Show' ] , old('visible'), ['class' => 'form-control select2-list', 'required']) }}
+                <label>Name</label>
+            </div>
+        </div>
     </div>
 </div><!--end .card-body -->
 <div class="card-actionbar">

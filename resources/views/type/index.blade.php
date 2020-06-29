@@ -9,7 +9,7 @@
                 <div class="card-head">
                     <header class="text-capitalize">all type</header>
                     <div class="tools">
-                        <a class="btn btn-primary" href="{{ route('type.create') }}">
+                        <a class="btn btn-primary" href="{{ route('types.create') }}">
                             <i class="md md-add"></i>
                             Add
                         </a>
@@ -20,7 +20,8 @@
                         <thead>
                         <tr>
                             <th width="5%">#</th>
-                            <th width="50%">Name</th>
+                            <th width="30%">Name</th>
+                            <th width="30%">Is Visible</th>
                             <th width="15%" class="text-right">Actions</th>
                         </tr>
                         </thead>
