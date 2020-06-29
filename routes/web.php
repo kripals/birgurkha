@@ -34,6 +34,22 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/local', 'LocalController@index')->name('local.index');
     Route::post('/local', 'LocalController@index')->name('local.index');
     Route::delete('/local/{local}', 'LocalController@destroy')->name('local.destroy');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Type CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group([ 'as' => 'type.', 'prefix' => 'type' ], function ()
+    {
+        Route::get('', 'TypeController@index')->name('index');
+        Route::get('create', 'TypeController@create')->name('create');
+        Route::post('', 'TypeController@store')->name('store');
+        Route::get('{type}/edit', 'TypeController@edit')->name('edit');
+        Route::put('{type}', 'TypeController@update')->name('update');
+        Route::delete('{type}', 'TypeController@destroy')->name('destroy');
+    });
 });
 
 Route::get('array', 'UserController@array');

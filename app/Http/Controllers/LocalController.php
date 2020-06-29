@@ -22,6 +22,7 @@ class LocalController extends Controller
         {
             $type = 'SLIDER';
         }
+
         $content = Local::where('type', $type)->get();
 
         return view('locals', compact('content', 'type'));
