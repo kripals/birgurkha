@@ -19,9 +19,16 @@ class CreateLocalsTable extends Migration
             $table->string('entity_id', 225);
             $table->enum('magento_type', ['PRODUCT', 'CATEGORY'])->default('PRODUCT');
             $table->string('name');
-            $table->enum('type', ['SLIDER','CATEGORY','PRODUCT'])->default('SLIDER');
             $table->integer('position')->nullable();
+            $table->bigInteger('type_id')->unsigned()->index();
             $table->timestamps();
+        });
+
+        Schema::table('locals', function($table) {
+            $table->foreign('type_id')
+                ->references('id')
+                ->on('types')
+                ->onDelete('restrict');
         });
     }
 

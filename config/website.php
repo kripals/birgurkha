@@ -19,5 +19,5 @@ return [
     'logo'        => '/img/logo.png',
     'favicon'     => '/img/favicon/favicon-32x32.png',
     'date_format' => 'd-M-Y',
-    'local_types' => [ '' => '----------------------------', 'SLIDER' => 'Slider', 'CATEGORY' => 'Category', 'PRODUCT' => 'Product' ]
+    'local_types' => [ '' => '----------------------------', 'SLIDER' => 'Slider', 'BD' => 'Beast Deals', 'Coupon' => 'Product' ]
 ];
