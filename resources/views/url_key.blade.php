@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Url Link')
+@section('title', 'Web Page Url Link')
 
 @section('content')
     <section class="no-y-padding">
@@ -8,12 +8,12 @@
             {{ Form::open([ 'route' =>'local.store.urlKeys', 'class'=>'form form-validate', 'novalidate' ]) }}
             <div class="card">
                 <div class="card-body">
-                    <h3>Magento Page Url Key</h3>
+                    <h3>Magento Web Page Url Key</h3>
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
                                 {{ Form::text('url_keys', old('url_keys'), ['class' => 'form-control', 'required']) }}
-                                {{ Form::label('url_keys', 'Page Url') }}
+                                {{ Form::label('url_keys', 'Web Page Url') }}
                             </div>
                         </div>
                         <div class="col-sm-4">

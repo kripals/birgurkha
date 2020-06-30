@@ -75,7 +75,7 @@
             <li>
                 <a href="{{ route('urlKeys') }}">
                     <div class="gui-icon"><i class="md md-folder-shared"></i></div>
-                    <span class="title">Url Keys</span>
+                    <span class="title">Web Page</span>
                 </a>
             </li><!--end /menu-li -->
             <!-- END URL KEYS -->

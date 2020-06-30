@@ -110,7 +110,7 @@ class LocalController extends Controller
         DB::transaction(function () use ($request) {
             $data = [
                 'entity_id'    => $request->url_keys,
-                'magento_type' => 'URL_KEY',
+                'magento_type' => 'WEB_PAGE',
                 'name'         => $request->title,
                 'type_id'      => $request->type
             ];

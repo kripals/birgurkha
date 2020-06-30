@@ -20,8 +20,10 @@
                         <thead>
                         <tr>
                             <th width="5%">#</th>
-                            <th width="30%">Name</th>
-                            <th width="30%">Is Visible</th>
+                            <th width="20%">Name</th>
+                            <th width="5%">Position</th>
+                            <th width="20%">Type</th>
+                            <th width="20%">Is Visible</th>
                             <th width="15%" class="text-right">Actions</th>
                         </tr>
                         </thead>

@@ -18,6 +18,8 @@ class CreateTypesTable extends Migration
             $table->increments('id');
             $table->string('name', 225);
             $table->tinyInteger('visible');
+            $table->integer('position')->nullable();
+            $table->enum('type', ['SLIDER', 'CAROUSEL', 'BANNER'])->default('BANNER');
             $table->timestamps();
         });
     }

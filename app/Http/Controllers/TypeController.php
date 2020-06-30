@@ -35,8 +35,10 @@ class TypeController extends Controller
     {
         DB::transaction(function () use ($request) {
             $data = [
-                'name'    => $request->name,
-                'visible' => $request->visible
+                'name'     => $request->name,
+                'visible'  => $request->visible,
+                'position' => $request->position,
+                'type'     => $request->type,
             ];
 
             $type = Type::create($data);
@@ -65,8 +67,10 @@ class TypeController extends Controller
     {
         DB::transaction(function () use ($request, $type) {
             $data = [
-                'name' => $request->name,
-                'visible' => $request->visible
+                'name'     => $request->name,
+                'visible'  => $request->visible,
+                'position' => $request->position,
+                'type'     => $request->type,
             ];
 
             $type->update($data);
