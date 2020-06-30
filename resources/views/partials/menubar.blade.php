@@ -26,6 +26,15 @@
             </li><!--end /menu-li -->
             <!-- END DASHBOARD -->
 
+            <!-- BEGIN TYPES -->
+            <li>
+                <a href="{{ route('types.index') }}">
+                    <div class="gui-icon"><i class="md md-calendar_view_day"></i></div>
+                    <span class="title">Homepage Sections</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END TYPES -->
+
             <!-- BEGIN SLIDER -->
             <li>
                 <a href="local">
@@ -53,19 +62,10 @@
             </li><!--end /menu-li -->
             <!-- END CATEGORIES -->
 
-            <!-- BEGIN TYPES -->
-            <li>
-                <a href="{{ route('types.index') }}">
-                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
-                    <span class="title">Homepage Sections</span>
-                </a>
-            </li><!--end /menu-li -->
-            <!-- END TYPES -->
-
             <!-- BEGIN CMS PAGES -->
             <li>
                 <a href="{{ route('cmsPages') }}">
-                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <div class="gui-icon"><i class="md md-find_in_page"></i></div>
                     <span class="title">Cms Pages</span>
                 </a>
             </li><!--end /menu-li -->
@@ -74,7 +74,7 @@
             <!-- BEGIN URL KEYS -->
             <li>
                 <a href="{{ route('urlKeys') }}">
-                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <div class="gui-icon"><i class="md md-web"></i></div>
                     <span class="title">Web Page</span>
                 </a>
             </li><!--end /menu-li -->
@@ -83,7 +83,7 @@
             <!-- BEGIN SEARCH -->
             <li>
                 <a href="{{ route('search') }}">
-                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <div class="gui-icon"><i class="md md-search"></i></div>
                     <span class="title">Search</span>
                 </a>
             </li><!--end /menu-li -->
