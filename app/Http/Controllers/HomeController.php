@@ -59,4 +59,12 @@ class HomeController extends Controller
     {
         return view('url_key');
     }
+
+    /**
+     * @return Factory|View
+     */
+    public function search()
+    {
+        return view('search');
+    }
 }

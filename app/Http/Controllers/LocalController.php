@@ -118,7 +118,27 @@ class LocalController extends Controller
             $local = Local::create($data);
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Cms Page' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Url' ]));
+    }
+
+    /**
+     * @param StoreClient $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchStore(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            $data = [
+                'entity_id'    => $request->search_filter,
+                'magento_type' => 'SEARCH',
+                'name'         => $request->title,
+                'type_id'      => $request->type
+            ];
+
+            $local = Local::create($data);
+        });
+
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Search' ]));
     }
 
     /**

@@ -62,14 +62,32 @@
             </li><!--end /menu-li -->
             <!-- END TYPES -->
 
-            <!-- BEGIN TYPES -->
+            <!-- BEGIN CMS PAGES -->
             <li>
                 <a href="{{ route('cmsPages') }}">
                     <div class="gui-icon"><i class="md md-folder-shared"></i></div>
                     <span class="title">Cms Pages</span>
                 </a>
             </li><!--end /menu-li -->
-            <!-- END TYPES -->
+            <!-- END CMS PAGES -->
+
+            <!-- BEGIN URL KEYS -->
+            <li>
+                <a href="{{ route('urlKeys') }}">
+                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <span class="title">Url Keys</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END URL KEYS -->
+
+            <!-- BEGIN SEARCH -->
+            <li>
+                <a href="{{ route('search') }}">
+                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <span class="title">Search</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END SEARCH -->
 
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
