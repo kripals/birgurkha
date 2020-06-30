@@ -64,7 +64,7 @@
 
             <!-- BEGIN TYPES -->
             <li>
-                <a href="{{ route('cmsPages.index') }}">
+                <a href="{{ route('cmsPages') }}">
                     <div class="gui-icon"><i class="md md-folder-shared"></i></div>
                     <span class="title">Cms Pages</span>
                 </a>

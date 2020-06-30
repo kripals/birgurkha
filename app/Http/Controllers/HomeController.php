@@ -51,4 +51,12 @@ class HomeController extends Controller
     {
         return view('cmsPages');
     }
+
+    /**
+     * @return Factory|View
+     */
+    public function urlKeys()
+    {
+        return view('url_key');
+    }
 }

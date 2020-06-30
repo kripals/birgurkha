@@ -52,10 +52,11 @@
                         </tr>
                         <tr>
                             <th width="5%">#</th>
-                            <th width="20%">Magento Type</th>
-                            <th width="40%">Name</th>
-                            <th width="20%">Type</th>
-                            <th width="20%">Position</th>
+                            <th width="15%">Magento Type</th>
+                            <th width="20%">Entity</th>
+                            <th width="30%">Name</th>
+                            <th width="15%">Type</th>
+                            <th width="10%">Position</th>
                             <th width="20%">Image</th>
                             <th width="20%">Action</th>
                         </tr>
@@ -77,6 +78,9 @@
                                     </td>
                                     <td>
                                         {{ $item->magento_type }}
+                                    </td>
+                                    <td>
+                                        {{ $item->entity_id }}
                                     </td>
                                     <td>
                                         {{ $item->name }}
