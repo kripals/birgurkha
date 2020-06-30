@@ -82,6 +82,26 @@ class LocalController extends Controller
     }
 
     /**
+     * @param StoreClient $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cmsPagesStore(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            $data = [
+                'entity_id'    => $request->url_key,
+                'magento_type' => 'CMS_PAGE',
+                'name'         => $request->title,
+                'type_id'      => $request->type
+            ];
+
+            $local = Local::create($data);
+        });
+
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Cms Page' ]));
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Http\Response
      */

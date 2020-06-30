@@ -17,7 +17,7 @@ class CreateLocalsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('entity_id', 225);
-            $table->enum('magento_type', ['PRODUCT', 'CATEGORY'])->default('PRODUCT');
+            $table->enum('magento_type', ['PRODUCT', 'CATEGORY', 'CMS_PAGE', 'URL_KEY', 'SEARCH'])->default('PRODUCT');
             $table->string('name');
             $table->integer('position')->nullable();
             $table->integer('type_id')->unsigned();

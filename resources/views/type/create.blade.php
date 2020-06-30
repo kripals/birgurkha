@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Types')
+@section('title', 'Homepage Sections')
 
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>Add a type</header>
+                    <header>Add a Homepage Sections</header>
                     <div class="tools">
                         <a class="btn btn-default" onclick="history.go(-1);return false;">
                             <i class="md md-arrow-back"></i>

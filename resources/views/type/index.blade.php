@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Type')
+@section('title', 'Homepage Sections')
 
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">all type</header>
+                    <header class="text-capitalize">all Homepage Sections</header>
                     <div class="tools">
                         <a class="btn btn-primary" href="{{ route('types.create') }}">
                             <i class="md md-add"></i>

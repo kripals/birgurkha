@@ -57,18 +57,21 @@
             <li>
                 <a href="{{ route('types.index') }}">
                     <div class="gui-icon"><i class="md md-folder-shared"></i></div>
-                    <span class="title">Types</span>
+                    <span class="title">Homepage Sections</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END TYPES -->
+
+            <!-- BEGIN TYPES -->
+            <li>
+                <a href="{{ route('cmsPages.index') }}">
+                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <span class="title">Cms Pages</span>
                 </a>
             </li><!--end /menu-li -->
             <!-- END TYPES -->
 
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
-
-        <div class="menubar-foot-panel">
-            <small class="no-linebreak hidden-folded">
-                <span class="opacity-75">Copyright &copy; 2014</span> <strong>CodeCovers</strong>
-            </small>
-        </div>
     </div><!--end .menubar-scroll-panel-->
 </div><!--end #menubar-->
