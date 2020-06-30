@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                {{ Form::select('type', config('website.local_types'), $type, ['class' => 'form-control', 'required']) }}
+                                {{ Form::select('type', typesArray(), $type, ['class' => 'form-control', 'required']) }}
                                 {{ Form::label('value', 'Type') }}
                             </div>
                         </div>
@@ -52,10 +52,11 @@
                         </tr>
                         <tr>
                             <th width="5%">#</th>
-                            <th width="20%">Magento Type</th>
-                            <th width="40%">Name</th>
-                            <th width="20%">Type</th>
-                            <th width="20%">Position</th>
+                            <th width="15%">Magento Type</th>
+                            <th width="20%">Entity</th>
+                            <th width="30%">Name</th>
+                            <th width="15%">Type</th>
+                            <th width="10%">Position</th>
                             <th width="20%">Image</th>
                             <th width="20%">Action</th>
                         </tr>
@@ -79,10 +80,13 @@
                                         {{ $item->magento_type }}
                                     </td>
                                     <td>
+                                        {{ $item->entity_id }}
+                                    </td>
+                                    <td>
                                         {{ $item->name }}
                                     </td>
                                     <td>
-                                        {{ $item->type }}
+                                        {{ $item->type_name }}
                                     </td>
                                     <td>
                                         {{ Form::text('position[' . $item->id . ']', $item->position ?: '0', ['class' => 'form-control', 'required']) }}

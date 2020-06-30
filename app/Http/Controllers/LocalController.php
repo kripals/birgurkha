@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Local;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,9 +21,10 @@ class LocalController extends Controller
         }
         else
         {
-            $type = 'SLIDER';
+            $type = Type::first()->id;
         }
-        $content = Local::where('type', $type)->get();
+
+        $content = Local::where('type_id', $type)->get();
 
         return view('locals', compact('content', 'type'));
     }
@@ -42,7 +44,7 @@ class LocalController extends Controller
                         'entity_id'    => $request->sku[ $key ],
                         'magento_type' => 'PRODUCT',
                         'name'         => $request->name[ $key ],
-                        'type'         => $request->type[ $key ]
+                        'type_id'      => $request->type[ $key ]
                     ];
 
                     $local = Local::create($data);
@@ -68,7 +70,7 @@ class LocalController extends Controller
                         'entity_id'    => $request->id[ $key ],
                         'magento_type' => 'CATEGORY',
                         'name'         => $request->name[ $key ],
-                        'type'         => $request->type[ $key ]
+                        'type_id'      => $request->type[ $key ]
                     ];
 
                     $local = Local::create($data);
@@ -77,6 +79,66 @@ class LocalController extends Controller
         });
 
         return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Category' ]));
+    }
+
+    /**
+     * @param StoreClient $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cmsPagesStore(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            $data = [
+                'entity_id'    => $request->url_key,
+                'magento_type' => 'CMS_PAGE',
+                'name'         => $request->title,
+                'type_id'      => $request->type
+            ];
+
+            $local = Local::create($data);
+        });
+
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Cms Page' ]));
+    }
+
+    /**
+     * @param StoreClient $request
+     * @return \Illuminate\Http\Response
+     */
+    public function urlKeysStore(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            $data = [
+                'entity_id'    => $request->url_keys,
+                'magento_type' => 'WEB_PAGE',
+                'name'         => $request->title,
+                'type_id'      => $request->type
+            ];
+
+            $local = Local::create($data);
+        });
+
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Url' ]));
+    }
+
+    /**
+     * @param StoreClient $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchStore(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            $data = [
+                'entity_id'    => $request->search_filter,
+                'magento_type' => 'SEARCH',
+                'name'         => $request->title,
+                'type_id'      => $request->type
+            ];
+
+            $local = Local::create($data);
+        });
+
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Search' ]));
     }
 
     /**

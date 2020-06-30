@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
@@ -27,7 +29,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function products()
     {
@@ -35,10 +37,34 @@ class HomeController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function categories()
     {
         return view('categories');
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function cmsPages()
+    {
+        return view('cmsPages');
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function urlKeys()
+    {
+        return view('url_key');
+    }
+
+    /**
+     * @return Factory|View
+     */
+    public function search()
+    {
+        return view('search');
     }
 }

@@ -15,13 +15,20 @@ class CreateLocalsTable extends Migration
     {
         Schema::create('locals', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->bigIncrements('id');
-            $table->string('entity_id', 225);
-            $table->enum('magento_type', ['PRODUCT', 'CATEGORY'])->default('PRODUCT');
+            $table->increments('id');
+            $table->text('entity_id');
+            $table->enum('magento_type', ['PRODUCT', 'CATEGORY', 'CMS_PAGE', 'WEB_PAGE', 'SEARCH'])->default('PRODUCT');
             $table->string('name');
-            $table->enum('type', ['SLIDER','CATEGORY','PRODUCT'])->default('SLIDER');
             $table->integer('position')->nullable();
+            $table->integer('type_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('locals', function($table) {
+            $table->foreign('type_id')
+                ->references('id')
+                ->on('types')
+                ->onDelete('cascade');
         });
     }
 

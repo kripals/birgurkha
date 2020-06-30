@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Local;
+use App\Models\Type;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
@@ -120,12 +121,88 @@ class ApiController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     */
+    public function cmsPagesSearch(Request $request)
+    {
+        $url    = $this->url . "graphql";
+        $search = $request->search;
+
+        if (isset($this->token))
+        {
+            $curl = curl_init();
+
+            curl_setopt_array($curl, [
+                CURLOPT_URL            => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING       => "",
+                CURLOPT_MAXREDIRS      => 10,
+                CURLOPT_TIMEOUT        => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST  => "POST",
+                CURLOPT_POSTFIELDS     => "{\"query\":\"{\\r\\n  cmsPage(identifier: \\\"$search\\\") {\\r\\n    url_key\\r\\n    title\\r\\n    content\\r\\n    content_heading\\r\\n    page_layout\\r\\n    meta_title\\r\\n    meta_description\\r\\n    meta_keywords\\r\\n  }\\r\\n}\",\"variables\":{}}",
+                CURLOPT_HTTPHEADER     => [
+                    "Content-Type: application/json",
+                    "Authorization: Bearer " . $this->token
+                ],
+            ]);
+
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $data = json_decode($response, true);
+
+            if (array_key_exists('data', $data))
+            {
+                $content = $data['data']['cmsPage'];
+
+                return view('cmsPages', compact('content'));
+            }
+            else
+            {
+                return "error";
+            }
+        }
+        else
+        {
+            return "error";
+        }
+    }
+
+    /**
      * @return mixed
      */
     public function local()
     {
-        $local = Local::with('image')->get();
+        $types = Type::orderBy('position', 'asc')->where('visible', 1)->get()->toArray();
+        
+        foreach ($types as $keyT => $type)
+        {
+            $arrayLocal['data'] = [];
+            $arrayType          = [];
 
-        return $local;
+            $arrayType = [
+                "name"     => $type['name'],
+                "position" => $type['position'],
+                "type"     => $type['type']
+            ];
+            $locals    = Local::orderBy('position', 'asc')->where('type_id', $type['id'])->with('image')->get()->toArray();
+
+            foreach ($locals as $keyL => $local)
+            {
+                $arrayLocal['data'][ $keyL ] = [
+                    'entity_id'    => $local['entity_id'],
+                    'magento_type' => $local['magento_type'],
+                    'name'         => $local['name'],
+                    'position'     => $local['position'],
+                    'image_path'   => ( $local['image'] != null ) ? $local['image']['url_path'] : null,
+                ];
+            }
+
+            $arrayData[] = $arrayType + $arrayLocal;
+        }
+
+        return $arrayData;
     }
 }

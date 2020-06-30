@@ -15,9 +15,26 @@ class Local extends Model
         'entity_id',
         'magento_type',
         'name',
-        'type',
+        'type_id',
         'position'
     ];
+
+    /**
+     * The attributes appended in the JSON form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'type_name'
+    ];
+
+    /**
+     * @return mixed
+     */
+    public function getTypeNameAttribute()
+    {
+        return $this->type->name;
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphOne
@@ -25,5 +42,13 @@ class Local extends Model
     public function image()
     {
         return $this->morphOne('App\Models\Image', 'imageable');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function type()
+    {
+        return $this->belongsTo(Type::class, 'type_id');
     }
 }

@@ -53,13 +53,43 @@
             </li><!--end /menu-li -->
             <!-- END CATEGORIES -->
 
+            <!-- BEGIN TYPES -->
+            <li>
+                <a href="{{ route('types.index') }}">
+                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <span class="title">Homepage Sections</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END TYPES -->
+
+            <!-- BEGIN CMS PAGES -->
+            <li>
+                <a href="{{ route('cmsPages') }}">
+                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <span class="title">Cms Pages</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END CMS PAGES -->
+
+            <!-- BEGIN URL KEYS -->
+            <li>
+                <a href="{{ route('urlKeys') }}">
+                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <span class="title">Web Page</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END URL KEYS -->
+
+            <!-- BEGIN SEARCH -->
+            <li>
+                <a href="{{ route('search') }}">
+                    <div class="gui-icon"><i class="md md-folder-shared"></i></div>
+                    <span class="title">Search</span>
+                </a>
+            </li><!--end /menu-li -->
+            <!-- END SEARCH -->
+
         </ul><!--end .main-menu -->
         <!-- END MAIN MENU -->
-
-        <div class="menubar-foot-panel">
-            <small class="no-linebreak hidden-folded">
-                <span class="opacity-75">Copyright &copy; 2014</span> <strong>CodeCovers</strong>
-            </small>
-        </div>
     </div><!--end .menubar-scroll-panel-->
 </div><!--end #menubar-->
