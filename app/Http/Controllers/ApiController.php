@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Local;
+use App\Models\Type;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
@@ -174,8 +175,34 @@ class ApiController extends Controller
      */
     public function local()
     {
-        $local = Local::with('image')->get();
+        $types = Type::orderBy('position', 'asc')->where('visible', 1)->get()->toArray();
+        
+        foreach ($types as $keyT => $type)
+        {
+            $arrayLocal['data'] = [];
+            $arrayType          = [];
 
-        return $local;
+            $arrayType = [
+                "name"     => $type['name'],
+                "position" => $type['position'],
+                "type"     => $type['type']
+            ];
+            $locals    = Local::orderBy('position', 'asc')->where('type_id', $type['id'])->with('image')->get()->toArray();
+
+            foreach ($locals as $keyL => $local)
+            {
+                $arrayLocal['data'][ $keyL ] = [
+                    'entity_id'    => $local['entity_id'],
+                    'magento_type' => $local['magento_type'],
+                    'name'         => $local['name'],
+                    'position'     => $local['position'],
+                    'image_path'   => ( $local['image'] != null ) ? $local['image']['url_path'] : null,
+                ];
+            }
+
+            $arrayData[] = $arrayType + $arrayLocal;
+        }
+
+        return $arrayData;
     }
 }

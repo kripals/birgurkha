@@ -17,7 +17,7 @@ class ApiLoginController extends Controller
 
         return response()->json([
             'token'   => $token,
-            'expires' => auth('api')->factory()->getTTL() * 60,
+            'expires' => auth('api')->factory()->getTTL() * 2880,
         ]);
     }
 }
