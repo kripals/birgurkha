@@ -10,7 +10,7 @@
         <div class="col-sm-3">
             <div class="form-group">
                 {{ Form::select('visible', [ 1 => 'Show', 0 => 'Dont Show' ] , old('visible'), ['class' => 'form-control select2-list', 'required']) }}
-                <label>Name</label>
+                <label>Visibility</label>
             </div>
         </div>
         <div class="col-sm-3">
