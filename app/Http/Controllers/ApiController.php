@@ -175,6 +175,7 @@ class ApiController extends Controller
      */
     public function local()
     {
+        $arrayData = [];
         $types = Type::orderBy('position', 'asc')->where('visible', 1)->get()->toArray();
 
         foreach ($types as $keyT => $type)
