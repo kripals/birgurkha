@@ -29,7 +29,7 @@
             <!-- BEGIN TYPES -->
             <li>
                 <a href="{{ route('types.index') }}">
-                    <div class="gui-icon"><i class="md md-calendar_view_day"></i></div>
+                    <div class="gui-icon"><i class="md md-archive"></i></div>
                     <span class="title">Homepage Sections</span>
                 </a>
             </li><!--end /menu-li -->
@@ -65,7 +65,7 @@
             <!-- BEGIN CMS PAGES -->
             <li>
                 <a href="{{ route('cmsPages') }}">
-                    <div class="gui-icon"><i class="md md-find_in_page"></i></div>
+                    <div class="gui-icon"><i class="md md-pages"></i></div>
                     <span class="title">Cms Pages</span>
                 </a>
             </li><!--end /menu-li -->
