@@ -26,6 +26,7 @@ class CreateTypesTable extends Migration
             $table->string('add_on_words')->nullable();
             $table->string('background_color')->nullable();
             $table->tinyInteger('view_all_buttons')->nullable();
+//            $table->string('category_entity')->nullable();
             $table->timestamps();
         });
     }

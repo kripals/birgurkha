@@ -176,7 +176,7 @@ class ApiController extends Controller
     public function local()
     {
         $arrayData = [];
-        $types = Type::orderBy('position', 'asc')->where('visible', 1)->get()->toArray();
+        $types     = Type::orderBy('position', 'asc')->where('visible', 1)->with('image')->get()->toArray();
 
         foreach ($types as $keyT => $type)
         {
@@ -184,20 +184,28 @@ class ApiController extends Controller
             $arrayType          = [];
 
             $arrayType = [
-                "name"     => $type['name'],
-                "position" => $type['position'],
-                "type"     => $type['type']
+                "name"             => $type['name'],
+                "position"         => $type['position'],
+                "type"             => $type['type'],
+                "start_date"       => $type['start_date'],
+                "end_date"         => $type['end_date'],
+                "add_on_words"     => $type['add_on_words'],
+                "view_all_buttons" => $type['view_all_buttons'],
+                "background_color" => $type['background_color'],
+                'image_path'       => ( $type['image'] != null ) ? $type['image']['url_path'] : null,
             ];
             $locals    = Local::orderBy('position', 'asc')->where('type_id', $type['id'])->with('image')->get()->toArray();
 
             foreach ($locals as $keyL => $local)
             {
                 $arrayLocal['data'][ $keyL ] = [
-                    'entity_id'    => $local['entity_id'],
-                    'magento_type' => $local['magento_type'],
-                    'name'         => $local['name'],
-                    'position'     => $local['position'],
-                    'image_path'   => ( $local['image'] != null ) ? $local['image']['url_path'] : null,
+                    'entity_id'        => $local['entity_id'],
+                    'magento_type'     => $local['magento_type'],
+                    'name'             => $local['name'],
+                    'position'         => $local['position'],
+                    'image_path'       => ( $local['image'] != null ) ? $local['image']['url_path'] : null,
+                    'category_color'   => $local['category_color'],
+                    'description_text' => $local['description_text'],
                 ];
             }
 
