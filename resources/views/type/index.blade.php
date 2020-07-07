@@ -20,12 +20,13 @@
                         <thead>
                         <tr>
                             <th width="2%">#</th>
-                            <th width="10%">Section</th>
-                            <th width="10%">Name</th>
+                            <th width="15%">Section</th>
+                            <th width="15%">Name</th>
                             <th width="5%">Position</th>
-                            <th width="10%">Type</th>
-                            <th width="10%">Is Visible</th>
-                            <th width="15%" class="text-right">Actions</th>
+                            <th width="15%">Type</th>
+                            <th width="15%">Is Visible</th>
+                            <th width="15%">Has View All</th>
+                            <th width="10%" class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>

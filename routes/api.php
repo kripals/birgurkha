@@ -15,6 +15,6 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'ApiLoginController@login');
 
-Route::group([ 'middleware' => 'jwt.auth' ], function () {
+Route::group([ 'middleware' => 'token.check' ], function () {
     Route::get('/hpsections', 'ApiController@local');
 });

@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'api_token' => 'GGD*)&&Lp)G8EE#OW&4Nsb?<q]Qs0l:J59lWDXh_<{%xJI{tW..Yn*&]Sf_:"IN',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
