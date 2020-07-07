@@ -13,9 +13,23 @@ class Type extends Model
      */
     protected $fillable = [
         'id',
+        'section',
         'name',
         'visible',
         'position',
-        'type'
+        'type',
+        'start_date',
+        'end_date',
+        'add_on_words',
+        'view_all_buttons',
+        'background_color'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function image()
+    {
+        return $this->morphOne('App\Models\Image', 'imageable');
+    }
 }

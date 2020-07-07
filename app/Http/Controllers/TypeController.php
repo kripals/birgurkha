@@ -35,13 +35,24 @@ class TypeController extends Controller
     {
         DB::transaction(function () use ($request) {
             $data = [
-                'name'     => $request->name,
-                'visible'  => $request->visible,
-                'position' => $request->position,
-                'type'     => $request->type,
+                'section'          => $request->section,
+                'name'             => $request->name,
+                'visible'          => $request->visible,
+                'position'         => $request->position,
+                'type'             => $request->type,
+                'start_date'       => $request->start_date,
+                'end_date'         => $request->end_date,
+                'add_on_words'     => $request->add_on_words,
+                'view_all_buttons' => $request->view_all_buttons,
+                'background_color' => $request->background_color,
             ];
 
             $type = Type::create($data);
+
+            if ($request->image)
+            {
+                $this->uploadRequestImage($request->image, $type);
+            }
         });
 
         return redirect()->route('types.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Type' ]));
@@ -67,11 +78,22 @@ class TypeController extends Controller
     {
         DB::transaction(function () use ($request, $type) {
             $data = [
-                'name'     => $request->name,
-                'visible'  => $request->visible,
-                'position' => $request->position,
-                'type'     => $request->type,
+                'section'          => $request->section,
+                'name'             => $request->name,
+                'visible'          => $request->visible,
+                'position'         => $request->position,
+                'type'             => $request->type,
+                'start_date'       => $request->start_date,
+                'end_date'         => $request->end_date,
+                'add_on_words'     => $request->add_on_words,
+                'view_all_buttons' => $request->view_all_buttons,
+                'background_color' => $request->background_color,
             ];
+
+            if ($request->image)
+            {
+                $this->uploadRequestImage($request->image, $type);
+            }
 
             $type->update($data);
         });

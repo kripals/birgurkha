@@ -1,6 +1,7 @@
 <tr>
     <td>{{ ++$key }}</td>
-    <td>{{ $type->name }}</td>
+    <td>{{ $type->section }}</td>
+    <td>{{ $type->name ?: '-' }}</td>
     <td>{{ $type->position }}</td>
     <td>{{ $type->type }}</td>
     <td>{{ $type->visible == 1 ? 'Visible in Homepage' : 'Not Visible in Homepage' }}</td>
