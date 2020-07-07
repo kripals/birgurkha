@@ -155,7 +155,9 @@ class LocalController extends Controller
                 if (isset($request->position[ $id ]))
                 {
                     $data  = [
-                        'position' => $request->position[ $id ]
+                        'position'         => $request->position[ $id ],
+                        'category_color'   => $request->category_color[ $id ],
+                        'description_text' => $request->description_text[ $id ],
                     ];
                     $local = Local::find($id);
                     $local->update($data);

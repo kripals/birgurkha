@@ -21,6 +21,8 @@ class CreateLocalsTable extends Migration
             $table->string('name');
             $table->integer('position')->nullable();
             $table->integer('type_id')->unsigned();
+            $table->text('category_color')->nullable();
+            $table->text('description_text')->nullable();
             $table->timestamps();
         });
 

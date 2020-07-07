@@ -16,7 +16,9 @@ class Local extends Model
         'magento_type',
         'name',
         'type_id',
-        'position'
+        'position',
+        'category_color',
+        'description_text'
     ];
 
     /**

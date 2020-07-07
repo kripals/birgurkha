@@ -52,11 +52,13 @@
                         </tr>
                         <tr>
                             <th width="5%">#</th>
-                            <th width="15%">Magento Type</th>
-                            <th width="20%">Entity</th>
-                            <th width="30%">Name</th>
-                            <th width="15%">Type</th>
-                            <th width="10%">Position</th>
+                            <th width="10%">Magento Type</th>
+                            <th width="15%">Entity</th>
+                            <th width="15%">Name</th>
+                            <th width="10%">Type</th>
+                            <th width="3%   ">Position</th>
+                            <th width="5%">Color</th>
+                            <th width="20%">Description</th>
                             <th width="20%">Image</th>
                             <th width="20%">Action</th>
                         </tr>
@@ -90,6 +92,12 @@
                                     </td>
                                     <td>
                                         {{ Form::text('position[' . $item->id . ']', $item->position ?: '0', ['class' => 'form-control', 'required']) }}
+                                    </td>
+                                    <td>
+                                        {{ Form::text('category_color[' . $item->id . ']', $item->category_color ?: Null, ['class' => 'form-control', 'required']) }}
+                                    </td>
+                                    <td>
+                                        {{ Form::text('description_text[' . $item->id . ']', $item->description_text ?: Null, ['class' => 'form-control', 'required']) }}
                                     </td>
                                     <td>
                                         @if(isset($item->image))
