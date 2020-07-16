@@ -31,9 +31,25 @@
                 <label>Type</label>
             </div>
         </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                {{ Form::select('view_all_buttons', [ 1 => 'Show', 0 => 'Dont Show' ] , old('view_all_buttons'), ['class' => 'form-control select2-list', 'required']) }}
+                <label>View all Button</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @if(isset($type))
+            @if(!empty($type->entity_id) && !empty($type->entity_type))
+                <h4>For View All Button is of {{ $type->entity_type }} with the key  {{ $type->entity_id }}</h4>
+            @else
+                <h4>Content For View All Button Not Added</h4>
+            @endif
+        @endif
     </div>
     <div class="row">
         <hr style="border: 10px solid;">
+        <h3>For Deals Section</h3>
         <div class="col-sm-3">
             <div class="form-group">
                 @if(isset($type->image))
@@ -66,12 +82,10 @@
                 <label>Add On Words</label>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-                {{ Form::select('view_all_button', [ 1 => 'Show', 0 => 'Dont Show' ] , old('view_all_button'), ['class' => 'form-control select2-list', 'required']) }}
-                <label>View all Button</label>
-            </div>
-        </div>
+    </div>
+    <div class="row">
+        <hr style="border: 10px solid;">
+        <h3>For Color Category</h3>
         <div class="col-sm-3">
             <div class="form-group">
                 {{ Form::text('background_color', old('background_color'), ['class'=>'form-control']) }}

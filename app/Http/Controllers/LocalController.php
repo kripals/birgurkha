@@ -75,6 +75,18 @@ class LocalController extends Controller
 
                     $local = Local::create($data);
                 }
+
+                if ( ! empty($request->button[ $key ]))
+                {
+                    $type_id = $request->button[ $key ];
+                    $type    = Type::find($type_id);
+
+                    $data = [
+                        'entity_id'   => $request->id[ $key ],
+                        'entity_type' => 'CATEGORY',
+                    ];
+                    $type->update($data);
+                }
             }
         });
 

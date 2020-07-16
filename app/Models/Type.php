@@ -22,6 +22,8 @@ class Type extends Model
         'end_date',
         'add_on_words',
         'view_all_buttons',
+        'entity_id',
+        'entity_type',
         'background_color'
     ];
 

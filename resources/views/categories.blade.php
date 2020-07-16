@@ -52,9 +52,10 @@
                         </tr>
                         <tr>
                             <th width="5%">#</th>
-                            <th width="50%">Name</th>
+                            <th width="20%">Name</th>
                             <th width="20%">Parent ID</th>
-                            <th width="15%" class="text-right">Actions</th>
+                            <th width="20%" class="text-right">For Addition In Home Section</th>
+                            <th width="20%" class="text-right">For View All Button In Home Section</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -80,6 +81,9 @@
                                     </td>
                                     <td>
                                         {{ Form::select('type['. $key. ']', typesArray(), old('type'), ['class' => 'form-control', 'required']) }}
+                                    </td>
+                                    <td>
+                                        {{ Form::select('button['. $key. ']', typesArray(), old('button'), ['class' => 'form-control', 'required']) }}
                                     </td>
                                 </tr>
                             @endforeach
