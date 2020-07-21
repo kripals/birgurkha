@@ -66,13 +66,13 @@
         </div>
         <div class="col-sm-3">
             <div class="form-group">
-                {{ Form::date('start_date', old('start_date'), ['class'=>'form-control']) }}
+                {{ Form::datetime('start_date', old('start_date'), ['class'=>'form-control']) }}
                 <label>Start Date</label>
             </div>
         </div>
         <div class="col-sm-3">
             <div class="form-group">
-                {{ Form::date('end_date', old('end_date'), ['class'=>'form-control']) }}
+                {{ Form::datetime('end_date', old('end_date'), ['class'=>'form-control']) }}
                 <label>End Date</label>
             </div>
         </div>
