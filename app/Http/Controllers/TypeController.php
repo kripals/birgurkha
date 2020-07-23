@@ -35,16 +35,17 @@ class TypeController extends Controller
     {
         DB::transaction(function () use ($request) {
             $data = [
-                'section'          => $request->section,
-                'name'             => $request->name,
-                'visible'          => $request->visible,
-                'position'         => $request->position,
-                'type'             => $request->type,
-                'start_date'       => $request->start_date,
-                'end_date'         => $request->end_date,
-                'add_on_words'     => $request->add_on_words,
-                'view_all_buttons' => $request->view_all_buttons,
-                'background_color' => $request->background_color,
+                'section'             => $request->section,
+                'name'                => $request->name,
+                'visible'             => $request->visible,
+                'position'            => $request->position,
+                'type'                => $request->type,
+                'start_date'          => $request->start_date,
+                'end_date'            => $request->end_date,
+                'add_on_words'        => $request->add_on_words,
+                'before_start_phrase' => $request->before_start_phrase,
+                'view_all_buttons'    => $request->view_all_buttons,
+                'background_color'    => $request->background_color,
             ];
 
             $type = Type::create($data);
@@ -78,16 +79,17 @@ class TypeController extends Controller
     {
         DB::transaction(function () use ($request, $type) {
             $data = [
-                'section'          => $request->section,
-                'name'             => $request->name,
-                'visible'          => $request->visible,
-                'position'         => $request->position,
-                'type'             => $request->type,
-                'start_date'       => $request->start_date,
-                'end_date'         => $request->end_date,
-                'add_on_words'     => $request->add_on_words,
-                'view_all_buttons' => $request->view_all_buttons,
-                'background_color' => $request->background_color,
+                'section'             => $request->section,
+                'name'                => $request->name,
+                'visible'             => $request->visible,
+                'position'            => $request->position,
+                'type'                => $request->type,
+                'start_date'          => $request->start_date,
+                'end_date'            => $request->end_date,
+                'add_on_words'        => $request->add_on_words,
+                'before_start_phrase' => $request->before_start_phrase,
+                'view_all_buttons'    => $request->view_all_buttons,
+                'background_color'    => $request->background_color,
             ];
 
             if ($request->image)

@@ -21,6 +21,7 @@ class Type extends Model
         'start_date',
         'end_date',
         'add_on_words',
+        'before_start_phrase',
         'view_all_buttons',
         'entity_id',
         'entity_type',

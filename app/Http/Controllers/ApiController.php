@@ -184,17 +184,19 @@ class ApiController extends Controller
             $arrayType          = [];
 
             $arrayType = [
-                "name"             => $type['name'],
-                "position"         => $type['position'],
-                "type"             => $type['type'],
-                "start_date"       => $type['start_date'],
-                "end_date"         => $type['end_date'],
-                "add_on_words"     => $type['add_on_words'],
-                "view_all_buttons" => $type['view_all_buttons'],
-                "background_color" => $type['background_color'],
-                "button_type"      => $type['entity_type'],
-                "button_id"        => $type['entity_id'],
-                'image_path'       => ( $type['image'] != null ) ? $type['image']['url_path'] : null,
+                "name"                => $type['name'],
+                "position"            => $type['position'],
+                "type"                => $type['type'],
+                "start_date"          => $type['start_date'],
+                "end_date"            => $type['end_date'],
+                "after_start_phrase"  => $type['add_on_words'],
+                "before_start_phrase" => $type['before_start_phrase'],
+                "add_on_words"        => $type['add_on_words'],
+                "view_all_buttons"    => $type['view_all_buttons'],
+                "background_color"    => $type['background_color'],
+                "button_type"         => $type['entity_type'],
+                "button_id"           => $type['entity_id'],
+                'image_path'          => ( $type['image'] != null ) ? $type['image']['url_path'] : null,
             ];
             $locals    = Local::orderBy('position', 'asc')->where('type_id', $type['id'])->with('image')->get()->toArray();
 

@@ -79,7 +79,13 @@
         <div class="col-sm-3">
             <div class="form-group">
                 {{ Form::text('add_on_words', old('add_on_words'), ['class'=>'form-control']) }}
-                <label>Add On Words</label>
+                <label>After Sale Starts Phrase</label>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                {{ Form::text('before_start_phrase', old('before_start_phrase'), ['class'=>'form-control']) }}
+                <label>Before Sale Starts Phrase</label>
             </div>
         </div>
     </div>
