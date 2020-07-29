@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Homepage Sections')
+@section('title', 'Landing Pages')
 
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">all Homepage Sections</header>
+                    <header class="text-capitalize">all landing pages</header>
                     <div class="tools">
-                        <a class="btn btn-primary" href="{{ route('types.create') }}">
+                        <a class="btn btn-primary" href="{{ route('landingPages.create') }}">
                             <i class="md md-add"></i>
                             Add
                         </a>
@@ -30,12 +30,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if($types->isEmpty())
+                        @if($landingPages->isEmpty())
                             <tr>
                                 <td class="text-center" colspan="5">No data available.</td>
                             </tr>
                         @else
-                            @each('type.partials.table', $types, 'type')
+                            @each('landing-page.partials.table', $landingPages, 'landingPage')
                         @endif
                         </tbody>
                     </table>

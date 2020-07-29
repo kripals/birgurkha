@@ -57,6 +57,21 @@ Route::group([ 'middleware' => 'auth' ], function () {
         Route::put('{type}', 'TypeController@update')->name('update');
         Route::delete('{type}', 'TypeController@destroy')->name('destroy');
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Landing Page CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group([ 'as' => 'landingPages.', 'prefix' => 'landingPages' ], function ()
+    {
+        Route::get('', 'LandingPageController@index')->name('index');
+        Route::get('create', 'LandingPageController@create')->name('create');
+        Route::post('', 'LandingPageController@store')->name('store');
+        Route::get('{landingPage}/edit', 'LandingPageController@edit')->name('edit');
+        Route::put('{landingPage}', 'LandingPageController@update')->name('update');
+        Route::delete('{landingPage}', 'LandingPageController@destroy')->name('destroy');
+    });
 });
 
 Route::get('array', 'UserController@array');

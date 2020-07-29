@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Homepage Sections')
+@section('title', 'Landing Pages')
 
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>Edit Homepage Sections</header>
+                    <header>Add a Landing Pages</header>
                     <div class="tools">
                         <a class="btn btn-default" onclick="history.go(-1);return false;">
                             <i class="md md-arrow-back"></i>
@@ -15,16 +15,10 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::model($type, [
-                                'route'=> [ 'types.update' ,$type->id ],
-                                'class'=>'form form-validate',
-                                'role'=>'form','novalidate',
-                                'files'=>true,
-                                'method'=>'PUT'
-                            ]) }}
-                @include('type.partials.form')
+                {{ Form::open(['route' =>'landingPage.store','class'=>'form form-validate','files'=>true,'novalidate']) }}
+                    @include('landing_page.partials.form')
                 {{ Form::close() }}
-            </div>
+            </div><!--end .card -->
         </div>
     </section>
 @stop

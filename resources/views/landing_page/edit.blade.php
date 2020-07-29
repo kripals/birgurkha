@@ -7,7 +7,7 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>Add a Homepage Sections</header>
+                    <header>Edit Homepage Sections</header>
                     <div class="tools">
                         <a class="btn btn-default" onclick="history.go(-1);return false;">
                             <i class="md md-arrow-back"></i>
@@ -15,10 +15,16 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::open(['route' =>'types.store','class'=>'form form-validate','files'=>true,'novalidate']) }}
-                    @include('type.partials.form')
+                {{ Form::model($type, [
+                                'route'=> [ 'types.update' ,$type->id ],
+                                'class'=>'form form-validate',
+                                'role'=>'form','novalidate',
+                                'files'=>true,
+                                'method'=>'PUT'
+                            ]) }}
+                @include('landing_page.partials.form')
                 {{ Form::close() }}
-            </div><!--end .card -->
+            </div>
         </div>
     </section>
 @stop
