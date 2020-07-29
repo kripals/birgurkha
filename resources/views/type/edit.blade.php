@@ -7,7 +7,7 @@
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header>Edit Landing Pages</header>
+                    <header>Edit Homepage Sections</header>
                     <div class="tools">
                         <a class="btn btn-default" onclick="history.go(-1);return false;">
                             <i class="md md-arrow-back"></i>
@@ -15,14 +15,14 @@
                         </a>
                     </div>
                 </div>
-                {{ Form::model($landingPage, [
-                                'route'=> [ 'landingPage.update' ,$landingPage->id ],
+                {{ Form::model($type, [
+                                'route'=> [ 'types.update' ,$type->id ],
                                 'class'=>'form form-validate',
                                 'role'=>'form','novalidate',
                                 'files'=>true,
                                 'method'=>'PUT'
                             ]) }}
-                @include('landing_page.partials.form')
+                @include('type.partials.form')
                 {{ Form::close() }}
             </div>
         </div>

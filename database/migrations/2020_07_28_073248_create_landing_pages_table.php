@@ -17,7 +17,7 @@ class CreateLandingPagesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('title', 225)->nullable();
-            $table->string('url-key', 225);
+            $table->string('urlkey', 225);
             $table->tinyInteger('visible')->default(0);
             $table->timestamps();
         });

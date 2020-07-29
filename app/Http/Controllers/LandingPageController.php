@@ -13,9 +13,9 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $landingPages = LandingPage::all();
+        $landingPage = LandingPage::all();
 
-        return view('landing_page.index', compact('landingPages'));
+        return view('landing_page.index', compact('landingPage'));
     }
 
     /**
@@ -35,17 +35,9 @@ class LandingPageController extends Controller
     {
         DB::transaction(function () use ($request) {
             $data = [
-                'section'             => $request->section,
-                'name'                => $request->name,
-                'visible'             => $request->visible,
-                'position'            => $request->position,
-                'landing_page'        => $request->landing_page,
-                'start_date'          => $request->start_date,
-                'end_date'            => $request->end_date,
-                'add_on_words'        => $request->add_on_words,
-                'before_start_phrase' => $request->before_start_phrase,
-                'view_all_buttons'    => $request->view_all_buttons,
-                'background_color'    => $request->background_color,
+                'title'   => $request->title,
+                'urlkey'  => $request->urlkey,
+                'visible' => $request->visible
             ];
 
             $landingPage = LandingPage::create($data);
@@ -56,7 +48,7 @@ class LandingPageController extends Controller
             }
         });
 
-        return redirect()->route('landing_page.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Landing Page' ]));
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Landing Page' ]));
     }
 
     /**
@@ -79,18 +71,11 @@ class LandingPageController extends Controller
     {
         DB::transaction(function () use ($request, $landingPage) {
             $data = [
-                'section'             => $request->section,
-                'name'                => $request->name,
-                'visible'             => $request->visible,
-                'position'            => $request->position,
-                'landing_page'        => $request->landing_page,
-                'start_date'          => $request->start_date,
-                'end_date'            => $request->end_date,
-                'add_on_words'        => $request->add_on_words,
-                'before_start_phrase' => $request->before_start_phrase,
-                'view_all_buttons'    => $request->view_all_buttons,
-                'background_color'    => $request->background_color,
+                'title'   => $request->title,
+                'urlkey'  => $request->urlkey,
+                'visible' => $request->visible
             ];
+
 
             if ($request->image)
             {
@@ -100,7 +85,7 @@ class LandingPageController extends Controller
             $landingPage->update($data);
         });
 
-        return redirect()->route('landing_page.index')->withSuccess(trans('messages.update_success', [ 'entity' => 'LandingPage' ]));
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.update_success', [ 'entity' => 'LandingPage' ]));
     }
 
     /**

@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Landing Pages')
+@section('title', 'Homepage Sections')
 
 @section('content')
     <section>
         <div class="section-body">
             <div class="card">
                 <div class="card-head">
-                    <header class="text-capitalize">all landing pages</header>
+                    <header class="text-capitalize">all Homepage Sections</header>
                     <div class="tools">
-                        <a class="btn btn-primary" href="{{ route('landingPage.create') }}">
+                        <a class="btn btn-primary" href="{{ route('types.create') }}">
                             <i class="md md-add"></i>
                             Add
                         </a>
@@ -20,19 +20,22 @@
                         <thead>
                         <tr>
                             <th width="2%">#</th>
-                            <th width="15%">Title</th>
-                            <th width="15%">Url Keys</th>
+                            <th width="15%">Section</th>
+                            <th width="15%">Name</th>
+                            <th width="5%">Position</th>
+                            <th width="15%">Type</th>
                             <th width="15%">Is Visible</th>
+                            <th width="15%">Has View All</th>
                             <th width="10%" class="text-right">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @if($landingPage->isEmpty())
+                        @if($types->isEmpty())
                             <tr>
                                 <td class="text-center" colspan="5">No data available.</td>
                             </tr>
                         @else
-                            @each('landing_page.partials.table', $landingPage, 'landingPage')
+                            @each('type.partials.table', $types, 'type')
                         @endif
                         </tbody>
                     </table>

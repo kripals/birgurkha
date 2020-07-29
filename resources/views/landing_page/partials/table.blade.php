@@ -1,17 +1,14 @@
 <tr>
     <td>{{ ++$key }}</td>
-    <td>{{ $type->section }}</td>
-    <td>{{ $type->name ?: '-' }}</td>
-    <td>{{ $type->position }}</td>
-    <td>{{ $type->type }}</td>
-    <td>{{ $type->visible == 1 ? 'Visible in Homepage' : 'Not Visible in Homepage' }}</td>
-    <td>{{ $type->view_all_buttons == 1 ? 'Has Button' : 'No Button' }}</td>
+    <td>{{ $landingPage->title }}</td>
+    <td>{{ $landingPage->urlkey ?: '-' }}</td>
+    <td>{{ $landingPage->visible }}</td>
     <td class="text-right">
-        <a href="{{ route('types.edit', $type->id) }}" class="btn btn-flat btn-primary">
+        <a href="{{ route('landingPage.edit', $landingPage->id) }}" class="btn btn-flat btn-primary">
             Edit
         </a>
         <a role="button" href="javascript:void(0);"
-           data-url="{{ route('types.destroy', $type->id) }}"
+           data-url="{{ route('landingPage.destroy', $landingPage->id) }}"
            class="btn btn-primary btn-flat btn-xs item-delete">
             Delete
         </a>

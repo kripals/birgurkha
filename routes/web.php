@@ -63,7 +63,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
     | Landing Page CRUD Routes
     |--------------------------------------------------------------------------
     */
-    Route::group([ 'as' => 'landingPages.', 'prefix' => 'landingPages' ], function ()
+    Route::group([ 'as' => 'landingPage.', 'prefix' => 'landingPage' ], function ()
     {
         Route::get('', 'LandingPageController@index')->name('index');
         Route::get('create', 'LandingPageController@create')->name('create');

@@ -64,7 +64,7 @@
 
             <!-- BEGIN CMS PAGES -->
             <li>
-                <a href="{{ route('landingPages.index') }}">
+                <a href="{{ route('landingPage.index') }}">
                     <div class="gui-icon"><i class="md md-pages"></i></div>
                     <span class="title">Cms Pages</span>
                 </a>
