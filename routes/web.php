@@ -71,6 +71,8 @@ Route::group([ 'middleware' => 'auth' ], function () {
         Route::get('{landingPage}/edit', 'LandingPageController@edit')->name('edit');
         Route::put('{landingPage}', 'LandingPageController@update')->name('update');
         Route::delete('{landingPage}', 'LandingPageController@destroy')->name('destroy');
+
+        Route::get('{landingPage}/entity', 'LandingPageController@landingEntity')->name('entity');
     });
 });
 

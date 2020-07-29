@@ -9,7 +9,7 @@
                 <div class="card-head">
                     <header class="text-capitalize">all landing pages</header>
                     <div class="tools">
-                        <a class="btn btn-primary" href="{{ route('landingPage.create') }}">
+                        <a class="btn btn-default" href="{{ route('landingPage.create') }}">
                             <i class="md md-add"></i>
                             Add
                         </a>

@@ -100,4 +100,17 @@ class LandingPageController extends Controller
         return back()->withSuccess(trans('messages.delete_success', [ 'entity' => 'LandingPage' ]));
     }
 
+    /**
+     * @param LandingPage $landingPage
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function landingEntity(LandingPage $landingPage)
+    {
+        return view('landing_page.entities.form', compact('landingPage'));
+    }
+
+    public function landingEntityCreate()
+    {
+
+    }
 }

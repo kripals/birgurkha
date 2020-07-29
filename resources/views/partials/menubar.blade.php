@@ -37,7 +37,7 @@
 
             <!-- BEGIN SLIDER -->
             <li>
-                <a href="local">
+                <a href="{{ route('local.index') }}">
                     <div class="gui-icon"><i class="md md-cloud"></i></div>
                     <span class="title">Local</span>
                 </a>

@@ -30,7 +30,7 @@ class LocalController extends Controller
     }
 
     /**
-     * @param StoreClient $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function productStore(Request $request)
@@ -56,7 +56,7 @@ class LocalController extends Controller
     }
 
     /**
-     * @param StoreClient $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function categoryStore(Request $request)
@@ -94,7 +94,7 @@ class LocalController extends Controller
     }
 
     /**
-     * @param StoreClient $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function cmsPagesStore(Request $request)
@@ -114,7 +114,7 @@ class LocalController extends Controller
     }
 
     /**
-     * @param StoreClient $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function urlKeysStore(Request $request)
@@ -134,7 +134,7 @@ class LocalController extends Controller
     }
 
     /**
-     * @param StoreClient $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function searchStore(Request $request)
