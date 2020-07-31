@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LandingPage;
+use App\Models\LandingPageEntity;
 use App\Models\Local;
 use App\Models\Type;
 use GuzzleHttp\Client;
@@ -67,7 +69,14 @@ class ApiController extends Controller
             {
                 $content = json_decode($product->getBody()->getContents());
 
-                return view('products', compact('content'));
+                if ($request->is_cms)
+                {
+                    return view('landing_page.entities.products', compact('content'));
+                }
+                else
+                {
+                    return view('products', compact('content'));
+                }
             }
             else
             {
@@ -107,7 +116,14 @@ class ApiController extends Controller
             {
                 $content = json_decode($product->getBody()->getContents());
 
-                return view('categories', compact('content'));
+                if ($request->is_cms)
+                {
+                    return view('landing_page.entities.categories', compact('content'));
+                }
+                else
+                {
+                    return view('categories', compact('content'));
+                }
             }
             else
             {
@@ -203,6 +219,7 @@ class ApiController extends Controller
             foreach ($locals as $keyL => $local)
             {
                 $arrayLocal['data'][ $keyL ] = [
+                    'type'             => 'local',
                     'entity_id'        => $local['entity_id'],
                     'magento_type'     => $local['magento_type'],
                     'name'             => $local['name'],
@@ -212,10 +229,55 @@ class ApiController extends Controller
                     'description_text' => $local['description_text'],
                 ];
             }
+            $landingPages = LandingPage::orderBy('created_at', 'asc')->where('visible', 1)->where('type_id', $type['id'])->with('image')->get()->toArray();
+
+            foreach ($landingPages as $keyLP => $landing_page)
+            {
+                $arrayLocal['data'][ $keyLP ] = [
+                    'landing_page_id' => $landing_page['id'],
+                    'type'            => 'landing_page',
+                    'title'           => $landing_page['title'],
+                    'urlkey'          => $landing_page['urlkey'],
+                    'visible'         => $landing_page['visible'],
+                    'image_path'      => ( $landing_page['image'] != null ) ? $landing_page['image']['url_path'] : null,
+                ];
+            }
 
             $arrayData[] = $arrayType + $arrayLocal;
         }
 
         return $arrayData;
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function landingPage(Request $request)
+    {
+        $landingPageId = $request->landing_page_id;
+
+        $landingPage          = LandingPage::where('id', $landingPageId)->first();
+        $landingPageData      = [
+            'title'  => $landingPage['title'],
+            'urlkey' => $landingPage['urlkey']
+        ];
+        $landingPagesEntities = $landingPage->landingPagesEntites;
+
+        foreach ($landingPagesEntities as $landingPagesEntity)
+        {
+            $data[] = [
+                'entity_id'        => $landingPagesEntity->entity_id,
+                'magento_type'     => $landingPagesEntity->magento_type,
+                'name'             => $landingPagesEntity->name,
+                'position'         => $landingPagesEntity->position,
+                'image_path'       => ( $landingPagesEntity->image != null ) ? $landingPagesEntity->image['url_path'] : null,
+                'category_color'   => $landingPagesEntity->category_color,
+                'description_text' => $landingPagesEntity->description_text,
+            ];
+        }
+        $landingPageData['entities'] = $data;
+
+        return $landingPageData;
     }
 }

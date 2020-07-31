@@ -3,84 +3,58 @@
 @section('title', 'Landing Page Entities')
 
 @section('content')
-    <section>
-        <div class="section-body">
-            <div class="card">
-                <div class="card-body">
-                    <h3>{{ $landingPage->title }}</h3>
-                    {{ Form::open(['route' =>'local.update','class'=>'form form-validate', 'novalidate', 'role'=>'form', 'files'=>true]) }}
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <td>
-                                <button type="submit" class="btn btn-primary-dark ink-reaction">Submit</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th width="5%">#</th>
-                            <th width="10%">Magento Type</th>
-                            <th width="15%">Entity Id</th>
-                            <th width="5%">Position</th>
-                            <th width="20%">Name</th>
-                            <th width="20%">Description</th>
-                            <th width="20%">Image</th>
-                            <th width="20%">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @if($landingPage->landingPagesEntites->isEmpty())
-                            <tr>
-                                <td class="text-center" colspan="8">No data available.</td>
-                            </tr>
-                        @else
-                            @foreach($landingPage->landingPagesEntites as $item)
-                                <tr>
-                                    <td>
-                                        <div class="checkbox checkbox-inline checkbox-styled">
-                                            <label>
-                                                {{ Form::checkbox('status[' . $item->id . ']', 1, old('status')) }}
-                                            </label>
+    <section class="no-y-padding">
+        <div class="section-body contain-lg">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            {{ Form::open(['route' =>'categories','class'=>'form form-validate','role'=>'form', 'files'=>true, 'novalidate']) }}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ Form::text('value', old('value'), ['class' => 'form-control', 'required']) }}
+                                        {{ Form::hidden('is_cms', '1') }}
+                                        {{ Form::label('value', 'Category Name') }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card-actionbar">
+                                        <div class="card-actionbar-row">
+                                            <button type="submit" class="btn btn-primary ink-reaction">search
+                                            </button>
                                         </div>
-                                    </td>
-                                    <td>
-                                        {{ $item->magento_type }}
-                                    </td>
-                                    <td>
-                                        {{ $item->entity_id }}
-                                    </td>
-                                    <td>
-                                        {{ Form::text('position[' . $item->id . ']', $item->position ?: '0', ['class' => 'form-control', 'required']) }}
-                                    </td>
-                                    <td>
-                                        {{ $item->name }}
-                                    </td>
-                                    <td>
-                                        {{ Form::text('description_text[' . $item->id . ']', $item->description_text ?: Null, ['class' => 'form-control', 'required']) }}
-                                    </td>
-                                    <td>
-                                        @if(isset($item->image))
-                                            <img src="{{ asset($item->image->path) }}"
-                                                 class="preview" width="150">
-                                        @else
-                                            <img src="{{ asset(config('paths.placeholder.default')) }}"
-                                                 data-src="{{ asset(config('paths.placeholder.default')) }}"
-                                                 class="preview" height="150" width="150">
-                                        @endif
-                                        {{ Form::file('image[' . $item->id . ']', ['class' => 'image-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
-                                    </td>
-                                    <td>
-                                        <a role="button" href="javascript:void(0);"
-                                           data-url="{{ route('local.destroy', $item->id) }}"
-                                           class="btn btn-primary btn-flat btn-xs item-delete">
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @endif
-                        </tbody>
-                    </table>
-                    {{ Form::close() }}
+                                    </div>
+                                </div>
+                            </div>
+                            {{ Form::close() }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            {{ Form::open(['route' =>'products','class'=>'form form-validate','role'=>'form', 'files'=>true, 'novalidate']) }}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ Form::text('value', old('value'), ['class' => 'form-control', 'required']) }}
+                                        {{ Form::hidden('is_cms', '1') }}
+                                        {{ Form::label('value', 'Product Name') }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card-actionbar">
+                                        <div class="card-actionbar-row">
+                                            <button type="submit" class="btn btn-primary ink-reaction">search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ Form::close() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

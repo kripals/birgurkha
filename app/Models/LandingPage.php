@@ -15,8 +15,26 @@ class LandingPage extends Model
         'id',
         'title',
         'urlkey',
-        'visible'
+        'visible',
+        'type_id'
     ];
+
+    /**
+     * The attributes appended in the JSON form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'type_name'
+    ];
+
+    /**
+     * @return mixed
+     */
+    public function getTypeNameAttribute()
+    {
+        return $this->type->section;
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -24,6 +42,14 @@ class LandingPage extends Model
     public function landingPagesEntites()
     {
         return $this->hasMany(LandingPageEntity::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function type()
+    {
+        return $this->belongsTo(Type::class, 'type_id');
     }
 
     /**

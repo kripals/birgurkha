@@ -70,3 +70,14 @@ function typesArray()
 
     return $types;
 }
+
+/**
+ * @return \App\Models\Type[]|\Illuminate\Database\Eloquent\Collection
+ */
+function landingPagesArray()
+{
+    $landingPages[0] = '-';
+    $landingPages    = $landingPages + \App\Models\LandingPage::all()->pluck('title', 'id')->toArray();
+
+    return $landingPages;
+}

@@ -1,23 +1,29 @@
 <div class="card-body">
     @include('partials.errors')
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="form-group">
                 {{ Form::text('title', old('title'), ['class'=>'form-control', 'required']) }}
                 <label>Title</label>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="form-group">
                 {{ Form::text('urlkey', old('urlkey'), ['class'=>'form-control']) }}
                 <label>Url Key</label>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="form-group">
                 {{ Form::select('visible', [ 1 => 'Show', 0 => 'Dont Show' ] , old('visible'),
                 ['class' => 'form-control select2-list', 'required']) }}
                 <label>Visibility</label>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                {{ Form::select('type_id', typesArray(), old('type_id'), ['class' => 'form-control', 'required']) }}
+                <label>Homepage Section</label>
             </div>
         </div>
     </div>

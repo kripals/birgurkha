@@ -23,6 +23,7 @@
                             <th width="15%">Title</th>
                             <th width="15%">Url Keys</th>
                             <th width="15%">Is Visible</th>
+                            <th width="15%">Homesection</th>
                             <th width="10%" class="text-right">Actions</th>
                         </tr>
                         </thead>
@@ -40,4 +41,6 @@
             </div>
         </div>
     </section>
+
+
 @stop

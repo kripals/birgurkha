@@ -29,6 +29,22 @@ class Type extends Model
     ];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function landingPages()
+    {
+        return $this->hasMany(LandingPage::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function locals()
+    {
+        return $this->hasMany(Local::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
     public function image()

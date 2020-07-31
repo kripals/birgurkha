@@ -17,4 +17,5 @@ Route::post('login', 'ApiLoginController@login');
 
 Route::group([ 'middleware' => 'token.check' ], function () {
     Route::get('/hpsections', 'ApiController@local');
+    Route::post('/landingPage', 'ApiController@landingPage');
 });
