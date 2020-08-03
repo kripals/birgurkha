@@ -18,7 +18,7 @@ class ApiController extends Controller
     public function __construct()
     {
         // variable for the main url
-        $this->url = 'https://mcstaging.sastodeal.com/';
+        $this->url = 'https://sastodeal.com/';
 
         // variable for the guzzle client
         $this->client = new Client([
@@ -28,8 +28,8 @@ class ApiController extends Controller
         $url    = $this->url . 'rest/V1/integration/admin/token';
         $token  = $this->client->request('POST', $url, [
             'body' => json_encode([
-                'username' => 'kripal@sastodeal.com',
-                'password' => 'b3rsrbPQ'
+                'username' => 'mobileapplication@sastodeal.com',
+                'password' => 'S!^MST"{cu+k{{6z'
             ])
         ]);
         $status = $token->getStatusCode();
