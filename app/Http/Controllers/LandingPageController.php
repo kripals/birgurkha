@@ -104,6 +104,18 @@ class LandingPageController extends Controller
     }
 
     /**
+     * @param LandingPageEntity $landingPageEntity
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function entityDestroy(LandingPageEntity $landingPageEntity)
+    {
+        $landingPageEntity->delete();
+
+        return back()->withSuccess(trans('messages.delete_success', [ 'entity' => '$landingPageEntity' ]));
+    }
+
+    /**
      * @param LandingPage $landingPage
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

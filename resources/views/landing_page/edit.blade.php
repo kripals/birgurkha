@@ -103,7 +103,7 @@
                                     </td>
                                     <td>
                                         <a role="button" href="javascript:void(0);"
-                                           data-url="{{ route('local.destroy', $item->id) }}"
+                                           data-url="{{ route('landingPage.entity.destroy', $item->id) }}"
                                            class="btn btn-primary btn-flat btn-xs item-delete">
                                             Delete
                                         </a>
