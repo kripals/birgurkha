@@ -218,7 +218,7 @@ class ApiController extends Controller
 
             foreach ($locals as $keyL => $local)
             {
-                $arrayLocal['data'][ $keyL ] = [
+                $arrayLocal['data'][] = [
                     'type'             => 'local',
                     'entity_id'        => $local['entity_id'],
                     'magento_type'     => $local['magento_type'],
@@ -233,7 +233,7 @@ class ApiController extends Controller
 
             foreach ($landingPages as $keyLP => $landing_page)
             {
-                $arrayLocal['data'][ $keyLP ] = [
+                $arrayLocal['data'][] = [
                     'landing_page_id' => $landing_page['id'],
                     'type'            => 'landing_page',
                     'title'           => $landing_page['title'],
@@ -273,7 +273,6 @@ class ApiController extends Controller
                 'name'             => $landingPagesEntity->name,
                 'position'         => $landingPagesEntity->position,
                 'image_path'       => ( $landingPagesEntity->image != null ) ? $landingPagesEntity->image['url_path'] : null,
-                'category_color'   => $landingPagesEntity->category_color,
                 'description_text' => $landingPagesEntity->description_text,
             ];
         }
