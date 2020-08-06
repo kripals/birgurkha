@@ -261,7 +261,8 @@ class ApiController extends Controller
         $landingPageData      = [
             'title'  => $landingPage['title'],
             'urlkey' => $landingPage['urlkey']
-        ];
+	];
+
         $landingPagesEntities = $landingPage->landingPagesEntites;
 
         foreach ($landingPagesEntities as $landingPagesEntity)
