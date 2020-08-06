@@ -263,20 +263,20 @@ class ApiController extends Controller
         ];
 
         if ($landingPage->landingPagesEntites()->exists())
-	{
+        {
 
             $landingPagesEntities = $landingPage->landingPagesEntites->sortBy('type_id');
 
             foreach ($landingPagesEntities as $key => $landingPagesEntity)
             {
-                $data[ $landingPagesEntity->type->section ] = [
+                $data[ $landingPagesEntity->type_id ] = [
                     "section"  => $landingPagesEntity->type->section,
                     "name"     => $landingPagesEntity->type->name,
                     "position" => $landingPagesEntity->type->position,
                     "type"     => $landingPagesEntity->type->type
                 ];
 
-                $data1[ $landingPagesEntity->type->section ][] = [
+                $data1[ $landingPagesEntity->type_id ][] = [
                     'entity_id'        => $landingPagesEntity->entity_id,
                     'magento_type'     => $landingPagesEntity->magento_type,
                     'name'             => $landingPagesEntity->name,
