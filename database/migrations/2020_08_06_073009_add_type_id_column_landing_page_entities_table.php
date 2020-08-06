@@ -13,7 +13,9 @@ class AddTypeIdColumnLandingPageEntitiesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('landing_page_entities', function (Blueprint $table) {
+            $table->integer('type_id')->unsigned();
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class AddTypeIdColumnLandingPageEntitiesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('landing_page_entities', function (Blueprint $table) {
+            $table->integer('type_id')->unsigned();
+        });
     }
 }
