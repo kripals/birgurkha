@@ -52,7 +52,7 @@
                         </tr>
                         <tr>
                             <th width="5%">#</th>
-                            <th width="50%">Name</th>
+                            <th width="20%">Name</th>
                             <th width="20%">Sku</th>
                             <th width="30%" class="text-right">For Addition In Landing Pages</th>
                             <th width="30%" class="text-right">Section of the Page</th>
