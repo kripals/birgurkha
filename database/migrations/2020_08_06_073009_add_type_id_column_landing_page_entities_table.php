@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTypeIdColumnLandingPagesTable extends Migration
+class AddTypeIdColumnLandingPageEntitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddTypeIdColumnLandingPagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('landing_page_entities', function (Blueprint $table) {
-            $table->integer('type_id')->unsigned();
-        });
+        //
     }
 
     /**
@@ -25,8 +23,6 @@ class AddTypeIdColumnLandingPagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('landing_page_entities', function (Blueprint $table) {
-            $table->integer('type_id')->unsigned();
-        });
+        //
     }
 }

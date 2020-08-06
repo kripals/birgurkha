@@ -54,7 +54,8 @@
                             <th width="5%">#</th>
                             <th width="50%">Name</th>
                             <th width="20%">Sku</th>
-                            <th width="20%" class="text-right">For Addition In Landing Pages</th>
+                            <th width="30%" class="text-right">For Addition In Landing Pages</th>
+                            <th width="30%" class="text-right">Section of the Page</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -80,6 +81,10 @@
                                     <td>
                                         {{ Form::select('landingPage['. $key. ']', landingPagesArray(),
                                         old('landingPage'), ['class' => 'form-control', 'required']) }}
+                                    </td>
+                                    <td>
+                                        {{ Form::select('type['. $key. ']', typesArray(),
+                                        old('type'), ['class' => 'form-control select2-list', 'required']) }}
                                     </td>
                                 </tr>
                             @endforeach
