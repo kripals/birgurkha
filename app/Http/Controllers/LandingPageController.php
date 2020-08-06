@@ -187,7 +187,7 @@ class LandingPageController extends Controller
                     $local->update($data);
                 }
 
-                if ($request->image[ $id ])
+                if (array_key_exists($id, $request->image))
                 {
                     $this->uploadRequestImage($request->image[ $id ], $local);
                 }
