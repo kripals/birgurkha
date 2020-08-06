@@ -255,13 +255,12 @@ class ApiController extends Controller
      */
     public function landingPage(Request $request)
     {
-        //        $landingPageId        = $request->landing_page_id;
-        $landingPageId   = 1;
+        $landingPageId   = $request->landing_page_id;
         $landingPage     = LandingPage::where('id', $landingPageId)->first();
         $landingPageData = [
             'title'  => $landingPage['title'],
             'urlkey' => $landingPage['urlkey']
-	];
+        ];
 
 
         if ($landingPage->landingPagesEntites()->exists())
@@ -289,7 +288,7 @@ class ApiController extends Controller
 
             foreach ($data1 as $key => $value)
             {
-                $data [$key]['data'] = $value;
+                $data [ $key ]['data'] = $value;
             }
         }
         $landingPageData['sections'] = $data;
