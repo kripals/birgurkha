@@ -263,9 +263,9 @@ class ApiController extends Controller
             'urlkey' => $landingPage['urlkey']
 	];
 
-
         if ($landingPage->landingPagesEntites()->exists())
-        {
+	{
+
             $landingPagesEntities = $landingPage->landingPagesEntites->sortBy('type_id');
 
             foreach ($landingPagesEntities as $key => $landingPagesEntity)
