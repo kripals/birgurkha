@@ -127,7 +127,8 @@ class LandingPageController extends Controller
                         'entity_id'       => $request->sku[ $key ],
                         'magento_type'    => 'PRODUCT',
                         'name'            => $request->name[ $key ],
-                        'landing_page_id' => $request->landingPage[ $key ]
+                        'landing_page_id' => $request->landingPage[ $key ],
+                        'type_id'         => $request->type[ $key ]
                     ];
 
                     $landingPage = LandingPageEntity::create($data);
@@ -153,7 +154,8 @@ class LandingPageController extends Controller
                         'entity_id'       => $request->id[ $key ],
                         'magento_type'    => 'CATEGORY',
                         'name'            => $request->name[ $key ],
-                        'landing_page_id' => $request->landingPage[ $key ]
+                        'landing_page_id' => $request->landingPage[ $key ],
+                        'type_id'         => $request->type[ $key ]
                     ];
 
                     $landingPage = LandingPageEntity::create($data);

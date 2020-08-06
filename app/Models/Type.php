@@ -31,6 +31,14 @@ class Type extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function landingPageEntities()
+    {
+        return $this->hasMany(LandingPageEntity::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function landingPages()
     {
         return $this->hasMany(LandingPage::class);

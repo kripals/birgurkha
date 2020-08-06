@@ -255,28 +255,44 @@ class ApiController extends Controller
      */
     public function landingPage(Request $request)
     {
-        $landingPageId = $request->landing_page_id;
-
-        $landingPage          = LandingPage::where('id', $landingPageId)->first();
-        $landingPageData      = [
+        //        $landingPageId        = $request->landing_page_id;
+        $landingPageId   = 1;
+        $landingPage     = LandingPage::where('id', $landingPageId)->first();
+        $landingPageData = [
             'title'  => $landingPage['title'],
             'urlkey' => $landingPage['urlkey']
 	];
 
-        $landingPagesEntities = $landingPage->landingPagesEntites;
 
-        foreach ($landingPagesEntities as $landingPagesEntity)
+        if ($landingPage->landingPagesEntites()->exists())
         {
-            $data[] = [
-                'entity_id'        => $landingPagesEntity->entity_id,
-                'magento_type'     => $landingPagesEntity->magento_type,
-                'name'             => $landingPagesEntity->name,
-                'position'         => $landingPagesEntity->position,
-                'image_path'       => ( $landingPagesEntity->image != null ) ? $landingPagesEntity->image['url_path'] : null,
-                'description_text' => $landingPagesEntity->description_text,
-            ];
+            $landingPagesEntities = $landingPage->landingPagesEntites->sortBy('type_id');
+
+            foreach ($landingPagesEntities as $key => $landingPagesEntity)
+            {
+                $data[ $landingPagesEntity->type->section ] = [
+                    "section"  => $landingPagesEntity->type->section,
+                    "name"     => $landingPagesEntity->type->name,
+                    "position" => $landingPagesEntity->type->position,
+                    "type"     => $landingPagesEntity->type->type
+                ];
+
+                $data1[ $landingPagesEntity->type->section ][] = [
+                    'entity_id'        => $landingPagesEntity->entity_id,
+                    'magento_type'     => $landingPagesEntity->magento_type,
+                    'name'             => $landingPagesEntity->name,
+                    'position'         => $landingPagesEntity->position,
+                    'image_path'       => ( $landingPagesEntity->image != null ) ? $landingPagesEntity->image['url_path'] : null,
+                    'description_text' => $landingPagesEntity->description_text,
+                ];
+            }
+
+            foreach ($data1 as $key => $value)
+            {
+                $data [$key]['data'] = $value;
+            }
         }
-        $landingPageData['entities'] = $data;
+        $landingPageData['sections'] = $data;
 
         return $landingPageData;
     }

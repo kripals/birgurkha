@@ -46,14 +46,15 @@
                             </td>
                         </tr>
                         <tr>
-                            <th width="5%">#</th>
-                            <th width="10%">Magento Type</th>
-                            <th width="15%">Entity Id</th>
+                            <th width="2%">#</th>
+                            <th width="10%">Section</th>
+                            <th width="5%">Magento Type</th>
+                            <th width="10%">Entity Id</th>
                             <th width="5%">Position</th>
                             <th width="20%">Name</th>
                             <th width="20%">Description</th>
                             <th width="20%">Image</th>
-                            <th width="20%">Action</th>
+                            <th width="5%">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -72,6 +73,9 @@
                                         </div>
                                     </td>
                                     <td>
+                                        {{ $item->type_name }}
+                                    </td>
+                                    <td>
                                         {{ $item->magento_type }}
                                     </td>
                                     <td>
@@ -84,7 +88,7 @@
                                         {{ $item->name }}
                                     </td>
                                     <td>
-                                        {{ Form::text('description_text[' . $item->id . ']', $item->description_text ?: null, ['class' => 'form-control']) }}
+                                        {{ Form::textarea('description_text[' . $item->id . ']', $item->description_text ?: null, ['class' => 'form-control','rows' => 4, 'cols' => 65, 'placeholder' => 'Description']) }}
                                     </td>
                                     <td>
                                         @if(isset($item->image))
