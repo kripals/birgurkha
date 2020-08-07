@@ -264,12 +264,11 @@ class ApiController extends Controller
 
         if ($landingPage->landingPagesEntites()->exists())
         {
-
             $landingPagesEntities = $landingPage->landingPagesEntites->sortBy('type_id');
 
             foreach ($landingPagesEntities as $key => $landingPagesEntity)
             {
-                $type_id = (int) $landingPagesEntity->type_id;
+                $type_id = $landingPagesEntity->type_id;
 
                 $data[ $type_id ] = [
                     "section"  => $landingPagesEntity->type->section,
@@ -294,6 +293,14 @@ class ApiController extends Controller
             }
         }
         $landingPageData['sections'] = $data;
+
+        foreach ($landingPageData['sections'] as $key => $value)
+        {
+            $data2[] = $value;
+            unset($landingPageData['sections'][$key]);
+        }
+        unset($landingPageData['sections']);
+        $landingPageData['sections'] = $data2;
 
         return $landingPageData;
     }
