@@ -42,32 +42,90 @@ class ApiController extends Controller
         }
     }
 
+//    /**
+//     * @param Request $request
+//     * @return string
+//     */
+//    public function productSearch(Request $request)
+//    {
+//        $params['direction']           = 'searchCriteria[sortOrders][0][direction]=DESC';
+//        $params['condition_type']      = 'searchCriteria[filter_groups][0][filters][0][condition_type]=like';
+//        $params['value']               = 'searchCriteria[filter_groups][0][filters][0][value]=%' . $request->value . '%';
+//        $params['filter_groups_field'] = 'searchCriteria[filter_groups][0][filters][0][field]=name';
+//        $params['sort_orders_field']   = 'searchCriteria[sortOrders][0][field]=created_at';
+//
+//        $url = $this->url . "rest/V1/products?" . $params['direction'] . '&' . $params['condition_type'] . '&' . $params['value'] . '&' . $params['filter_groups_field'] . '&' . $params['sort_orders_field'];
+//
+//        if (isset($this->token))
+//        {
+//            $product = $this->client->request('GET', $url, [
+//                'headers' => [
+//                    "Authorization: Bearer " . $this->token,
+//                ]
+//            ]);
+//
+//            $status = $product->getStatusCode();
+//            if ($status == 200)
+//            {
+//                $content = json_decode($product->getBody()->getContents());
+//
+//                if ($request->is_cms)
+//                {
+//                    return view('landing_page.entities.products', compact('content'));
+//                }
+//                else
+//                {
+//                    return view('products', compact('content'));
+//                }
+//            }
+//            else
+//            {
+//                return "error";
+//            }
+//        }
+//        else
+//        {
+//            return "error";
+//        }
+//    }
+
     /**
      * @param Request $request
-     * @return string
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
      */
     public function productSearch(Request $request)
     {
-        $params['direction']           = 'searchCriteria[sortOrders][0][direction]=DESC';
-        $params['condition_type']      = 'searchCriteria[filter_groups][0][filters][0][condition_type]=like';
-        $params['value']               = 'searchCriteria[filter_groups][0][filters][0][value]=%' . $request->value . '%';
-        $params['filter_groups_field'] = 'searchCriteria[filter_groups][0][filters][0][field]=name';
-        $params['sort_orders_field']   = 'searchCriteria[sortOrders][0][field]=created_at';
-
-        $url = $this->url . "rest/V1/products?" . $params['direction'] . '&' . $params['condition_type'] . '&' . $params['value'] . '&' . $params['filter_groups_field'] . '&' . $params['sort_orders_field'];
+        $url    = $this->url . "graphql";
+        $search = $request->value;
 
         if (isset($this->token))
         {
-            $product = $this->client->request('GET', $url, [
-                'headers' => [
-                    "Authorization: Bearer " . $this->token,
-                ]
+            $curl = curl_init();
+
+            curl_setopt_array($curl, [
+                CURLOPT_URL => "$url",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS =>"{\"query\":\"{\\r\\n  products(\\r\\n    search: \\\"watch\\\", \\r\\n    pageSize: 20\\r\\n  ) {\\r\\n    total_count\\r\\n    items {\\r\\n      name\\r\\n        sku\\r\\n    }\\r\\n  }\\r\\n}\\r\\n\",\"variables\":{}}",
+                CURLOPT_HTTPHEADER => array(
+                    "Authorization: Bearer kesndsasbp4ldlgj9wnohdo1w86wrwuf",
+                    "Content-Type: application/json",
+                    "Cookie: __cfduid=d484cefcc12ce3923a0e3b347fff9be581594879126; PHPSESSID=53s2iaq6b0d645asiqpol38vsk; private_content_version=377dd824ac2834fa07c5d9c9dc4e1217"
+                ),
             ]);
 
-            $status = $product->getStatusCode();
-            if ($status == 200)
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $data = json_decode($response, true);
+
+            if (array_key_exists('data', $data))
             {
-                $content = json_decode($product->getBody()->getContents());
+                $content = $data['data']['products'];
 
                 if ($request->is_cms)
                 {

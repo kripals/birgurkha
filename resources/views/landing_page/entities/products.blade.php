@@ -41,7 +41,7 @@
                         <!-- BEGIN SEARCH RESULTS LIST -->
                         <div class="margin-bottom-xxl">
                             <span
-                                class="text-light text-lg">Total Count: <strong>{{ isset($content) ? $content->total_count : 0 }}</strong></span>
+                                class="text-light text-lg">Total Count: <strong>{{ isset($content) ? $content['total_count'] : 0 }}</strong></span>
                         </div>
                     </div>
                     {{ Form::open(['route' =>'landingPage.store.product','class'=>'form form-validate', 'novalidate']) }}
@@ -64,19 +64,18 @@
                                 <td class="text-center" colspan="5">No data available.</td>
                             </tr>
                         @else
-                            @foreach($content->items as $key => $item)
+                            @foreach($content['items'] as $key => $item)
                                 <tr>
                                     <td>
                                         {{ ++$key }}
                                     </td>
                                     <td>
-                                        {{ $item->name }}
-                                        {{ Form::text('name['. $key. ']', $item->name , ['hidden']) }}
-                                        {{ Form::text('id['. $key. ']', $item->id , ['hidden']) }}
+                                        {{ $item['name'] }}
+                                        {{ Form::text('name['. $key. ']', $item['name'] , ['hidden']) }}
                                     </td>
                                     <td>
-                                        {{ $item->sku }}
-                                        {{ Form::text('sku['. $key. ']', $item->sku , ['hidden']) }}
+                                        {{ $item['sku'] }}
+                                        {{ Form::text('sku['. $key. ']', $item['sku'] , ['hidden']) }}
                                     </td>
                                     <td>
                                         {{ Form::select('landingPage['. $key. ']', landingPagesArray(),
