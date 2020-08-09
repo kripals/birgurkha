@@ -64,7 +64,7 @@ class ApiController extends Controller
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_POSTFIELDS =>"{\"query\":\"{\\r\\n  products(\\r\\n    search: \\\"watch\\\", \\r\\n    pageSize: 20\\r\\n  ) {\\r\\n    total_count\\r\\n    items {\\r\\n      name\\r\\n        sku\\r\\n    }\\r\\n  }\\r\\n}\\r\\n\",\"variables\":{}}",
+                CURLOPT_POSTFIELDS =>"{\"query\":\"{\\r\\n  products(\\r\\n    search: \\\"$search\\\", \\r\\n    pageSize: 20\\r\\n  ) {\\r\\n    total_count\\r\\n    items {\\r\\n      name\\r\\n        sku\\r\\n    }\\r\\n  }\\r\\n}\\r\\n\",\"variables\":{}}",
                 CURLOPT_HTTPHEADER => array(
                     "Authorization: Bearer kesndsasbp4ldlgj9wnohdo1w86wrwuf",
                     "Content-Type: application/json",
