@@ -41,7 +41,7 @@
                         <!-- BEGIN SEARCH RESULTS LIST -->
                         <div class="margin-bottom-xxl">
                             <span
-                                class="text-light text-lg">Total Count: <strong>{{ isset($content) ? $content->total_count : 0 }}</strong></span>
+                                class="text-light text-lg">Total Count: <strong>{{ isset($content) ? count($content) : 0 }}</strong></span>
                         </div>
                     </div>
                     {{ Form::open(['route' =>'local.store.category','class'=>'form form-validate', 'novalidate']) }}
@@ -53,7 +53,7 @@
                         <tr>
                             <th width="5%">#</th>
                             <th width="20%">Name</th>
-                            <th width="20%">Parent ID</th>
+                            <th width="20%">Category Level</th>
                             <th width="20%" class="text-right">For Addition In Home Section</th>
                             <th width="20%" class="text-right">For View All Button In Home Section</th>
                         </tr>
@@ -64,20 +64,18 @@
                                 <td class="text-center" colspan="5">No data available.</td>
                             </tr>
                         @else
-                            @foreach($content->items as $key => $item)
-                                <tr>
+                            @foreach($content as $key => $item)
                                 <tr>
                                     <td>
                                         {{ ++$key }}
                                     </td>
                                     <td>
-                                        {{ $item->name }}
-                                        {{ Form::text('name['. $key. ']', $item->name , ['hidden']) }}
-                                        {{ Form::text('id['. $key. ']', $item->id , ['hidden']) }}
+                                        {{ $item['name'] }}
+                                        {{ Form::text('name['. $key. ']', $item['name'] , ['hidden']) }}
+                                        {{ Form::text('id['. $key. ']', $item['id'] , ['hidden']) }}
                                     </td>
                                     <td>
-                                        {{ $item->parent_id }}
-                                        {{ Form::text('sku['. $key. ']', $item->parent_id , ['hidden']) }}
+                                        {{ $item['level'] }}
                                     </td>
                                     <td>
                                         {{ Form::select('type['. $key. ']', typesArray(), old('type'), ['class' => 'form-control', 'required']) }}

@@ -106,26 +106,37 @@ class ApiController extends Controller
      */
     public function categoriesSearch(Request $request)
     {
-        $params['direction']           = 'searchCriteria[sortOrders][0][direction]=DESC';
-        $params['condition_type']      = 'searchCriteria[filter_groups][0][filters][0][condition_type]=like';
-        $params['value']               = 'searchCriteria[filter_groups][0][filters][0][value]=%' . $request->value . '%';
-        $params['filter_groups_field'] = 'searchCriteria[filter_groups][0][filters][0][field]=name';
-        $params['sort_orders_field']   = 'searchCriteria[sortOrders][0][field]=created_at';
-
-        $url = $this->url . "rest/V1/categories/list?" . $params['direction'] . '&' . $params['condition_type'] . '&' . $params['value'] . '&' . $params['filter_groups_field'] . '&' . $params['sort_orders_field'];
+        $url    = $this->url . "graphql";
+        $search = $request->value;
 
         if (isset($this->token))
         {
-            $product = $this->client->request('GET', $url, [
-                'headers' => [
-                    "Authorization: Bearer " . $this->token,
-                ]
+            $curl = curl_init();
+
+            curl_setopt_array($curl, [
+                CURLOPT_URL            => "$url",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING       => "",
+                CURLOPT_MAXREDIRS      => 10,
+                CURLOPT_TIMEOUT        => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST  => "POST",
+                CURLOPT_POSTFIELDS     => "{\"query\":\"{\\r\\n  categoryList(filters: \\r\\n  {\\r\\n    name: { match: \\\"$search\\\" }\\r\\n    }\\r\\n  )\\r\\n  {\\r\\n    id\\r\\n    level\\r\\n    name\\r\\n  }\\r\\n}\",\"variables\":{}}",
+                CURLOPT_HTTPHEADER     => [
+                    "Authorization: Bearer kesndsasbp4ldlgj9wnohdo1w86wrwuf",
+                    "Content-Type: application/json",
+                    "Cookie: __cfduid=d484cefcc12ce3923a0e3b347fff9be581594879126; PHPSESSID=53s2iaq6b0d645asiqpol38vsk; private_content_version=27dd2dc5f95771231f156fbd4e0ff4ba"
+                ],
             ]);
 
-            $status = $product->getStatusCode();
-            if ($status == 200)
+            $response = curl_exec($curl);
+            curl_close($curl);
+            $data = json_decode($response, true);
+
+            if (array_key_exists('data', $data))
             {
-                $content = json_decode($product->getBody()->getContents());
+                $content = $data['data']['categoryList'];
 
                 if ($request->is_cms)
                 {
