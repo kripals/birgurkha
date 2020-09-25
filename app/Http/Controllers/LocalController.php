@@ -157,12 +157,12 @@ class LocalController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function searchStore(Request $request)
+    public function defaultStore(Request $request)
     {
         DB::transaction(function () use ($request) {
             $data = [
-                'entity_id'    => $request->search_filter,
-                'magento_type' => 'SEARCH',
+                'entity_id'    => $request->name,
+                'magento_type' => 'DEFAULT',
                 'name'         => $request->title,
                 'type_id'      => $request->type
             ];
@@ -170,7 +170,7 @@ class LocalController extends Controller
             $local = Local::create($data);
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Search' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Default' ]));
     }
 
     /**

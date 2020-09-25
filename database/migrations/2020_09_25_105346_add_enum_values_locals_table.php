@@ -16,7 +16,7 @@ class AddEnumValuesLocalsTable extends Migration
     {
         DB::statement("
                             ALTER TABLE locals MODIFY magento_type 
-                            ENUM('PRODUCT','CATEGORY','CMS_PAGE','WEB_PAGE','SEARCH','GENERIC','DEFAULT') NOT NULL
+                            ENUM('PRODUCT','CATEGORY','CMS_PAGE','WEB_PAGE','GENERIC','DEFAULT') NOT NULL
                         ");
     }
 

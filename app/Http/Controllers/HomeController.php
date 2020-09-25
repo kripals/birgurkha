@@ -63,8 +63,8 @@ class HomeController extends Controller
     /**
      * @return Factory|View
      */
-    public function search()
+    public function default()
     {
-        return view('search');
+        return view('default');
     }
 }

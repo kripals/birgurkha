@@ -82,9 +82,9 @@
 
             <!-- BEGIN SEARCH -->
             <li>
-                <a href="{{ route('search') }}">
+                <a href="{{ route('default') }}">
                     <div class="gui-icon"><i class="md md-search"></i></div>
-                    <span class="title">Search</span>
+                    <span class="title">Default</span>
                 </a>
             </li><!--end /menu-li -->
             <!-- END SEARCH -->

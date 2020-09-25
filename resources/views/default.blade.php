@@ -5,15 +5,15 @@
 @section('content')
     <section class="no-y-padding">
         <div class="section-body">
-            {{ Form::open([ 'route' =>'local.store.search', 'class'=>'form form-validate', 'novalidate' ]) }}
+            {{ Form::open([ 'route' =>'local.store.default', 'class'=>'form form-validate', 'novalidate' ]) }}
             <div class="card">
                 <div class="card-body">
-                    <h3>Magento Search</h3>
+                    <h3>Magento Default</h3>
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                {{ Form::text('search_filter', old('search_filter'), ['class' => 'form-control', 'required']) }}
-                                {{ Form::label('search_filter', 'Search Filter') }}
+                                {{ Form::text('name', old('name'), ['class' => 'form-control', 'required']) }}
+                                {{ Form::label('name', 'Name') }}
                             </div>
                         </div>
                         <div class="col-sm-4">
