@@ -56,20 +56,20 @@ class ApiController extends Controller
             $curl = curl_init();
 
             curl_setopt_array($curl, [
-                CURLOPT_URL => "$url",
+                CURLOPT_URL            => "$url",
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => "",
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
+                CURLOPT_ENCODING       => "",
+                CURLOPT_MAXREDIRS      => 10,
+                CURLOPT_TIMEOUT        => 0,
                 CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_POSTFIELDS =>"{\"query\":\"{\\r\\n  products(\\r\\n    search: \\\"$search\\\", \\r\\n    pageSize: 20\\r\\n  ) {\\r\\n    total_count\\r\\n    items {\\r\\n      name\\r\\n        sku\\r\\n    }\\r\\n  }\\r\\n}\\r\\n\",\"variables\":{}}",
-                CURLOPT_HTTPHEADER => array(
+                CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST  => "POST",
+                CURLOPT_POSTFIELDS     => "{\"query\":\"{\\r\\n    products (\\r\\n        search: \\\"$search\\\", \\r\\n        pageSize: 20\\r\\n    )\\r\\n    {\\r\\n        aggregations {\\r\\n            attribute_code\\r\\n            label\\r\\n            options {\\r\\n                label\\r\\n                value\\r\\n            }\\r\\n        }\\r\\n\\r\\n        total_count\\r\\n        items {\\r\\n            id\\r\\n            name\\r\\n            sku\\r\\n        }\\r\\n    }\\r\\n}\\r\\n\",\"variables\":{}}",
+                CURLOPT_HTTPHEADER     => [
                     "Authorization: Bearer kesndsasbp4ldlgj9wnohdo1w86wrwuf",
                     "Content-Type: application/json",
                     "Cookie: __cfduid=d484cefcc12ce3923a0e3b347fff9be581594879126; PHPSESSID=53s2iaq6b0d645asiqpol38vsk; private_content_version=377dd824ac2834fa07c5d9c9dc4e1217"
-                ),
+                ],
             ]);
 
             $response = curl_exec($curl);
@@ -78,7 +78,17 @@ class ApiController extends Controller
 
             if (array_key_exists('data', $data))
             {
-                $content = $data['data']['products'];
+                $content          = $data['data']['products'];
+                $content['value'] = $search;
+
+                if ($request->search_aggregation)
+                {
+                    $content['is_product'] = false;
+                }
+                else
+                {
+                    $content['is_product'] = true;
+                }
 
                 if ($request->is_cms)
                 {
@@ -259,6 +269,7 @@ class ApiController extends Controller
                     'landing_page_id' => $landing_page['id'],
                     'type'            => 'landing_page',
                     'title'           => $landing_page['title'],
+                    'position'        => '000',
                     'urlkey'          => $landing_page['urlkey'],
                     'visible'         => $landing_page['visible'],
                     'image_path'      => ( $landing_page['image'] != null ) ? $landing_page['image']['url_path'] : null,
@@ -319,7 +330,7 @@ class ApiController extends Controller
         foreach ($landingPageData['sections'] as $key => $value)
         {
             $data2[] = $value;
-            unset($landingPageData['sections'][$key]);
+            unset($landingPageData['sections'][ $key ]);
         }
         unset($landingPageData['sections']);
         $landingPageData['sections'] = $data2;

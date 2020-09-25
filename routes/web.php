@@ -33,6 +33,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
     Route::post('/cmsPages', 'ApiController@cmsPagesSearch')->name('cmsPages');
 
     Route::post('/local/product', 'LocalController@productStore')->name('local.store.product');
+    Route::post('/local/aggregation', 'LocalController@aggregationStore')->name('local.store.aggregation');
     Route::post('/local/category', 'LocalController@categoryStore')->name('local.store.category');
     Route::post('/local/cmsPages', 'LocalController@cmsPagesStore')->name('local.store.cmsPages');
     Route::post('/local/urlKeys', 'LocalController@urlKeysStore')->name('local.store.urlKeys');
