@@ -61,25 +61,18 @@ class LocalController extends Controller
      */
     public function aggregationStore(Request $request)
     {
-        dd($request->all());
         DB::transaction(function () use ($request) {
-            foreach ($request->type as $key => $value)
-            {
-                if ( ! empty($value))
-                {
-                    $data = [
-                        'entity_id'    => $request->sku[ $key ],
-                        'magento_type' => 'PRODUCT',
-                        'name'         => $request->name[ $key ],
-                        'type_id'      => $request->type[ $key ]
-                    ];
+            $data = [
+                'entity_id'    => $request->agg,
+                'magento_type' => 'GENERIC',
+                'name'         => $request->product,
+                'type_id'         => $request->type,
+            ];
 
-                    $local = Local::create($data);
-                }
-            }
+            $local = Local::create($data);
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Products' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Aggregation' ]));
     }
 
     /**
