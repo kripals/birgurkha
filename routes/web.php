@@ -79,6 +79,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
 
         Route::post('/product', 'LandingPageController@productStore')->name('store.product');
         Route::post('/category', 'LandingPageController@categoryStore')->name('store.category');
+        Route::post('/default', 'LandingPageController@defaultStore')->name('store.default');
     });
 });
 

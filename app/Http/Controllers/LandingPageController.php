@@ -182,6 +182,27 @@ class LandingPageController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
+    public function defaultStore(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            $data = [
+                'landing_page_id' => $request->landingPage,
+                'entity_id'       => $request->name,
+                'magento_type'    => 'DEFAULT',
+                'name'            => $request->title,
+                'type_id'         => $request->type
+            ];
+
+            $landingPage = LandingPageEntity::create($data);
+        });
+
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Default' ]));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function landingEntityUpdate(Request $request)
     {
         $data = [];
