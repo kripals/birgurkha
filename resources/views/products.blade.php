@@ -56,7 +56,7 @@
                                 class="text-light text-lg">Total Count: <strong>{{ isset($content) ? $content['total_count'] : 0 }}</strong></span>
                                 </div>
                             </div>
-                            {{ Form::open(['route' =>'products','class'=>'form form-validate','role'=>'form', 'files'=>true, 'novalidate']) }}
+                            {{ Form::open(['route' =>'local.store.product','class'=>'form form-validate','role'=>'form', 'files'=>true, 'novalidate']) }}
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
