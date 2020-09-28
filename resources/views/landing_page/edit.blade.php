@@ -79,7 +79,7 @@
                                         {{ $item->magento_type }}
                                     </td>
                                     <td>
-                                        {{ $item->entity_id }}
+                                        {{ substr($item->entity_id, 0, 20) . '....' }}
                                     </td>
                                     <td>
                                         {{ Form::text('position[' . $item->id . ']', $item->position ?: '0', ['class' => 'form-control']) }}

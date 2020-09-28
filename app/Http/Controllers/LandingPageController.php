@@ -155,6 +155,44 @@ class LandingPageController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
+    public function aggregationStore(Request $request)
+    {
+        $array = [];
+        DB::transaction(function () use ($request, $array) {
+            foreach ($request->status as $key => $value)
+            {
+                $array[]['attribute_code'] = $key;
+
+                foreach ($value as $k => $v)
+                {
+                    $a[$key][$k]['label'] = $request->label[$key][$k];
+                    $a[$key][$k]['value'] = $request->value[$key][$k];
+                }
+            }
+
+            foreach ($array as $key => $value)
+            {
+                $array[$key]['options'] = $a[$value['attribute_code']];
+            }
+
+            $data = [
+                'entity_id'       => json_encode($array),
+                'magento_type'    => 'GENERIC',
+                'name'            => $request->name,
+                'landing_page_id' => $request->landingPage,
+                'type_id'         => $request->type
+            ];
+
+            $landingPage = LandingPageEntity::create($data);
+        });
+
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Aggregation' ]));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function categoryStore(Request $request)
     {
         DB::transaction(function () use ($request) {
@@ -220,7 +258,7 @@ class LandingPageController extends Controller
                     $local->update($data);
                 }
 
-                if (array_key_exists($id, $request->image))
+                if ($request->image[ $id ])
                 {
                     $this->uploadRequestImage($request->image[ $id ], $local);
                 }

@@ -20,7 +20,17 @@
                         <div class="col-sm-4">
                             <div class="card-actionbar">
                                 <div class="card-actionbar-row">
-                                    <button type="submit" class="btn btn-primary ink-reaction">search
+                                    <button name="search_products" value="1" type="submit"
+                                            class="btn btn-primary ink-reaction">search products
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card-actionbar">
+                                <div class="card-actionbar-row">
+                                    <button name="search_aggregation" value="1" type="submit"
+                                            class="btn btn-primary ink-reaction">search aggregations
                                     </button>
                                 </div>
                             </div>
@@ -35,63 +45,67 @@
     <section>
         <div class="section-body">
             <div class="card">
-                <div class="card-body">
-                    <h3>Magento Products for CMS page</h3>
-                    <div class="col-sm-2">
-                        <!-- BEGIN SEARCH RESULTS LIST -->
-                        <div class="margin-bottom-xxl">
+                @if($content['is_product'])
+                    <div class="card-body">
+                        <h3>Magento Products for CMS page</h3>
+                        <div class="col-sm-2">
+                            <!-- BEGIN SEARCH RESULTS LIST -->
+                            <div class="margin-bottom-xxl">
                             <span
                                 class="text-light text-lg">Total Count: <strong>{{ isset($content) ? $content['total_count'] : 0 }}</strong></span>
+                            </div>
                         </div>
-                    </div>
-                    {{ Form::open(['route' =>'landingPage.store.product','class'=>'form form-validate', 'novalidate']) }}
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <button type="submit" class="btn btn-success ink-reaction">Submit</button>
-                        </tr>
-                        <tr>
-                            <th width="5%">#</th>
-                            <th width="20%">Name</th>
-                            <th width="20%">Sku</th>
-                            <th width="30%" class="text-right">For Addition In Landing Pages</th>
-                            <th width="30%" class="text-right">Section of the Page</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @if(empty($content))
+                        {{ Form::open(['route' =>'landingPage.store.product','class'=>'form form-validate', 'novalidate']) }}
+                        <table class="table table-hover">
+                            <thead>
                             <tr>
-                                <td class="text-center" colspan="5">No data available.</td>
+                                <button type="submit" class="btn btn-success ink-reaction">Submit</button>
                             </tr>
-                        @else
-                            @foreach($content['items'] as $key => $item)
+                            <tr>
+                                <th width="5%">#</th>
+                                <th width="20%">Name</th>
+                                <th width="20%">Sku</th>
+                                <th width="30%" class="text-right">For Addition In Landing Pages</th>
+                                <th width="30%" class="text-right">Section of the Page</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @if(empty($content))
                                 <tr>
-                                    <td>
-                                        {{ ++$key }}
-                                    </td>
-                                    <td>
-                                        {{ $item['name'] }}
-                                        {{ Form::text('name['. $key. ']', $item['name'] , ['hidden']) }}
-                                    </td>
-                                    <td>
-                                        {{ $item['sku'] }}
-                                        {{ Form::text('sku['. $key. ']', $item['sku'] , ['hidden']) }}
-                                    </td>
-                                    <td>
-                                        {{ Form::select('landingPage['. $key. ']', landingPagesArray(),
-                                        old('landingPage'), ['class' => 'form-control', 'required']) }}
-                                    </td>
-                                    <td>
-                                        {{ Form::select('type['. $key. ']', typesArray(),
-                                        old('type'), ['class' => 'form-control select2-list', 'required']) }}
-                                    </td>
+                                    <td class="text-center" colspan="5">No data available.</td>
                                 </tr>
-                            @endforeach
-                        @endif
-                        </tbody>
-                    </table>
-                    {{ Form::close() }}
-                </div>
+                            @else
+                                @foreach($content['items'] as $key => $item)
+                                    <tr>
+                                        <td>
+                                            {{ ++$key }}
+                                        </td>
+                                        <td>
+                                            {{ $item['name'] }}
+                                            {{ Form::text('name['. $key. ']', $item['name'] , ['hidden']) }}
+                                        </td>
+                                        <td>
+                                            {{ $item['sku'] }}
+                                            {{ Form::text('sku['. $key. ']', $item['sku'] , ['hidden']) }}
+                                        </td>
+                                        <td>
+                                            {{ Form::select('landingPage['. $key. ']', landingPagesArray(),
+                                            old('landingPage'), ['class' => 'form-control', 'required']) }}
+                                        </td>
+                                        <td>
+                                            {{ Form::select('type['. $key. ']', typesArray(),
+                                            old('type'), ['class' => 'form-control select2-list', 'required']) }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                            </tbody>
+                        </table>
+                        {{ Form::close() }}
+                    </div>
+                @else
+                    @include('landing_page.entities.partial.aggregation', $content);
+                @endif
             </div>
         </div>
     </section>

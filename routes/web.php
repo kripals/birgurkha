@@ -78,6 +78,7 @@ Route::group([ 'middleware' => 'auth' ], function () {
         Route::delete('/entity/{landingPageEntity}', 'LandingPageController@entityDestroy')->name('entity.destroy');
 
         Route::post('/product', 'LandingPageController@productStore')->name('store.product');
+        Route::post('/aggregation', 'LandingPageController@aggregationStore')->name('store.aggregation');
         Route::post('/category', 'LandingPageController@categoryStore')->name('store.category');
         Route::post('/default', 'LandingPageController@defaultStore')->name('store.default');
     });

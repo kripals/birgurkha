@@ -45,10 +45,20 @@
                                         {{ Form::label('value', 'Product Name') }}
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <div class="card-actionbar">
                                         <div class="card-actionbar-row">
-                                            <button type="submit" class="btn btn-primary ink-reaction">search
+                                            <button name="search_products" value="1" type="submit"
+                                                    class="btn btn-primary ink-reaction">search products
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="card-actionbar">
+                                        <div class="card-actionbar-row">
+                                            <button name="search_aggregation" value="1" type="submit"
+                                                    class="btn btn-primary ink-reaction">search aggregations
                                             </button>
                                         </div>
                                     </div>
