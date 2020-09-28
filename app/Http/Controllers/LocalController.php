@@ -61,12 +61,29 @@ class LocalController extends Controller
      */
     public function aggregationStore(Request $request)
     {
-        DB::transaction(function () use ($request) {
+        $array = [];
+        DB::transaction(function () use ($request, $array) {
+            foreach ($request->status as $key => $value)
+            {
+                $array[]['attribute_code'] = $key;
+
+                foreach ($value as $k => $v)
+                {
+                    $a[$key][$k]['label'] = $request->label[$key][$k];
+                    $a[$key][$k]['value'] = $request->value[$key][$k];
+                }
+            }
+
+            foreach ($array as $key => $value)
+            {
+                $array[$key]['options'] = $a[$value['attribute_code']];
+            }
+
             $data = [
-                'entity_id'    => $request->agg,
+                'entity_id'    => json_encode($array),
                 'magento_type' => 'GENERIC',
                 'name'         => $request->product,
-                'type_id'         => $request->type,
+                'type_id'      => $request->type,
             ];
 
             $local = Local::create($data);
