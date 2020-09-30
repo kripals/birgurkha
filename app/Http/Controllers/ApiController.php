@@ -294,7 +294,7 @@ class ApiController extends Controller
 
         if ($landingPage->landingPagesEntites()->exists())
         {
-            $landingPagesEntities = $landingPage->landingPagesEntites->sortBy('type_id');
+            $landingPagesEntities = $landingPage->landingPagesEntites->sortBy('type_id')->sortBy('position');
 
             foreach ($landingPagesEntities as $key => $landingPagesEntity)
             {
@@ -303,7 +303,6 @@ class ApiController extends Controller
                 $data[ $type_id ] = [
                     "section"  => $landingPagesEntity->type->section,
                     "name"     => $landingPagesEntity->type->name,
-                    "position" => $landingPagesEntity->type->position,
                     "type"     => $landingPagesEntity->type->type
                 ];
 
@@ -311,7 +310,6 @@ class ApiController extends Controller
                     'entity_id'        => $landingPagesEntity->entity_id,
                     'magento_type'     => $landingPagesEntity->magento_type,
                     'name'             => $landingPagesEntity->name,
-                    'position'         => $landingPagesEntity->position,
                     'image_path'       => ( $landingPagesEntity->image != null ) ? $landingPagesEntity->image['url_path'] : null,
                     'description_text' => $landingPagesEntity->description_text,
                 ];
