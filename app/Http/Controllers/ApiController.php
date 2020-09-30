@@ -233,7 +233,6 @@ class ApiController extends Controller
 
             $arrayType = [
                 "name"                => $type['name'],
-                "position"            => $type['position'],
                 "type"                => $type['type'],
                 "start_date"          => $type['start_date'],
                 "end_date"            => $type['end_date'],
@@ -255,7 +254,6 @@ class ApiController extends Controller
                     'entity_id'        => $local['entity_id'],
                     'magento_type'     => $local['magento_type'],
                     'name'             => $local['name'],
-                    'position'         => $local['position'],
                     'image_path'       => ( $local['image'] != null ) ? $local['image']['url_path'] : null,
                     'category_color'   => $local['category_color'],
                     'description_text' => $local['description_text'],
@@ -269,7 +267,6 @@ class ApiController extends Controller
                     'landing_page_id' => $landing_page['id'],
                     'type'            => 'landing_page',
                     'title'           => $landing_page['title'],
-                    'position'        => '000',
                     'urlkey'          => $landing_page['urlkey'],
                     'visible'         => $landing_page['visible'],
                     'image_path'      => ( $landing_page['image'] != null ) ? $landing_page['image']['url_path'] : null,
