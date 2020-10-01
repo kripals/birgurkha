@@ -69,18 +69,18 @@ class LocalController extends Controller
 
                 foreach ($value as $k => $v)
                 {
-                    $a[$key][$k]['label'] = $request->label[$key][$k];
-                    $a[$key][$k]['value'] = $request->value[$key][$k];
+                    $a[ $key ][ $k ]['label'] = $request->label[ $key ][ $k ];
+                    $a[ $key ][ $k ]['value'] = $request->value[ $key ][ $k ];
                 }
             }
 
             foreach ($array as $key => $value)
             {
-                $array[$key]['options'] = $a[$value['attribute_code']];
+                $array[ $key ]['options'] = json_encode($a[ $value['attribute_code'] ]);
             }
 
             $data = [
-                'entity_id'    => json_encode($array),
+                'entity_id'    => str_replace("'\'", '', json_encode($array)),
                 'magento_type' => 'GENERIC',
                 'name'         => $request->product,
                 'type_id'      => $request->type,
