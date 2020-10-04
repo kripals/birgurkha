@@ -172,11 +172,11 @@ class LandingPageController extends Controller
 
             foreach ($array as $key => $value)
             {
-                $array[ $key ]['options'] = json_encode($a[ $value['attribute_code'] ]);
+                $array[ $key ]['options'] = $a[ $value['attribute_code'] ];
             }
 
             $data = [
-                'entity_id'       => str_replace("'\'", '', json_encode($array)),
+                'entity_id'       => json_encode($array),
                 'magento_type'    => 'GENERIC',
                 'name'            => $request->name,
                 'landing_page_id' => $request->landingPage,
