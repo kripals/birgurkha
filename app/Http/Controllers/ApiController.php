@@ -324,17 +324,20 @@ class ApiController extends Controller
             {
                 $data [ $key ]['data'] = $value;
             }
-        }
-        $landingPageData['sections'] = $data;
 
-        foreach ($landingPageData['sections'] as $key => $value)
-        {
-            $data2[] = $value;
-            unset($landingPageData['sections'][ $key ]);
-        }
-        unset($landingPageData['sections']);
-        $landingPageData['sections'] = $data2;
+            $landingPageData['sections'] = $data;
 
-        return $landingPageData;
+            foreach ($landingPageData['sections'] as $key => $value)
+            {
+                $data2[] = $value;
+                unset($landingPageData['sections'][ $key ]);
+            }
+            unset($landingPageData['sections']);
+            $landingPageData['sections'] = $data2;
+
+            return $landingPageData;
+        }
+
+        return json_encode([ "error" => "404"]);
     }
 }
