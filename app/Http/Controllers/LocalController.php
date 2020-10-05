@@ -67,10 +67,12 @@ class LocalController extends Controller
             {
                 $array[]['attribute_code'] = $key;
 
+                $num = 0;
                 foreach ($value as $k => $v)
                 {
-                    $a[ $key ][ $k ]['label'] = $request->label[ $key ][ $k ];
-                    $a[ $key ][ $k ]['value'] = $request->value[ $key ][ $k ];
+                    $a[ $key ][ $num ]['label'] = $request->label[ $key ][ $k ];
+                    $a[ $key ][ $num ]['value'] = $request->value[ $key ][ $k ];
+                    $num++;
                 }
             }
 

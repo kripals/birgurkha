@@ -1,0 +1,18 @@
+[
+    {
+        "attribute_code": "price",
+        "options": "[{\"label\":\"*-10000\",\"value\":\"*_10000\"}]"
+    },
+    {
+        "attribute_code": "category_id",
+        "options": "[{\"label\":\"Mens Fashion\",\"value\":\"1330\"},{\"label\":\"Accessories\",\"value\":\"1405\"},{\"label\":\"Watches\",\"value\":\"1408\"},{\"label\":\"Womens Fashion\",\"value\":\"1456\"},{\"label\":\"Accessories\",\"value\":\"1537\"},{\"label\":\"Watches\",\"value\":\"1540\"},{\"label\":\"Decorative Items\",\"value\":\"748\"},{\"label\":\"Home & Living\",\"value\":\"6033\"},{\"label\":\"Home Decor & Furnishing\",\"value\":\"6036\"},{\"label\":\"Trendy Gadgets & Wearables\",\"value\":\"589\"},{\"label\":\"Smartwatches\",\"value\":\"592\"},{\"label\":\"Watches\",\"value\":\"1321\"},{\"label\":\"Electronics\",\"value\":\"6042\"},{\"label\":\"Jewellery\",\"value\":\"1543\"}]"
+    },
+    {
+        "attribute_code": "brand_name",
+        "options": "[{\"label\":\"Sonata\",\"value\":\"21654\"},{\"label\":\"Titan\",\"value\":\"21651\"},{\"label\":\"Fastrack\",\"value\":\"21657\"},{\"label\":\"Titan Raga\",\"value\":\"21702\"},{\"label\":\"Zoop\",\"value\":\"21705\"}]"
+    },
+    {
+        "attribute_code": "color",
+        "options": "[{\"label\":\"17044\",\"value\":\"17044\"}]"
+    }
+]

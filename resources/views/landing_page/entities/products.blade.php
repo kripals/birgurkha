@@ -12,6 +12,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 {{ Form::text('value', old('value'), ['class' => 'form-control', 'required']) }}
+                                {{ Form::hidden('is_cms', '1') }}
                                 {{ Form::label('value', 'Product Name') }}
                             </div>
                         </div>
