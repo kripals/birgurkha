@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-3">
             <b>Landing Homepage Section</b>
-            {{ Form::select('type', typesArray(), old('type'), ['class' => 'form-control', 'required']) }}
+            {{ Form::select('type', typesArrayLanding(), old('type'), ['class' => 'form-control', 'required']) }}
         </div>
         <div class="col-md-3">
             <b>Landing Page Section</b>

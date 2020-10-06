@@ -74,6 +74,17 @@ function typesArray()
 /**
  * @return \App\Models\Type[]|\Illuminate\Database\Eloquent\Collection
  */
+function typesArrayLanding()
+{
+    $types[0] = '-';
+    $types    = $types + \App\Models\Type::all()->whereNotIn('type', ['DEALS', 'CATEGORY'])->pluck('section', 'id')->toArray();
+
+    return $types;
+}
+
+/**
+ * @return \App\Models\Type[]|\Illuminate\Database\Eloquent\Collection
+ */
 function landingPagesArray()
 {
     $landingPages[0] = '-';
