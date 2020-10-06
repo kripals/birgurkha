@@ -26,7 +26,6 @@
     <!-- BEGIN LOGIN SECTION -->
     <section class="section-account">
         <div class="row col-md-12 logo" align="center">
-            <img src="{{ asset(config('website.logo')) }}" alt="logo" width="100" height="100">
         </div>
         <div class="row col-md-12" align="center">
             <div class="card col-sm-4 col-sm-offset-4 ">

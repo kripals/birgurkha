@@ -82,7 +82,7 @@
                                         old('landingPage'), ['class' => 'form-control', 'required']) }}
                                     </td>
                                     <td>
-                                        {{ Form::select('type['. $key. ']', typesArray(),
+                                        {{ Form::select('type['. $key. ']', typesArrayLanding(),
                                         old('type'), ['class' => 'form-control select2-list', 'required']) }}
                                     </td>
                                 </tr>
