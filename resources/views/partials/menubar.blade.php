@@ -72,12 +72,12 @@
             <!-- END CMS PAGES -->
 
             <!-- BEGIN URL KEYS -->
-            <li>
-                <a href="{{ route('urlKeys') }}">
-                    <div class="gui-icon"><i class="md md-web"></i></div>
-                    <span class="title">Web Page</span>
-                </a>
-            </li><!--end /menu-li -->
+{{--            <li>--}}
+{{--                <a href="{{ route('urlKeys') }}">--}}
+{{--                    <div class="gui-icon"><i class="md md-web"></i></div>--}}
+{{--                    <span class="title">Web Page</span>--}}
+{{--                </a>--}}
+{{--            </li><!--end /menu-li -->--}}
             <!-- END URL KEYS -->
 
             <!-- BEGIN SEARCH -->
