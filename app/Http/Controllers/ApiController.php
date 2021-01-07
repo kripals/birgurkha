@@ -252,13 +252,14 @@ class ApiController extends Controller
             {
                 if ($local['image'] != null) {
                     $image = $local['image'];
-                }
-                elseif (isset($local['images']))
-                {
-                    $image = $local['image']['url_path'];
-                }
-                else {
-                    $image = null;
+                } else {
+                    if ($local['images'] != null)
+                    {
+                        $image = $local['images']['url_path'];
+                    }
+                    else {
+                        $image = null;
+                    }
                 }
 
                 $arrayLocal['data'][] = [
