@@ -30,14 +30,14 @@ class Controller extends BaseController
                 'path' => str_replace("storage/", "", (string) $img)
             ];
 
-            if ($instance->image)
+            if ($instance->images)
             {
-                $instance->image->deleteImage();
-                $instance->image->update($imageDetails);
+                $instance->images->deleteImage();
+                $instance->images->update($imageDetails);
             }
             else
             {
-                $instance->image()->create($imageDetails);
+                $instance->images()->create($imageDetails);
             }
         }
 

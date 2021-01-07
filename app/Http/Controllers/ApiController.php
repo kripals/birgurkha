@@ -64,7 +64,7 @@ class ApiController extends Controller
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST  => "POST",
-                CURLOPT_POSTFIELDS     => "{\"query\":\"{\\r\\n    products (\\r\\n        search: \\\"$search\\\", \\r\\n        pageSize: 20\\r\\n    )\\r\\n    {\\r\\n        aggregations {\\r\\n            attribute_code\\r\\n            label\\r\\n            options {\\r\\n                label\\r\\n                value\\r\\n            }\\r\\n        }\\r\\n\\r\\n        total_count\\r\\n        items {\\r\\n            id\\r\\n            name\\r\\n            sku\\r\\n        }\\r\\n    }\\r\\n}\\r\\n\",\"variables\":{}}",
+                CURLOPT_POSTFIELDS     => '{"query":"{\\r\\n    products (\\r\\n        search: \\"Flipkart Smartbuy Double Bed Box Mosquito Net\\", \\r\\n        pageSize: 20\\r\\n    )\\r\\n    {\\r\\n        aggregations {\\r\\n            attribute_code\\r\\n            label\\r\\n            options {\\r\\n                label\\r\\n                value\\r\\n            }\\r\\n        }\\r\\n\\r\\n        total_count\\r\\n        items {\\r\\n            id\\r\\n            name\\r\\n            sku    \\r\\n            media_gallery {\\r\\n            url\\r\\n            ... on ProductVideo {\\r\\n                video_content {\\r\\n                video_provider\\r\\n                video_url\\r\\n                }\\r\\n            }\\r\\n            }\\r\\n        }\\r\\n    }\\r\\n}\\r\\n","variables":{}}',
                 CURLOPT_HTTPHEADER     => [
                     "Authorization: Bearer kesndsasbp4ldlgj9wnohdo1w86wrwuf",
                     "Content-Type: application/json",
@@ -246,17 +246,28 @@ class ApiController extends Controller
                 "button_id"           => $type['entity_id'],
                 'image_path'          => ( $type['image'] != null ) ? $type['image']['url_path'] : null,
             ];
-            $locals    = Local::orderBy('position', 'asc')->where('type_id', $type['id'])->with('image')->get()->toArray();
+            $locals    = Local::orderBy('position', 'asc')->where('type_id', $type['id'])->with('images')->get()->toArray();
 
             foreach ($locals as $keyL => $local)
             {
+                if ($local['image'] != null) {
+                    $image = $local['image'];
+                }
+                elseif ($local['images'])
+                {
+                    $image = $local['image']['url_path'];
+                }
+                else {
+                    $image = null;
+                }
+
                 $arrayLocal['data'][] = [
                     'type'             => 'local',
                     'entity_id'        => $local['entity_id'],
                     'magento_type'     => $local['magento_type'],
                     'name'             => $local['name'],
                     'position'         => $local['position'],
-                    'image_path'       => ( $local['image'] != null ) ? $local['image']['url_path'] : null,
+                    'image_path'       => $image,
                     'category_color'   => $local['category_color'],
                     'description_text' => $local['description_text'],
                 ];

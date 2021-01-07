@@ -2,6 +2,51 @@
 
 @section('title', 'Magento Products')
 
+@push('styles')
+    <style>
+        /* HIDE RADIO */
+        [type=radio] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 10px solid #f00;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .desc {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+@endpush
+
 @section('content')
     <section class="no-y-padding">
         <div class="section-body">
@@ -64,8 +109,9 @@
                                 </tr>
                                 <tr>
                                     <th width="5%">#</th>
-                                    <th width="50%">Name</th>
-                                    <th width="20%">Sku</th>
+                                    <th width="20%">Name</th>
+                                    <th width="10%">Sku</th>
+                                    <th width="15%">Images</th>
                                     <th width="20%">Send To</th>
                                 </tr>
                                 </thead>
@@ -87,6 +133,23 @@
                                             <td>
                                                 {{ $item['sku'] }}
                                                 {{ Form::text('sku['. $key. ']', $item['sku'] , ['hidden']) }}
+                                            </td>
+                                            <td>
+                                                @foreach($item['media_gallery'] as $image)
+                                                    <div class="dropdown">
+                                                        <label>
+                                                            <input type="radio" name="image[{{$key}}]" value="{{ $image['url'] }}" class="form-control">
+
+                                                            {{--thumbnail image--}}
+                                                            <img src="{{ $image['url'] }}" width="50px" height="50px">
+
+                                                            {{--big image--}}
+                                                            <div class="dropdown-content">
+                                                                <img src="{{ $image['url'] }}" width="400px">
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                @endforeach
                                             </td>
                                             <td>
                                                 {{ Form::select('type['. $key. ']', typesArray(), old('type'), ['class' => 'form-control', 'required']) }}

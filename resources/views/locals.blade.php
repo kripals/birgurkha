@@ -101,14 +101,20 @@
                                     </td>
                                     <td>
                                         @if(isset($item->image))
-                                            <img src="{{ asset($item->image->path) }}"
+                                            <img src="{{ asset($item->image) }}"
+                                                 class="preview" width="150">
+                                        @elseif(isset($item->images))
+                                            <img src="{{ asset($item->images->path) }}"
                                                  class="preview" width="150">
                                         @else
                                             <img src="{{ asset(config('paths.placeholder.default')) }}"
                                                  data-src="{{ asset(config('paths.placeholder.default')) }}"
                                                  class="preview" height="150" width="150">
                                         @endif
-                                        {{ Form::file('image[' . $item->id . ']', ['class' => 'image-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
+
+                                        @if($item->magento_type != 'PRODUCT')
+                                            {{ Form::file('image[' . $item->id . ']', ['class' => 'image-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
+                                        @endif
                                     </td>
                                     <td>
                                         <a role="button" href="javascript:void(0);"

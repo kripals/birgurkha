@@ -15,12 +15,10 @@ class LocalController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->has('type'))
-        {
+        if ($request->has('type')) {
             $type = $request->type;
         }
-        else
-        {
+        else {
             $type = Type::first()->id;
         }
 
@@ -36,15 +34,14 @@ class LocalController extends Controller
     public function productStore(Request $request)
     {
         DB::transaction(function () use ($request) {
-            foreach ($request->type as $key => $value)
-            {
-                if ( ! empty($value))
-                {
+            foreach ($request->type as $key => $value) {
+                if (!empty($value)) {
                     $data = [
-                        'entity_id'    => $request->sku[ $key ],
+                        'entity_id'    => $request->sku[$key],
                         'magento_type' => 'PRODUCT',
-                        'name'         => $request->name[ $key ],
-                        'type_id'      => $request->type[ $key ]
+                        'name'         => $request->name[$key],
+                        'type_id'      => $request->type[$key],
+                        'image'        => $request->image[$key]
                     ];
 
                     $local = Local::create($data);
@@ -52,7 +49,7 @@ class LocalController extends Controller
             }
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Products' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', ['entity' => 'Products']));
     }
 
     /**
@@ -63,22 +60,19 @@ class LocalController extends Controller
     {
         $array = [];
         DB::transaction(function () use ($request, $array) {
-            foreach ($request->status as $key => $value)
-            {
+            foreach ($request->status as $key => $value) {
                 $array[]['attribute_code'] = $key;
 
                 $num = 0;
-                foreach ($value as $k => $v)
-                {
-                    $a[ $key ][ $num ]['label'] = $request->label[ $key ][ $k ];
-                    $a[ $key ][ $num ]['value'] = $request->value[ $key ][ $k ];
+                foreach ($value as $k => $v) {
+                    $a[$key][$num]['label'] = $request->label[$key][$k];
+                    $a[$key][$num]['value'] = $request->value[$key][$k];
                     $num++;
                 }
             }
 
-            foreach ($array as $key => $value)
-            {
-                $array[ $key ]['options'] = $a[ $value['attribute_code'] ];
+            foreach ($array as $key => $value) {
+                $array[$key]['options'] = $a[$value['attribute_code']];
             }
 
             $data = [
@@ -91,7 +85,7 @@ class LocalController extends Controller
             $local = Local::create($data);
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Aggregation' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', ['entity' => 'Aggregation']));
     }
 
     /**
@@ -101,27 +95,24 @@ class LocalController extends Controller
     public function categoryStore(Request $request)
     {
         DB::transaction(function () use ($request) {
-            foreach ($request->type as $key => $value)
-            {
-                if ( ! empty($value))
-                {
+            foreach ($request->type as $key => $value) {
+                if (!empty($value)) {
                     $data = [
-                        'entity_id'    => $request->id[ $key ],
+                        'entity_id'    => $request->id[$key],
                         'magento_type' => 'CATEGORY',
-                        'name'         => $request->name[ $key ],
-                        'type_id'      => $request->type[ $key ]
+                        'name'         => $request->name[$key],
+                        'type_id'      => $request->type[$key]
                     ];
 
                     $local = Local::create($data);
                 }
 
-                if ( ! empty($request->button[ $key ]))
-                {
-                    $type_id = $request->button[ $key ];
+                if (!empty($request->button[$key])) {
+                    $type_id = $request->button[$key];
                     $type    = Type::find($type_id);
 
                     $data = [
-                        'entity_id'   => $request->id[ $key ],
+                        'entity_id'   => $request->id[$key],
                         'entity_type' => 'CATEGORY',
                     ];
                     $type->update($data);
@@ -129,7 +120,7 @@ class LocalController extends Controller
             }
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Category' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', ['entity' => 'Category']));
     }
 
     /**
@@ -149,7 +140,7 @@ class LocalController extends Controller
             $local = Local::create($data);
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Cms Page' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', ['entity' => 'Cms Page']));
     }
 
     /**
@@ -169,7 +160,7 @@ class LocalController extends Controller
             $local = Local::create($data);
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Url' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', ['entity' => 'Url']));
     }
 
     /**
@@ -189,7 +180,7 @@ class LocalController extends Controller
             $local = Local::create($data);
         });
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Default' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', ['entity' => 'Default']));
     }
 
     /**
@@ -200,28 +191,25 @@ class LocalController extends Controller
     {
         $data = [];
 
-        foreach ($request->status as $id => $value)
-        {
+        foreach ($request->status as $id => $value) {
             DB::transaction(function () use ($request, $id) {
-                if (isset($request->position[ $id ]))
-                {
+                if (isset($request->position[$id])) {
                     $data  = [
-                        'position'         => $request->position[ $id ],
-                        'category_color'   => $request->category_color[ $id ],
-                        'description_text' => $request->description_text[ $id ],
+                        'position'         => $request->position[$id],
+                        'category_color'   => $request->category_color[$id],
+                        'description_text' => $request->description_text[$id],
                     ];
                     $local = Local::find($id);
                     $local->update($data);
                 }
 
-                if ($request->image[ $id ])
-                {
-                    $this->uploadRequestImage($request->image[ $id ], $local);
+                if ($request->image[$id]) {
+                    $this->uploadRequestImage($request->image[$id], $local);
                 }
             });
         }
 
-        return redirect()->route('local.index')->withSuccess(trans('messages.update_success', [ 'entity' => 'Local Data' ]));
+        return redirect()->route('local.index')->withSuccess(trans('messages.update_success', ['entity' => 'Local Data']));
     }
 
     /**
@@ -232,11 +220,10 @@ class LocalController extends Controller
     public function destroy(Local $local)
     {
         $local->delete();
-        if ($local->image)
-        {
-            $local->image->deleteImage();
+        if ($local->images) {
+            $local->images->deleteImage();
         }
 
-        return back()->withSuccess(trans('messages.delete_success', [ 'entity' => 'Local' ]));
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Local']));
     }
 }

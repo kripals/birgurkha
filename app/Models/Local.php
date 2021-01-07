@@ -18,7 +18,8 @@ class Local extends Model
         'type_id',
         'position',
         'category_color',
-        'description_text'
+        'description_text',
+        'image'
     ];
 
     /**
@@ -41,7 +42,7 @@ class Local extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function image()
+    public function images()
     {
         return $this->morphOne('App\Models\Image', 'imageable');
     }
