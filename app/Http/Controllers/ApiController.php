@@ -64,7 +64,7 @@ class ApiController extends Controller
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST  => "POST",
-                CURLOPT_POSTFIELDS     => '{"query":"{\\r\\n    products (\\r\\n        search: \\"Flipkart Smartbuy Double Bed Box Mosquito Net\\", \\r\\n        pageSize: 20\\r\\n    )\\r\\n    {\\r\\n        aggregations {\\r\\n            attribute_code\\r\\n            label\\r\\n            options {\\r\\n                label\\r\\n                value\\r\\n            }\\r\\n        }\\r\\n\\r\\n        total_count\\r\\n        items {\\r\\n            id\\r\\n            name\\r\\n            sku    \\r\\n            media_gallery {\\r\\n            url\\r\\n            ... on ProductVideo {\\r\\n                video_content {\\r\\n                video_provider\\r\\n                video_url\\r\\n                }\\r\\n            }\\r\\n            }\\r\\n        }\\r\\n    }\\r\\n}\\r\\n","variables":{}}',
+                CURLOPT_POSTFIELDS     => "{\"query\":\"{\\r\\n    products (\\r\\n        search: \\\"$search\\\", \\r\\n        pageSize: 20\\r\\n    )\\r\\n    {\\r\\n        aggregations {\\r\\n            attribute_code\\r\\n            label\\r\\n            options {\\r\\n                label\\r\\n                value\\r\\n            }\\r\\n        }\\r\\n\\r\\n        total_count\\r\\n        items {\\r\\n            id\\r\\n            name\\r\\n            sku\\r\\n        }\\r\\n    }\\r\\n}\\r\\n\",\"variables\":{}}",
                 CURLOPT_HTTPHEADER     => [
                     "Authorization: Bearer kesndsasbp4ldlgj9wnohdo1w86wrwuf",
                     "Content-Type: application/json",
