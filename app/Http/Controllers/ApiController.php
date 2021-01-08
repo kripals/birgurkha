@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\LandingPage;
-use App\Models\LandingPageEntity;
 use App\Models\Local;
 use App\Models\Type;
 use GuzzleHttp\Client;
@@ -22,21 +21,20 @@ class ApiController extends Controller
 
         // variable for the guzzle client
         $this->client = new Client([
-            'headers' => [ 'Content-Type' => 'application/json' ]
-        ]);
+                                       'headers' => ['Content-Type' => 'application/json']
+                                   ]);
 
         $url    = $this->url . 'rest/V1/integration/admin/token';
         $token  = $this->client->request('POST', $url, [
             'body' => json_encode([
-                'username' => 'mobileapplication@sastodeal.com',
-                'password' => 'S!^MST"{cu+k{{6z'
-            ])
+                                      'username' => 'mobileapplication@sastodeal.com',
+                                      'password' => 'S!^MST"{cu+k{{6z'
+                                  ])
         ]);
         $status = $token->getStatusCode();
 
         // check for the status of the request
-        if ($status == 200)
-        {
+        if ($status == 200) {
             // variable for the token
             $this->token = json_decode($token->getBody()->getContents());
         }
@@ -48,11 +46,29 @@ class ApiController extends Controller
      */
     public function productSearch(Request $request)
     {
-        $url    = $this->url . "graphql";
-        $search = str_replace('. " .', '', $request->value);
+        $url = $this->url . "graphql";
 
-        if (isset($this->token))
-        {
+        if (!is_null($request->value_name)) {
+            $search    = str_replace('. " .', '', $request->value_name);
+            $statement = "{\"query\":\"{\\r\\n products (\\r\\n search: \\\"$search\\\", \\r\\n pageSize: 50\\r\\n )\\r\\n {\\r\\n aggregations {\\r\\n attribute_code\\r\\n label\\r\\n options {\\r\\n label\\r\\n value\\r\\n }\\r\\n }\\r\\n\\r\\n total_count\\r\\n items {\\r\\n id\\r\\n name\\r\\n sku \\r\\n media_gallery {\\r\\n url\\r\\n ... on ProductVideo {\\r\\n video_content {\\r\\n video_provider\\r\\n video_url\\r\\n }\\r\\n }\\r\\n }\\r\\n }\\r\\n }\\r\\n}\\r\\n\",\"variables\":{}}";
+        }
+        elseif (!is_null($request->value_sku)) {
+            $search     = str_replace('. " .', '', $request->value_sku);
+            $new_search = '';
+            $arrays     = explode(',', $search);
+
+            foreach ($arrays as $array) {
+                $new_search .= '\\"' . $array . '\\",';
+            }
+            $new_search = substr($new_search, 0, strlen($new_search)-1);
+
+            $statement = '{"query":"{\\r\\n products (\\r\\n filter: { sku: { in: [' . $new_search . '] } }\\r\\n pageSize: 50\\r\\n )\\r\\n {\\r\\n aggregations {\\r\\n attribute_code\\r\\n label\\r\\n options {\\r\\n label\\r\\n value\\r\\n }\\r\\n }\\r\\n\\r\\n total_count\\r\\n items {\\r\\n id\\r\\n name\\r\\n sku \\r\\n media_gallery {\\r\\n url\\r\\n ... on ProductVideo {\\r\\n video_content {\\r\\n video_provider\\r\\n video_url\\r\\n }\\r\\n }\\r\\n }\\r\\n }\\r\\n }\\r\\n}\\r\\n","variables":{}}';
+        }
+        else {
+            return redirect()->route('products')->withErrors(trans('messages.search_error', ['entity' => 'Product. Please enter wither sku or name.']));
+        }
+
+        if (isset($this->token)) {
             $curl = curl_init();
 
             curl_setopt_array($curl, [
@@ -64,7 +80,7 @@ class ApiController extends Controller
                 CURLOPT_FOLLOWLOCATION => true,
                 CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST  => "POST",
-                CURLOPT_POSTFIELDS     => "{\"query\":\"{\\r\\n    products (\\r\\n        search: \\\"$search\\\", \\r\\n        pageSize: 20\\r\\n    )\\r\\n    {\\r\\n        aggregations {\\r\\n            attribute_code\\r\\n            label\\r\\n            options {\\r\\n                label\\r\\n                value\\r\\n            }\\r\\n        }\\r\\n\\r\\n        total_count\\r\\n        items {\\r\\n            id\\r\\n            name\\r\\n            sku\\r\\n        }\\r\\n    }\\r\\n}\\r\\n\",\"variables\":{}}",
+                CURLOPT_POSTFIELDS     => $statement,
                 CURLOPT_HTTPHEADER     => [
                     "Authorization: Bearer kesndsasbp4ldlgj9wnohdo1w86wrwuf",
                     "Content-Type: application/json",
@@ -76,36 +92,29 @@ class ApiController extends Controller
             curl_close($curl);
             $data = json_decode($response, true);
 
-            if (array_key_exists('data', $data))
-            {
+            if (array_key_exists('data', $data)) {
                 $content          = $data['data']['products'];
                 $content['value'] = $search;
 
-                if ($request->search_aggregation)
-                {
+                if ($request->search_aggregation) {
                     $content['is_product'] = false;
                 }
-                else
-                {
+                else {
                     $content['is_product'] = true;
                 }
 
-                if ($request->is_cms)
-                {
+                if ($request->is_cms) {
                     return view('landing_page.entities.products', compact('content'));
                 }
-                else
-                {
+                else {
                     return view('products', compact('content'));
                 }
             }
-            else
-            {
+            else {
                 return "error";
             }
         }
-        else
-        {
+        else {
             return "error";
         }
     }
@@ -119,8 +128,7 @@ class ApiController extends Controller
         $url    = $this->url . "graphql";
         $search = $request->value;
 
-        if (isset($this->token))
-        {
+        if (isset($this->token)) {
             $curl = curl_init();
 
             curl_setopt_array($curl, [
@@ -144,26 +152,21 @@ class ApiController extends Controller
             curl_close($curl);
             $data = json_decode($response, true);
 
-            if (array_key_exists('data', $data))
-            {
+            if (array_key_exists('data', $data)) {
                 $content = $data['data']['categoryList'];
 
-                if ($request->is_cms)
-                {
+                if ($request->is_cms) {
                     return view('landing_page.entities.categories', compact('content'));
                 }
-                else
-                {
+                else {
                     return view('categories', compact('content'));
                 }
             }
-            else
-            {
+            else {
                 return "error";
             }
         }
-        else
-        {
+        else {
             return "error";
         }
     }
@@ -177,8 +180,7 @@ class ApiController extends Controller
         $url    = $this->url . "graphql";
         $search = $request->search;
 
-        if (isset($this->token))
-        {
+        if (isset($this->token)) {
             $curl = curl_init();
 
             curl_setopt_array($curl, [
@@ -201,19 +203,16 @@ class ApiController extends Controller
             curl_close($curl);
             $data = json_decode($response, true);
 
-            if (array_key_exists('data', $data))
-            {
+            if (array_key_exists('data', $data)) {
                 $content = $data['data']['cmsPage'];
 
                 return view('cmsPages', compact('content'));
             }
-            else
-            {
+            else {
                 return "error";
             }
         }
-        else
-        {
+        else {
             return "error";
         }
     }
@@ -226,8 +225,7 @@ class ApiController extends Controller
         $arrayData = [];
         $types     = Type::orderBy('position', 'asc')->where('visible', 1)->with('image')->get()->toArray();
 
-        foreach ($types as $keyT => $type)
-        {
+        foreach ($types as $keyT => $type) {
             $arrayLocal['data'] = [];
             $arrayType          = [];
 
@@ -244,17 +242,16 @@ class ApiController extends Controller
                 "background_color"    => $type['background_color'],
                 "button_type"         => $type['entity_type'],
                 "button_id"           => $type['entity_id'],
-                'image_path'          => ( $type['image'] != null ) ? $type['image']['url_path'] : null,
+                'image_path'          => ($type['image'] != null) ? $type['image']['url_path'] : null,
             ];
             $locals    = Local::orderBy('position', 'asc')->where('type_id', $type['id'])->with('images')->get()->toArray();
 
-            foreach ($locals as $keyL => $local)
-            {
+            foreach ($locals as $keyL => $local) {
                 if ($local['image'] != null) {
                     $image = $local['image'];
-                } else {
-                    if ($local['images'] != null)
-                    {
+                }
+                else {
+                    if ($local['images'] != null) {
                         $image = $local['images']['url_path'];
                     }
                     else {
@@ -275,8 +272,7 @@ class ApiController extends Controller
             }
             $landingPages = LandingPage::orderBy('created_at', 'asc')->where('visible', 1)->where('type_id', $type['id'])->with('image')->get()->toArray();
 
-            foreach ($landingPages as $keyLP => $landing_page)
-            {
+            foreach ($landingPages as $keyLP => $landing_page) {
                 $arrayLocal['data'][] = [
                     'landing_page_id' => $landing_page['id'],
                     'type'            => 'landing_page',
@@ -284,7 +280,7 @@ class ApiController extends Controller
                     'position'        => 0,
                     'urlkey'          => $landing_page['urlkey'],
                     'visible'         => $landing_page['visible'],
-                    'image_path'      => ( $landing_page['image'] != null ) ? $landing_page['image']['url_path'] : null,
+                    'image_path'      => ($landing_page['image'] != null) ? $landing_page['image']['url_path'] : null,
                 ];
             }
 
@@ -307,42 +303,38 @@ class ApiController extends Controller
             'urlkey' => $landingPage['urlkey']
         ];
 
-        if ($landingPage->landingPagesEntites()->exists())
-        {
+        if ($landingPage->landingPagesEntites()->exists()) {
             $landingPagesEntities = $landingPage->landingPagesEntites->sortBy('type_id')->sortBy('position');
 
-            foreach ($landingPagesEntities as $key => $landingPagesEntity)
-            {
+            foreach ($landingPagesEntities as $key => $landingPagesEntity) {
                 $type_id = $landingPagesEntity->type_id;
 
-                $data[ $type_id ] = [
+                $data[$type_id] = [
                     "section"  => $landingPagesEntity->type->section,
                     "name"     => $landingPagesEntity->type->name,
                     "position" => $landingPagesEntity->type->position,
                     "type"     => $landingPagesEntity->type->type
                 ];
 
-                $data1[ $type_id ][] = [
+                $data1[$type_id][] = [
                     'entity_id'        => $landingPagesEntity->entity_id,
                     'magento_type'     => $landingPagesEntity->magento_type,
                     'name'             => $landingPagesEntity->name,
                     'position'         => $landingPagesEntity->position,
-                    'image_path'       => ( $landingPagesEntity->image != null ) ? $landingPagesEntity->image['url_path'] : null,
+                    'image_path'       => ($landingPagesEntity->image != null) ? $landingPagesEntity->image['url_path'] : null,
                     'description_text' => $landingPagesEntity->description_text,
                 ];
             }
 
-            foreach ($data1 as $key => $value)
-            {
-                $data [ $key ]['data'] = $value;
+            foreach ($data1 as $key => $value) {
+                $data [$key]['data'] = $value;
             }
 
             $landingPageData['sections'] = $data;
 
-            foreach ($landingPageData['sections'] as $key => $value)
-            {
+            foreach ($landingPageData['sections'] as $key => $value) {
                 $data2[] = $value;
-                unset($landingPageData['sections'][ $key ]);
+                unset($landingPageData['sections'][$key]);
             }
             unset($landingPageData['sections']);
             $landingPageData['sections'] = $data2;
@@ -350,6 +342,6 @@ class ApiController extends Controller
             return $landingPageData;
         }
 
-        return json_encode([ "error" => "404"]);
+        return json_encode(["error" => "404"]);
     }
 }

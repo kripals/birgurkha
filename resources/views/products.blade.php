@@ -56,8 +56,14 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                {{ Form::text('value', empty($content) ? '' : $content['value'], ['class' => 'form-control', 'required']) }}
-                                {{ Form::label('value', 'Product Name') }}
+                                {{ Form::text('value_name', empty($content) ? '' : isset($content['value_name']) ? $content['value_name'] : '', ['class' => 'form-control']) }}
+                                {{ Form::label('value_name', 'Product Name or Sku. Only one.') }}
+                            </div>
+                        </div>.
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ Form::textarea('value_sku', empty($content) ? '' : isset($content['value_sku']) ? $content['value_sku'] : '', ['class' => 'form-control', 'cols'=>20, 'rows'=>2]) }}
+                                {{ Form::label('value_sku', 'Product Sku (Seperate with comma " , " )') }}
                             </div>
                         </div>
                     </div>
