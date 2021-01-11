@@ -21,4 +21,5 @@ return [
     'update_error'       => 'An error occurred updating :entity',
     'delete_error'       => 'An error occurred deleting :entity',
     'upload_error'       => 'An error occurred uploading file.',
+    'search_error'       => 'An error occurred while searching :entity.',
 ];
