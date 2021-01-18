@@ -25,7 +25,8 @@ class Type extends Model
         'view_all_buttons',
         'entity_id',
         'entity_type',
-        'background_color'
+        'background_color',
+        'is_landing'
     ];
 
     /**

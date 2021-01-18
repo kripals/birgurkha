@@ -66,7 +66,7 @@ function thumbnail($width, $entity = null)
 function typesArray()
 {
     $types[0] = '-';
-    $types    = $types + \App\Models\Type::all()->pluck('section', 'id')->toArray();
+    $types    = $types + \App\Models\Type::where('is_landing', 0)->pluck('section', 'id')->toArray();
 
     return $types;
 }
@@ -77,7 +77,7 @@ function typesArray()
 function typesArrayLanding()
 {
     $types[0] = '-';
-    $types    = $types + \App\Models\Type::all()->whereNotIn('type', ['DEALS', 'CATEGORY'])->pluck('section', 'id')->toArray();
+    $types    = $types + \App\Models\Type::where('is_landing', 1)->pluck('section', 'id')->toArray();
 
     return $types;
 }
@@ -88,7 +88,7 @@ function typesArrayLanding()
 function landingPagesArray()
 {
     $landingPages[0] = '-';
-    $landingPages    = $landingPages + \App\Models\LandingPage::all()->pluck('title', 'id')->toArray();
+    $landingPages    = $landingPages + \App\Models\Local::where('magento_type', 'LANDING_PAGE')->pluck('name', 'id')->toArray();
 
     return $landingPages;
 }

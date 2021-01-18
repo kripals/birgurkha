@@ -9,10 +9,6 @@
                 <div class="card-head">
                     <header>Edit Landing Pages</header>
                     <div class="tools">
-                        <a class="btn btn-primary-dark" href="{{ route('landingPage.entity', $landingPage->id) }}">
-                            <i class="md md-add"></i>
-                            Entities
-                        </a>
                         <a class="btn btn-default" onclick="history.go(-1);return false;">
                             <i class="md md-arrow-back"></i>
                             Back
@@ -47,13 +43,13 @@
                         </tr>
                         <tr>
                             <th width="2%">#</th>
-                            <th width="10%">Section</th>
+                            <th width="20%">Section</th>
                             <th width="5%">Magento Type</th>
-                            <th width="10%">Entity Id</th>
+                            <th width="5%">Entity Id</th>
                             <th width="5%">Position</th>
                             <th width="20%">Name</th>
                             <th width="20%">Description</th>
-                            <th width="20%">Image</th>
+                            <th width="15%">Image</th>
                             <th width="5%">Action</th>
                         </tr>
                         </thead>
@@ -73,7 +69,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        {{ $item->type_name }}
+                                        {{ Form::select('type['. $item->id . ']', typesArrayLanding(), $item->type_id, ['class' => 'form-control']) }}
                                     </td>
                                     <td>
                                         {{ $item->magento_type }}
@@ -92,14 +88,20 @@
                                     </td>
                                     <td>
                                         @if(isset($item->image))
-                                            <img src="{{ asset($item->image->path) }}"
+                                            <img src="{{ asset($item->image) }}"
+                                                 class="preview" width="150">
+                                        @elseif(isset($item->images))
+                                            <img src="{{ asset($item->images->path) }}"
                                                  class="preview" width="150">
                                         @else
                                             <img src="{{ asset(config('paths.placeholder.default')) }}"
                                                  data-src="{{ asset(config('paths.placeholder.default')) }}"
                                                  class="preview" height="150" width="150">
                                         @endif
-                                        {{ Form::file('image[' . $item->id . ']', ['class' => 'image-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
+
+                                        @if($item->magento_type != 'PRODUCT')
+                                            {{ Form::file('image[' . $item->id . ']', ['class' => 'image-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
+                                        @endif
                                     </td>
                                     <td>
                                         <a role="button" href="javascript:void(0);"

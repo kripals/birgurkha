@@ -29,6 +29,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                {{ Form::select('landing', landingPagesArray(), old('landing'), ['class' => 'form-control', 'required']) }}
+                                {{ Form::label('type', 'Landing Pages') }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-actionbar">
                     <div class="card-actionbar-row">

@@ -53,9 +53,10 @@
                         <tr>
                             <th width="5%">#</th>
                             <th width="20%">Name</th>
-                            <th width="20%">Category Level</th>
-                            <th width="20%" class="text-right">For Addition In Home Section</th>
+                            <th width="5%">Category Level</th>
+                            <th width="20%" class="text-right">Send To Home Section</th>
                             <th width="20%" class="text-right">For View All Button In Home Section</th>
+                            <th width="20%" class="text-right">Send To Landing page</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -82,6 +83,9 @@
                                     </td>
                                     <td>
                                         {{ Form::select('button['. $key. ']', typesArray(), old('button'), ['class' => 'form-control', 'required']) }}
+                                    </td>
+                                    <td>
+                                        {{ Form::select('landing['. $key. ']', landingPagesArray(), old('landing'), ['class' => 'form-control', 'required']) }}
                                     </td>
                                 </tr>
                             @endforeach

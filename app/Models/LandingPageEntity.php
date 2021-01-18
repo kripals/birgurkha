@@ -19,7 +19,8 @@ class LandingPageEntity extends Model
         'position',
         'landing_page_id',
         'description_text',
-        'type_id'
+        'type_id',
+        'image'
     ];
 
     /**
@@ -36,7 +37,7 @@ class LandingPageEntity extends Model
      */
     public function getTypeNameAttribute()
     {
-        return $this->type->section;
+        return $this->type ? $this->type->section : 0;
     }
 
     /**
@@ -52,13 +53,13 @@ class LandingPageEntity extends Model
      */
     public function landingPage()
     {
-        return $this->belongsTo(LandingPage::class, 'landing_page_id');
+        return $this->belongsTo(Local::class, 'landing_page_id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function image()
+    public function images()
     {
         return $this->morphOne('App\Models\Image', 'imageable');
     }

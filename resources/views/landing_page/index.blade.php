@@ -21,7 +21,6 @@
                         <tr>
                             <th width="2%">#</th>
                             <th width="15%">Title</th>
-                            <th width="15%">Url Keys</th>
                             <th width="15%">Show In Mobile</th>
                             <th width="15%">Homesection</th>
                             <th width="10%" class="text-right">Actions</th>

@@ -54,4 +54,12 @@ class Local extends Model
     {
         return $this->belongsTo(Type::class, 'type_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function landingPagesEntites()
+    {
+        return $this->hasMany(LandingPageEntity::class, 'landing_page_id', 'id');
+    }
 }
