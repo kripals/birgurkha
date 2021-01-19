@@ -274,7 +274,7 @@ class ApiController extends Controller
                 } else {
                     $arrayLocal['data'][] = [
                     'landing_page_id' => $local['id'],
-                    'type'            => 'landing_page',
+                    'type'            => $local['magento_type'],
                     'title'           => $local['name'],
                     'position'        => $local['position'],
                     'visible'         => $local['position'] ? 1 : 0,
