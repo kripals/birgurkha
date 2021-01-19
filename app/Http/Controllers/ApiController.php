@@ -309,6 +309,18 @@ class ApiController extends Controller
 
                 if ($type_id != 0)
                 {
+                    if ($landingPagesEntity->image != null) {
+                        $image = $landingPagesEntity->image;
+                    }
+                    else {
+                        if ($landingPagesEntity->images != null) {
+                            $image = $landingPagesEntity->image['url_path'];
+                        }
+                        else {
+                            $image = null;
+                        }
+                    }
+
                     $data[$type_id] = [
                         "section"  => $landingPagesEntity->type->section,
                         "name"     => $landingPagesEntity->type->name,
@@ -321,7 +333,7 @@ class ApiController extends Controller
                         'magento_type'     => $landingPagesEntity->magento_type,
                         'name'             => $landingPagesEntity->name,
                         'position'         => $landingPagesEntity->position,
-                        'image_path'       => ($landingPagesEntity->image != null) ? $landingPagesEntity->image['url_path'] : null,
+                        'image_path'       => $image,
                         'description_text' => $landingPagesEntity->description_text,
                     ];
                 }
