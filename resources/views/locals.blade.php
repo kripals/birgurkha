@@ -112,9 +112,7 @@
                                                  class="preview" height="150" width="150">
                                         @endif
 
-                                        @if($item->magento_type != 'PRODUCT')
                                             {{ Form::file('image[' . $item->id . ']', ['class' => 'image-input', 'accept' => 'image/*', 'data-msg' => trans('validation.mimes', ['attribute' => 'avatar', 'values' => 'png, jpeg'])]) }}
-                                        @endif
                                     </td>
                                     <td>
                                         <a role="button" href="javascript:void(0);"

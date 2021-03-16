@@ -205,6 +205,9 @@ class LocalController extends Controller
 
                 if ($request->image[$id]) {
                     $this->uploadRequestImage($request->image[$id], $local);
+                    $local->update([
+                        'image' => null
+                    ]);
                 }
             });
         }
