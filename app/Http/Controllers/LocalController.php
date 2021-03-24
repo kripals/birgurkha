@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LandingPageEntity;
 use App\Models\Local;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -45,6 +46,21 @@ class LocalController extends Controller
                     ];
 
                     $local = Local::create($data);
+                }
+            }
+
+            foreach ($request->landing as $key => $value) {
+                if (!empty($value)) {
+                    $data = [
+                        'entity_id'       => $request->sku[$key],
+                        'magento_type'    => 'PRODUCT',
+                        'name'            => $request->name[$key],
+                        'landing_page_id' => $request->landing[$key],
+                        'type_id'         => 0,
+                        'image'           => $request->image[$key]
+                    ];
+
+                    $landingPage = LandingPageEntity::create($data);
                 }
             }
         });
@@ -118,12 +134,27 @@ class LocalController extends Controller
                     $type->update($data);
                 }
             }
+
+            foreach ($request->landing as $key => $value) {
+                if (!empty($value)) {
+                    $data = [
+                        'entity_id'       => $request->id[$key],
+                        'magento_type'    => 'CATEGORY',
+                        'name'            => $request->name[$key],
+                        'landing_page_id' => $request->landing[$key],
+                        'type_id'         => 0
+                    ];
+
+                    $landingPage = LandingPageEntity::create($data);
+                }
+            }
         });
 
         return redirect()->route('local.index')->withSuccess(trans('messages.create_success', ['entity' => 'Category']));
     }
 
     /**
+     * Not in use
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
@@ -170,14 +201,29 @@ class LocalController extends Controller
     public function defaultStore(Request $request)
     {
         DB::transaction(function () use ($request) {
-            $data = [
-                'entity_id'    => $request->name,
-                'magento_type' => 'DEFAULT',
-                'name'         => $request->title,
-                'type_id'      => $request->type
-            ];
+            if ($request->type) {
+                $data = [
+                    'entity_id'    => $request->name,
+                    'magento_type' => 'DEFAULT',
+                    'name'         => $request->title,
+                    'type_id'      => $request->type
+                ];
 
-            $local = Local::create($data);
+                $local = Local::create($data);
+            }
+
+            if ($request->landing) {
+                $data = [
+                    'entity_id'       => $request->name,
+                    'magento_type'    => 'DEFAULT',
+                    'name'            => $request->title,
+                    'landing_page_id' => $request->landing,
+                    'type_id'         => 0
+                ];
+
+                $landingPage = LandingPageEntity::create($data);
+            }
+
         });
 
         return redirect()->route('local.index')->withSuccess(trans('messages.create_success', ['entity' => 'Default']));

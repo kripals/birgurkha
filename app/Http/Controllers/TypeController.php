@@ -46,17 +46,17 @@ class TypeController extends Controller
                 'before_start_phrase' => $request->before_start_phrase,
                 'view_all_buttons'    => $request->view_all_buttons,
                 'background_color'    => $request->background_color,
+                'is_landing'          => $request->is_landing
             ];
 
             $type = Type::create($data);
 
-            if ($request->image)
-            {
+            if ($request->image) {
                 $this->uploadRequestImage($request->image, $type);
             }
         });
 
-        return redirect()->route('types.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Type' ]));
+        return redirect()->route('types.index')->withSuccess(trans('messages.create_success', ['entity' => 'Type']));
     }
 
     /**
@@ -72,7 +72,7 @@ class TypeController extends Controller
 
     /**
      * @param Request $request
-     * @param type $type
+     * @param type    $type
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Type $type)
@@ -90,17 +90,17 @@ class TypeController extends Controller
                 'before_start_phrase' => $request->before_start_phrase,
                 'view_all_buttons'    => $request->view_all_buttons,
                 'background_color'    => $request->background_color,
+                'is_landing'          => $request->is_landing
             ];
 
-            if ($request->image)
-            {
+            if ($request->image) {
                 $this->uploadRequestImage($request->image, $type);
             }
 
             $type->update($data);
         });
 
-        return redirect()->route('types.index')->withSuccess(trans('messages.update_success', [ 'entity' => 'Type' ]));
+        return redirect()->route('types.index')->withSuccess(trans('messages.update_success', ['entity' => 'Type']));
     }
 
     /**
@@ -112,6 +112,6 @@ class TypeController extends Controller
     {
         $type->delete();
 
-        return back()->withSuccess(trans('messages.delete_success', [ 'entity' => 'Type' ]));
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'Type']));
     }
 }

@@ -3,35 +3,27 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="form-group">
-                {{ Form::text('title', old('title'), ['class'=>'form-control', 'required']) }}
+                {{ Form::text('title', isset($landingPage) ? $landingPage->name : null , ['class'=>'form-control', 'required']) }}
                 <label>Title</label>
             </div>
         </div>
         <div class="col-sm-3">
             <div class="form-group">
-                {{ Form::text('urlkey', old('urlkey'), ['class'=>'form-control']) }}
-                <label>Url Key</label>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="form-group">
-                {{ Form::select('visible', [ 1 => 'Show', 0 => 'Dont Show' ] , old('visible'),
+                {{ Form::select('visible', [ 1 => 'Show', 0 => 'Dont Show' ] , isset($landingPage) ? $landingPage->position : null ,
                 ['class' => 'form-control select2-list', 'required']) }}
                 <label>Visibility</label>
             </div>
         </div>
         <div class="col-sm-3">
             <div class="form-group">
-                {{ Form::select('type_id', typesArray(), old('type_id'), ['class' => 'form-control', 'required']) }}
+                {{ Form::select('type_id', typesArray(), isset($landingPage) ? $landingPage->type_id : null , ['class' => 'form-control', 'required']) }}
                 <label>Homepage Section</label>
             </div>
         </div>
-    </div>
-    <div class="row">
         <div class="col-sm-3">
             <div class="form-group">
-                @if(isset($landingPage->image))
-                    <img src="{{ asset($landingPage->image->path) }}"
+                @if(isset($landingPage->images))
+                    <img src="{{ asset($landingPage->images->path) }}"
                          class="preview" width="300">
                 @else
                     <img src="{{ asset(config('paths.placeholder.default')) }}"

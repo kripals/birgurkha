@@ -99,6 +99,16 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <hr style="border: 10px solid;">
+        <h3>For Landing Page</h3>
+        <div class="col-sm-3">
+            <div class="form-group">
+                {{ Form::select('is_landing', [ 0 => 'No', 1 => 'Yes' ] , old('is_landing'), ['class' => 'form-control select2-list', 'required']) }}
+                <label>Is Landing Page</label>
+            </div>
+        </div>
+    </div>
 </div><!--end .card-body -->
 <div class="card-actionbar">
     <div class="card-actionbar-row">

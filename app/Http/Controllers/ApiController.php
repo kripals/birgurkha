@@ -259,29 +259,28 @@ class ApiController extends Controller
                     }
                 }
 
-                $arrayLocal['data'][] = [
-                    'type'             => 'local',
-                    'entity_id'        => $local['entity_id'],
-                    'magento_type'     => $local['magento_type'],
-                    'name'             => $local['name'],
-                    'position'         => $local['position'],
-                    'image_path'       => $image,
-                    'category_color'   => $local['category_color'],
-                    'description_text' => $local['description_text'],
+                if ($local['magento_type'] != 'LANDING_PAGE')
+                {
+                    $arrayLocal['data'][] = [
+                        'type'             => 'local',
+                        'entity_id'        => $local['entity_id'],
+                        'magento_type'     => $local['magento_type'],
+                        'name'             => $local['name'],
+                        'position'         => $local['position'],
+                        'image_path'       => $image,
+                        'category_color'   => $local['category_color'],
+                        'description_text' => $local['description_text'],
+                    ];
+                } else {
+                    $arrayLocal['data'][] = [
+                    'landing_page_id' => $local['id'],
+                    'type'            => $local['magento_type'],
+                    'title'           => $local['name'],
+                    'position'        => $local['position'],
+                    'visible'         => $local['position'] ? 1 : 0,
+                    'image_path'      => $image,
                 ];
-            }
-            $landingPages = LandingPage::orderBy('created_at', 'asc')->where('visible', 1)->where('type_id', $type['id'])->with('image')->get()->toArray();
-
-            foreach ($landingPages as $keyLP => $landing_page) {
-                $arrayLocal['data'][] = [
-                    'landing_page_id' => $landing_page['id'],
-                    'type'            => 'landing_page',
-                    'title'           => $landing_page['title'],
-                    'position'        => 0,
-                    'urlkey'          => $landing_page['urlkey'],
-                    'visible'         => $landing_page['visible'],
-                    'image_path'      => ($landing_page['image'] != null) ? $landing_page['image']['url_path'] : null,
-                ];
+                }
             }
 
             $arrayData[] = $arrayType + $arrayLocal;
@@ -297,10 +296,9 @@ class ApiController extends Controller
     public function landingPage(Request $request)
     {
         $landingPageId   = $request->landing_page_id;
-        $landingPage     = LandingPage::where('id', $landingPageId)->first();
+        $landingPage     = Local::where('id', $landingPageId)->first();
         $landingPageData = [
-            'title'  => $landingPage['title'],
-            'urlkey' => $landingPage['urlkey']
+            'title'  => $landingPage['name'],
         ];
 
         if ($landingPage->landingPagesEntites()->exists()) {
@@ -309,21 +307,36 @@ class ApiController extends Controller
             foreach ($landingPagesEntities as $key => $landingPagesEntity) {
                 $type_id = $landingPagesEntity->type_id;
 
-                $data[$type_id] = [
-                    "section"  => $landingPagesEntity->type->section,
-                    "name"     => $landingPagesEntity->type->name,
-                    "position" => $landingPagesEntity->type->position,
-                    "type"     => $landingPagesEntity->type->type
-                ];
+                if ($type_id != 0)
+                {
+                    if ($landingPagesEntity->image != null) {
+                        $image = $landingPagesEntity->image;
+                    }
+                    else {
+                        if ($landingPagesEntity->images != null) {
+                            $image = $landingPagesEntity->image['url_path'];
+                        }
+                        else {
+                            $image = null;
+                        }
+                    }
 
-                $data1[$type_id][] = [
-                    'entity_id'        => $landingPagesEntity->entity_id,
-                    'magento_type'     => $landingPagesEntity->magento_type,
-                    'name'             => $landingPagesEntity->name,
-                    'position'         => $landingPagesEntity->position,
-                    'image_path'       => ($landingPagesEntity->image != null) ? $landingPagesEntity->image['url_path'] : null,
-                    'description_text' => $landingPagesEntity->description_text,
-                ];
+                    $data[$type_id] = [
+                        "section"  => $landingPagesEntity->type->section,
+                        "name"     => $landingPagesEntity->type->name,
+                        "position" => $landingPagesEntity->type->position,
+                        "type"     => $landingPagesEntity->type->type
+                    ];
+
+                    $data1[$type_id][] = [
+                        'entity_id'        => $landingPagesEntity->entity_id,
+                        'magento_type'     => $landingPagesEntity->magento_type,
+                        'name'             => $landingPagesEntity->name,
+                        'position'         => $landingPagesEntity->position,
+                        'image_path'       => $image,
+                        'description_text' => $landingPagesEntity->description_text,
+                    ];
+                }
             }
 
             foreach ($data1 as $key => $value) {

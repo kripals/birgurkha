@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LandingPage;
 use App\Models\LandingPageEntity;
-use App\Models\Type;
+use App\Models\Local;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +15,7 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $landingPage = LandingPage::all();
+        $landingPage = Local::where('magento_type', 'LANDING_PAGE')->get();
 
         return view('landing_page.index', compact('landingPage'));
     }
@@ -37,21 +37,21 @@ class LandingPageController extends Controller
     {
         DB::transaction(function () use ($request) {
             $data = [
-                'title'   => $request->title,
-                'urlkey'  => $request->urlkey,
-                'visible' => $request->visible,
-                'type_id' => $request->type_id
+                'entity_id'    => 0,
+                'magento_type' => 'LANDING_PAGE',
+                'name'         => $request->title,
+                'type_id'      => $request->type_id,
+                'position'     => $request->visible
             ];
 
-            $landingPage = LandingPage::create($data);
+            $landingPage = Local::create($data);
 
-            if ($request->image)
-            {
+            if ($request->image) {
                 $this->uploadRequestImage($request->image, $landingPage);
             }
         });
 
-        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Landing Page' ]));
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', ['entity' => 'Landing Page']));
     }
 
     /**
@@ -60,35 +60,33 @@ class LandingPageController extends Controller
      * @param LandingPage $landingPage
      * @return \Illuminate\Http\Response
      */
-    public function edit(LandingPage $landingPage)
+    public function edit(Local $landingPage)
     {
         return view('landing_page.edit', compact('landingPage'));
     }
 
     /**
-     * @param Request $request
+     * @param Request      $request
      * @param landing_page $landingPage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LandingPage $landingPage)
+    public function update(Request $request, Local $landingPage)
     {
         DB::transaction(function () use ($request, $landingPage) {
             $data = [
-                'title'   => $request->title,
-                'urlkey'  => $request->urlkey,
-                'visible' => $request->visible,
-                'type_id' => $request->type_id
+                'name'         => $request->title,
+                'type_id'      => $request->type_id,
+                'position'     => $request->visible
             ];
 
-            if ($request->image)
-            {
+            if ($request->image) {
                 $this->uploadRequestImage($request->image, $landingPage);
             }
 
             $landingPage->update($data);
         });
 
-        return redirect()->route('landingPage.index')->withSuccess(trans('messages.update_success', [ 'entity' => 'LandingPage' ]));
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.update_success', ['entity' => 'LandingPage']));
     }
 
     /**
@@ -96,11 +94,11 @@ class LandingPageController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(LandingPage $landingPage)
+    public function destroy(Local $landingPage)
     {
         $landingPage->delete();
 
-        return back()->withSuccess(trans('messages.delete_success', [ 'entity' => 'LandingPage' ]));
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => 'LandingPage']));
     }
 
     /**
@@ -112,7 +110,7 @@ class LandingPageController extends Controller
     {
         $landingPageEntity->delete();
 
-        return back()->withSuccess(trans('messages.delete_success', [ 'entity' => '$landingPageEntity' ]));
+        return back()->withSuccess(trans('messages.delete_success', ['entity' => '$landingPageEntity']));
     }
 
     /**
@@ -131,16 +129,14 @@ class LandingPageController extends Controller
     public function productStore(Request $request)
     {
         DB::transaction(function () use ($request) {
-            foreach ($request->landingPage as $key => $value)
-            {
-                if ( ! empty($value))
-                {
+            foreach ($request->landingPage as $key => $value) {
+                if (!empty($value)) {
                     $data = [
-                        'entity_id'       => $request->sku[ $key ],
+                        'entity_id'       => $request->sku[$key],
                         'magento_type'    => 'PRODUCT',
-                        'name'            => $request->name[ $key ],
-                        'landing_page_id' => $request->landingPage[ $key ],
-                        'type_id'         => $request->type[ $key ]
+                        'name'            => $request->name[$key],
+                        'landing_page_id' => $request->landingPage[$key],
+                        'type_id'         => $request->type[$key]
                     ];
 
                     $landingPage = LandingPageEntity::create($data);
@@ -148,7 +144,7 @@ class LandingPageController extends Controller
             }
         });
 
-        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Products' ]));
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', ['entity' => 'Products']));
     }
 
     /**
@@ -159,22 +155,19 @@ class LandingPageController extends Controller
     {
         $array = [];
         DB::transaction(function () use ($request, $array) {
-            foreach ($request->status as $key => $value)
-            {
+            foreach ($request->status as $key => $value) {
                 $array[]['attribute_code'] = $key;
 
                 $num = 0;
-                foreach ($value as $k => $v)
-                {
-                    $a[ $key ][ $num ]['label'] = $request->label[ $key ][ $k ];
-                    $a[ $key ][ $num ]['value'] = $request->value[ $key ][ $k ];
+                foreach ($value as $k => $v) {
+                    $a[$key][$num]['label'] = $request->label[$key][$k];
+                    $a[$key][$num]['value'] = $request->value[$key][$k];
                     $num++;
                 }
             }
 
-            foreach ($array as $key => $value)
-            {
-                $array[ $key ]['options'] = $a[ $value['attribute_code'] ];
+            foreach ($array as $key => $value) {
+                $array[$key]['options'] = $a[$value['attribute_code']];
             }
 
             $data = [
@@ -188,7 +181,7 @@ class LandingPageController extends Controller
             $landingPage = LandingPageEntity::create($data);
         });
 
-        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Aggregation' ]));
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', ['entity' => 'Aggregation']));
     }
 
     /**
@@ -198,16 +191,14 @@ class LandingPageController extends Controller
     public function categoryStore(Request $request)
     {
         DB::transaction(function () use ($request) {
-            foreach ($request->landingPage as $key => $value)
-            {
-                if ( ! empty($value))
-                {
+            foreach ($request->landingPage as $key => $value) {
+                if (!empty($value)) {
                     $data = [
-                        'entity_id'       => $request->id[ $key ],
+                        'entity_id'       => $request->id[$key],
                         'magento_type'    => 'CATEGORY',
-                        'name'            => $request->name[ $key ],
-                        'landing_page_id' => $request->landingPage[ $key ],
-                        'type_id'         => $request->type[ $key ]
+                        'name'            => $request->name[$key],
+                        'landing_page_id' => $request->landingPage[$key],
+                        'type_id'         => $request->type[$key]
                     ];
 
                     $landingPage = LandingPageEntity::create($data);
@@ -215,7 +206,7 @@ class LandingPageController extends Controller
             }
         });
 
-        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Category' ]));
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', ['entity' => 'Category']));
     }
 
     /**
@@ -236,7 +227,7 @@ class LandingPageController extends Controller
             $landingPage = LandingPageEntity::create($data);
         });
 
-        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', [ 'entity' => 'Default' ]));
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', ['entity' => 'Default']));
     }
 
     /**
@@ -247,26 +238,28 @@ class LandingPageController extends Controller
     {
         $data = [];
 
-        foreach ($request->status as $id => $value)
+        if (!is_null($request->status))
         {
-            DB::transaction(function () use ($request, $id) {
-                if (isset($request->position[ $id ]))
-                {
-                    $data  = [
-                        'position'         => $request->position[ $id ],
-                        'description_text' => $request->description_text[ $id ],
-                    ];
-                    $local = LandingPageEntity::find($id);
-                    $local->update($data);
-                }
+            foreach ($request->status as $id => $value) {
+                DB::transaction(function () use ($request, $id) {
+                    if (isset($request->position[$id])) {
+                        $data  = [
+                            'type_id'          => $request->type[$id],
+                            'position'         => $request->position[$id],
+                            'description_text' => $request->description_text[$id],
+                        ];
 
-                if ($request->image[ $id ])
-                {
-                    $this->uploadRequestImage($request->image[ $id ], $local);
-                }
-            });
+                        $local = LandingPageEntity::find($id);
+                        $local->update($data);
+                    }
+
+                    if ($request->image[$id]) {
+                        $this->uploadRequestImage($request->image[$id], $local);
+                    }
+                });
+            }
         }
 
-        return redirect()->route('landingPage.index')->withSuccess(trans('messages.update_success', [ 'entity' => 'Local Data' ]));
+        return redirect()->back()->withSuccess(trans('messages.update_success', ['entity' => 'Local Data']));
     }
 }

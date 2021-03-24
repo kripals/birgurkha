@@ -25,7 +25,8 @@
                             <th width="5%">Position</th>
                             <th width="15%">Type</th>
                             <th width="15%">Is Visible</th>
-                            <th width="15%">Has View All</th>
+                            <th width="10%">Has View All</th>
+                            <th width="10%">Is Landing Page</th>
                             <th width="10%" class="text-right">Actions</th>
                         </tr>
                         </thead>

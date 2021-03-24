@@ -114,11 +114,12 @@
                                     <button type="submit" class="btn btn-success ink-reaction">Submit</button>
                                 </tr>
                                 <tr>
-                                    <th width="5%">#</th>
+                                    <th width="2%">#</th>
                                     <th width="20%">Name</th>
                                     <th width="10%">Sku</th>
                                     <th width="15%">Images</th>
-                                    <th width="20%">Send To</th>
+                                    <th width="20%">Send To Homepage</th>
+                                    <th width="20%">Send To Landing page</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -159,6 +160,9 @@
                                             </td>
                                             <td>
                                                 {{ Form::select('type['. $key. ']', typesArray(), old('type'), ['class' => 'form-control', 'required']) }}
+                                            </td>
+                                            <td>
+                                                {{ Form::select('landing['. $key. ']', landingPagesArray(), old('landing'), ['class' => 'form-control', 'required']) }}
                                             </td>
                                         </tr>
                                     @endforeach
