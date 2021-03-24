@@ -328,14 +328,26 @@ class ApiController extends Controller
                         "type"     => $landingPagesEntity->type->type
                     ];
 
-                    $data1[$type_id][] = [
-                        'entity_id'        => $landingPagesEntity->entity_id,
-                        'magento_type'     => $landingPagesEntity->magento_type,
-                        'name'             => $landingPagesEntity->name,
-                        'position'         => $landingPagesEntity->position,
-                        'image_path'       => $image,
-                        'description_text' => $landingPagesEntity->description_text,
-                    ];
+                    if ($landingPagesEntity->magento_type == 'INNER_LANDING') {
+                        $data1[$type_id][] = [
+                            'entity_id'        => $landingPagesEntity->entity_id,
+                            'magento_type'     => $landingPagesEntity->magento_type,
+                            'name'             => $landingPagesEntity->name,
+                            'position'         => $landingPagesEntity->position,
+                            'image_path'       => $image,
+                            'description_text' => $landingPagesEntity->description_text,
+                            'inner_landing' => $landingPagesEntity->inner_landing_page
+                        ];
+                    } else {
+                        $data1[$type_id][] = [
+                            'entity_id'        => $landingPagesEntity->entity_id,
+                            'magento_type'     => $landingPagesEntity->magento_type,
+                            'name'             => $landingPagesEntity->name,
+                            'position'         => $landingPagesEntity->position,
+                            'image_path'       => $image,
+                            'description_text' => $landingPagesEntity->description_text
+                        ];
+                    }
                 }
             }
 
