@@ -75,7 +75,8 @@ class LocalController extends Controller
     public function aggregationStore(Request $request)
     {
         $array = [];
-        DB::transaction(function () use ($request, $array) {
+        $redirect = "local.index";
+        DB::transaction(function () use ($request, $array, &$redirect) {
             foreach ($request->status as $key => $value) {
                 $array[]['attribute_code'] = $key;
 
@@ -91,17 +92,33 @@ class LocalController extends Controller
                 $array[$key]['options'] = $a[$value['attribute_code']];
             }
 
-            $data = [
-                'entity_id'    => json_encode($array),
-                'magento_type' => 'GENERIC',
-                'name'         => $request->product,
-                'type_id'      => $request->type,
-            ];
+            // aggregation for home page
+            if ($request->type != 0) {
+                $data = [
+                    'entity_id'    => json_encode($array),
+                    'magento_type' => 'GENERIC',
+                    'name'         => $request->product,
+                    'type_id'      => $request->type,
+                ];
 
-            $local = Local::create($data);
+                $local = Local::create($data);
+            } 
+            // aggregation for landing page
+            else { 
+                $redirect = "landingPage.index";
+                $data = [
+                    'entity_id'       => json_encode($array),
+                    'magento_type'    => 'GENERIC',
+                    'name'            => $request->product,
+                    'landing_page_id' => $request->landing,
+                    'type_id'         => $request->type,
+                ];
+                
+                $landingPage = LandingPageEntity::create($data);
+            }
         });
-
-        return redirect()->route('local.index')->withSuccess(trans('messages.create_success', ['entity' => 'Aggregation']));
+        
+        return redirect()->route($redirect)->withSuccess(trans('messages.create_success', ['entity' => 'Aggregation']));
     }
 
     /**
