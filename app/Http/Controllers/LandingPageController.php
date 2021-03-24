@@ -262,4 +262,44 @@ class LandingPageController extends Controller
 
         return redirect()->back()->withSuccess(trans('messages.update_success', ['entity' => 'Local Data']));
     }
+    
+    /**
+     * innerLandingIndex
+     *
+     * @return void
+     */
+    public function innerLandingIndex()
+    {
+        $landingPage = Local::where('magento_type', 'LANDING_PAGE')->get();
+        
+        return view('landing_page.inner_landing', compact('landingPage'));
+    }
+    
+    /**
+     * innerLandingStore
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function innerLandingStore(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            foreach ($request->landing as $key => $value) {
+                if (!empty($value)) {
+                    $data = [
+                        'entity_id'       => $request->landing[$key],
+                        'magento_type'    => 'INNER_LANDING',
+                        'name'            => $request->landing[$key],
+                        'landing_page_id' => $request->id[$key],
+                        'type_id'         => 0,
+                        'inner_landing_page'           => $request->landing[$key]
+                    ];
+
+                    $landingPage = LandingPageEntity::create($data);
+                }
+            }
+        });
+
+        return redirect()->route('landingPage.index')->withSuccess(trans('messages.create_success', ['entity' => 'Products']));
+    }
 }

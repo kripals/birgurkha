@@ -13,6 +13,10 @@
                             <i class="md md-add"></i>
                             Add
                         </a>
+                        <a class="btn btn-default" href="{{ route('landingPage.inner.landing') }}">
+                            <i class="md md-add"></i>
+                            Add Inner Landing Page
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">

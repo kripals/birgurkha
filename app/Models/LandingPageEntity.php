@@ -20,7 +20,8 @@ class LandingPageEntity extends Model
         'landing_page_id',
         'description_text',
         'type_id',
-        'image'
+        'image',
+        'inner_landing_page'
     ];
 
     /**
@@ -54,6 +55,14 @@ class LandingPageEntity extends Model
     public function landingPage()
     {
         return $this->belongsTo(Local::class, 'landing_page_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function innerLandingPage()
+    {
+        return $this->belongsTo(Local::class, 'inner_landing_page');
     }
 
     /**
