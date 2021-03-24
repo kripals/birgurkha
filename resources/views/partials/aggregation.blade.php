@@ -6,6 +6,10 @@
             {{ Form::select('type', typesArray(), old('type'), ['class' => 'form-control', 'required']) }}
         </div>
         <div class="col-md-4">
+            <b>Aggregation Landing Section</b>
+            {{ Form::select('landing', landingPagesArray(), old('landing'), ['class' => 'form-control', 'required']) }}
+        </div>
+        <div class="col-md-4">
             <button type="submit" class="btn btn-success ink-reaction">Submit</button>
         </div>
     </div>

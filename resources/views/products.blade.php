@@ -168,7 +168,7 @@
                             {{ Form::close() }}
                         </div>
                     @else
-                        @include('partials.aggregation', $content);
+                        @include('partials.aggregation', $content)
                     @endif
                 </div>
             </div>

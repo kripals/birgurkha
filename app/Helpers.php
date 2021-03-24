@@ -88,7 +88,7 @@ function typesArrayLanding()
 function landingPagesArray()
 {
     $landingPages[0] = '-';
-    $landingPages    = $landingPages + \App\Models\LandingPage::all()->pluck('title', 'id')->toArray();
+    $types    = $types + \App\Models\Local::all()->where('magento_type', ['LANDING_PAGE'])->pluck('entity_id', 'id')->toArray();
 
     return $landingPages;
 }
