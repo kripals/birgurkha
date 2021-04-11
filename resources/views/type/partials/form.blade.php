@@ -52,8 +52,8 @@
         <h3>For Deals Section</h3>
         <div class="col-sm-3">
             <div class="form-group">
-                @if(isset($type->image))
-                    <img src="{{ asset($type->image->path) }}"
+                @if(isset($type->images))
+                    <img src="{{ asset($type->images->path) }}"
                          class="preview" width="300">
                 @else
                     <img src="{{ asset(config('paths.placeholder.default')) }}"

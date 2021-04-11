@@ -223,12 +223,12 @@ class ApiController extends Controller
     public function local()
     {
         $arrayData = [];
-        $types     = Type::orderBy('position', 'asc')->where('visible', 1)->with('image')->get()->toArray();
+        $types     = Type::orderBy('position', 'asc')->where('visible', 1)->with('images')->get()->toArray();
 
         foreach ($types as $keyT => $type) {
             $arrayLocal['data'] = [];
             $arrayType          = [];
-
+            
             $arrayType = [
                 "name"                => $type['name'],
                 "position"            => $type['position'],
@@ -242,7 +242,7 @@ class ApiController extends Controller
                 "background_color"    => $type['background_color'],
                 "button_type"         => $type['entity_type'],
                 "button_id"           => $type['entity_id'],
-                'image_path'          => ($type['image'] != null) ? $type['image']['url_path'] : null,
+                'image_path'          => ($type['images'] != null) ? $type['images']['url_path'] : null,
             ];
             $locals    = Local::orderBy('position', 'asc')->where('type_id', $type['id'])->with('images')->get()->toArray();
 

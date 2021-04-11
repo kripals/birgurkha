@@ -56,7 +56,7 @@ class Type extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function image()
+    public function images()
     {
         return $this->morphOne('App\Models\Image', 'imageable');
     }
