@@ -30,7 +30,7 @@
             <li>
                 <a href="{{ route('types.index') }}">
                     <div class="gui-icon"><i class="md md-archive"></i></div>
-                    <span class="title">Homepage Sections</span>
+                    <span class="title">Sections</span>
                 </a>
             </li><!--end /menu-li -->
             <!-- END TYPES -->
