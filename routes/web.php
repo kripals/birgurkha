@@ -13,26 +13,17 @@
 
 Auth::routes();
 
-Route::get('/', 'Auth\LoginController@showLoginForm')->name('/');
+Route::get('administrator/login', 'Auth\LoginController@showLoginForm')->name('administrator.login');
 Route::get('logout', 'Auth\LoginController@logout');
 
-Route::group([ 'middleware' => 'auth' ], function () {
+Route::group([ 'middleware' => 'auth', 'prefix' => 'backend' ], function () {
     Route::get('/home', 'HomeController@index');
-
-    /*
-    |--------------------------------------------------------------------------
-    | Type CRUD Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group([ 'as' => 'types.', 'prefix' => 'types' ], function ()
-    {
-        Route::get('', 'TypeController@index')->name('index');
-        Route::get('create', 'TypeController@create')->name('create');
-        Route::post('', 'TypeController@store')->name('store');
-        Route::get('{type}/edit', 'TypeController@edit')->name('edit');
-        Route::put('{type}', 'TypeController@update')->name('update');
-        Route::delete('{type}', 'TypeController@destroy')->name('destroy');
-    });
 });
 
-Route::get('array', 'UserController@array');
+//routes for frontend
+Route::get('/', 'FrontendController@home');
+Route::get('about', 'FrontendController@about');
+Route::get('bod', 'FrontendController@bod');
+Route::get('contact', 'FrontendController@contact');
+Route::get('services', 'FrontendController@services');
+Route::get('training', 'FrontendController@training');

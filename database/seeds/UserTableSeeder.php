@@ -12,7 +12,15 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        // create 3 users using the user factory
-        factory(User::class, 3)->create();
+        $types = [
+            [
+                'id' => 1,
+                'name' => 'admin',
+                'email' => 'admin@birgurkha.com',
+                'password' => bcrypt('admin@123')
+            ]
+        ];
+
+        DB::table('users')->insert($types);
     }
 }

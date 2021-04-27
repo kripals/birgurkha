@@ -12,12 +12,11 @@ return [
     | on sites such as Facebook and Twitter.
     |
     */
-    'name'        => env('APP_NAME', 'Laravel'),
-    'title'       => env('APP_NAME', 'Laravel'),
-    'description' => env('APP_NAME', 'Laravel'),
-    'email'       => 'support@sastodeal.com',
+    'name'        => 'Academy of Bir Gurkha Security Services | Security with Sensibility',
+    'title'       => 'Academy of Bir Gurkha Security Services | Security with Sensibility',
+    'description' => 'Academy of Bir Gurkha Security Services | Security with Sensibility',
+    'email'       => 'support@birgurkha.com',
     'logo'        => '/img/logo.png',
     'favicon'     => '/img/favicon/favicon-32x32.png',
-    'date_format' => 'd-M-Y',
-    'local_types' => [ '' => '----------------------------', 'SLIDER' => 'Slider', 'BD' => 'Beast Deals', 'Coupon' => 'Product' ]
+    'date_format' => 'd-M-Y'
 ];
