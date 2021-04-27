@@ -59,37 +59,3 @@ function thumbnail($width, $entity = null)
 
     return asset(config('paths.placeholder.default'));
 }
-
-/**
- * @return \App\Models\Type[]|\Illuminate\Database\Eloquent\Collection
- */
-function typesArray()
-{
-    $types[0] = '-';
-    $types    = $types + \App\Models\Type::where('is_landing', 0)->pluck('section', 'id')->toArray();
-
-    return $types;
-}
-
-/**
- * @return \App\Models\Type[]|\Illuminate\Database\Eloquent\Collection
- */
-function typesArrayLanding()
-{
-    $types[0] = '-';
-    $types    = $types + \App\Models\Type::where('is_landing', 1)->pluck('section', 'id')->toArray();
-
-    return $types;
-}
-
-/**
- * @return \App\Models\Type[]|\Illuminate\Database\Eloquent\Collection
- */
-function landingPagesArray()
-{
-    $landingPages[0] = '-';
-
-    $landingPages    = $landingPages + \App\Models\Local::where('magento_type', 'LANDING_PAGE')->pluck('name', 'id')->toArray();
-
-    return $landingPages;
-}

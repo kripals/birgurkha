@@ -12,10 +12,3 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::post('login', 'ApiLoginController@login');
-
-Route::group([ 'middleware' => 'token.check' ], function () {
-    Route::get('/hpsections', 'ApiController@local');
-    Route::post('/landingPage', 'ApiController@landingPage');
-});

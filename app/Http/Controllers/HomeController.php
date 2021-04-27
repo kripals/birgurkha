@@ -27,44 +27,4 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
-
-    /**
-     * @return Factory|View
-     */
-    public function products()
-    {
-        return view('products');
-    }
-
-    /**
-     * @return Factory|View
-     */
-    public function categories()
-    {
-        return view('categories');
-    }
-
-    /**
-     * @return Factory|View
-     */
-    public function cmsPages()
-    {
-        return view('cmsPages');
-    }
-
-    /**
-     * @return Factory|View
-     */
-    public function urlKeys()
-    {
-        return view('url_key');
-    }
-
-    /**
-     * @return Factory|View
-     */
-    public function default()
-    {
-        return view('default');
-    }
 }

@@ -18,27 +18,6 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 Route::group([ 'middleware' => 'auth' ], function () {
     Route::get('/home', 'HomeController@index');
-    Route::get('/products', 'HomeController@products')->name('products');
-    Route::get('/categories', 'HomeController@categories')->name('categories');
-    Route::get('/cmsPages', 'HomeController@cmsPages')->name('cmsPages');
-    Route::get('/urlKeys', 'HomeController@urlKeys')->name('urlKeys');
-    Route::get('/default', 'HomeController@default')->name('default');
-
-    Route::post('/products', 'ApiController@productSearch')->name('products');
-    Route::post('/categories', 'ApiController@categoriesSearch')->name('categories');
-    Route::post('/cmsPages', 'ApiController@cmsPagesSearch')->name('cmsPages');
-
-    Route::post('/local/product', 'LocalController@productStore')->name('local.store.product');
-    Route::post('/local/aggregation', 'LocalController@aggregationStore')->name('local.store.aggregation');
-    Route::post('/local/category', 'LocalController@categoryStore')->name('local.store.category');
-    Route::post('/local/cmsPages', 'LocalController@cmsPagesStore')->name('local.store.cmsPages');
-    Route::post('/local/urlKeys', 'LocalController@urlKeysStore')->name('local.store.urlKeys');
-    Route::post('/local/default', 'LocalController@defaultStore')->name('local.store.default');
-
-    Route::post('/local/update', 'LocalController@localUpdate')->name('local.update');
-    Route::get('/local', 'LocalController@index')->name('local.index');
-    Route::post('/local', 'LocalController@index')->name('local.index');
-    Route::delete('/local/{local}', 'LocalController@destroy')->name('local.destroy');
 
     /*
     |--------------------------------------------------------------------------
@@ -53,33 +32,6 @@ Route::group([ 'middleware' => 'auth' ], function () {
         Route::get('{type}/edit', 'TypeController@edit')->name('edit');
         Route::put('{type}', 'TypeController@update')->name('update');
         Route::delete('{type}', 'TypeController@destroy')->name('destroy');
-    });
-
-    /*
-    |--------------------------------------------------------------------------
-    | Landing Page CRUD Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group([ 'as' => 'landingPage.', 'prefix' => 'landingPage' ], function ()
-    {
-        Route::get('', 'LandingPageController@index')->name('index');
-        Route::get('create', 'LandingPageController@create')->name('create');
-        Route::post('', 'LandingPageController@store')->name('store');
-        Route::get('{landingPage}/edit', 'LandingPageController@edit')->name('edit');
-        Route::put('{landingPage}', 'LandingPageController@update')->name('update');
-        Route::delete('{landingPage}', 'LandingPageController@destroy')->name('destroy');
-
-        Route::get('/inner-landing', 'LandingPageController@innerLandingIndex')->name('inner.landing');
-        Route::post('/inner-landing', 'LandingPageController@innerLandingStore')->name('inner.landing.store');
-
-        Route::get('{landingPage}/entity', 'LandingPageController@landingEntity')->name('entity');
-        Route::post('/entity/update', 'LandingPageController@landingEntityUpdate')->name('entity.update');
-        Route::delete('/entity/{landingPageEntity}', 'LandingPageController@entityDestroy')->name('entity.destroy');
-
-        Route::post('/product', 'LandingPageController@productStore')->name('store.product');
-        Route::post('/aggregation', 'LandingPageController@aggregationStore')->name('store.aggregation');
-        Route::post('/category', 'LandingPageController@categoryStore')->name('store.category');
-        Route::post('/default', 'LandingPageController@defaultStore')->name('store.default');
     });
 });
 
