@@ -15,7 +15,7 @@
                                 Kathmandu<br>
                             </address>
                             <abbr title="Phone Number"><strong>Phone:</strong></abbr> +977-01-4016305 <br>
-                            <abbr title="Email Address"><strong>Email:</strong></abbr> academy.birgurkhas@gmail.com
+                            <abbr title="Email Address"><strong>Email:</strong></abbr> info@birgurkhasecurity.com
                         </div>
                     </div>
                 </div>

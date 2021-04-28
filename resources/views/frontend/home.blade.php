@@ -15,7 +15,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5">
                         <div class="heading-block">
-                            <h1>Welcome to <br> Academy of Bir Gurkhas Security Services.</h1>
+                            <h1>Welcome to <br> Academy of Bir Gurkhas Security Service.</h1>
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -67,7 +67,7 @@
                         <div class="col-lg-3">
                             <img src="{{ asset('frontend/images/hpsec/bdyy.jpg') }}">
                             <div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
-                                <h4>EVENT SECURITY/LIFE GUARD</h4>
+                                <h4>EVENT SECURITY</h4>
                             </div>
                             <p>Bir Gurkhas Security provides trained event guards for any types of event such as fair,
                                 musical concert, sport, social function etc. At the same time, we provide very
@@ -216,4 +216,23 @@
             </div>
         </div>
     </section>
+
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog" style="max-width:80% !important;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="{{ asset('frontend/images/icons/cropped-bgss.png') }}">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
+
+@push('scripts')
+<script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+</script>
+@endpush

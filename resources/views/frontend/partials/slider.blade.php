@@ -5,7 +5,7 @@
                 <div class="swiper-slide dark">
                     <div class="container">
                         <div class="slider-caption slider-caption-center">
-                            <h2 data-animate="fadeInUp">ACADEMY OF BIR GURKHAS SECURITY SERVICES</h2>
+                            <h2 data-animate="fadeInUp">ACADEMY OF BIR GURKHAS SECURITY SERVICE</h2>
                             <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">SECURITY WITH SENSIBILITY</p>
                         </div>
                     </div>

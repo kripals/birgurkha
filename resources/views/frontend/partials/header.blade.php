@@ -1,3 +1,7 @@
+{{-- <div class="container clearfix">
+    <strong>&#9742;:</strong> +977-01-4016305  
+    <strong>&#128231;:</strong> info@birgurkhasecurity.com
+</div> --}}
 <header id="header" class="full-header">
     <div id="header-wrap">
         <div class="container">

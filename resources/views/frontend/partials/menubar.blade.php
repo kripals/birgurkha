@@ -21,6 +21,9 @@
             <a class="menu-link" href="{{ url('training') }}"><div>Training</div></a>
         </li>
         <li class="menu-item">
+            <a class="menu-link" href="{{ url('news') }}"><div>News and Notices</div></a>
+        </li>
+        <li class="menu-item">
             <a class="menu-link" href="{{ url('contact') }}"><div>Contact Us</div></a>
         </li>
     </ul>

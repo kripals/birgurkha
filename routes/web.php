@@ -27,3 +27,4 @@ Route::get('bod', 'FrontendController@bod');
 Route::get('contact', 'FrontendController@contact');
 Route::get('services', 'FrontendController@services');
 Route::get('training', 'FrontendController@training');
+Route::get('news', 'FrontendController@news');

@@ -35,4 +35,9 @@ class FrontendController extends Controller
     {
         return view('frontend.training');
     }
+
+    public function news()
+    {
+        return view('frontend.news');
+    }
 }
