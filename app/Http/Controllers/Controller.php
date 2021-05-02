@@ -22,7 +22,7 @@ class Controller extends BaseController
     {
         if (isset($image))
         {
-            $img = $image->move('storage/local', $image->getClientOriginalName());
+            $img = $image->move('public/images', $image->getClientOriginalName());
 
             $imageDetails = [
                 'name' => $image->getClientOriginalName(),
@@ -39,6 +39,32 @@ class Controller extends BaseController
             {
                 $instance->images()->create($imageDetails);
             }
+        }
+
+        return false;
+    }
+    /**
+     * @param $request
+     * @param $image
+     * @param $instance
+     * @return array|bool
+     */
+    public function uploadRequestFile($file, $instance)
+    {
+        if (isset($file))
+        {
+            $f = $file->move('public/files', $file->getClientOriginalName());
+
+            $fileDetails = [
+                'file' => (string) $f
+            ];
+            
+            if ( ! empty($instance->file) && file_exists(url($instance->file)))
+            {
+                unlink($instance->file);
+            }
+            
+            $instance->update($fileDetails);
         }
 
         return false;

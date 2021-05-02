@@ -1,4 +1,3 @@
-
 <div id="menubar" class="menubar-inverse ">
     <div class="menubar-fixed-panel">
         <div>
@@ -19,9 +18,27 @@
 
             <!-- BEGIN DASHBOARD -->
             <li>
-                <a href="home" class="active">
+                <a href="{{ route('home') }}" class="active">
                     <div class="gui-icon"><i class="md md-home"></i></div>
                     <span class="title">Dashboard</span>
+                </a>
+            </li><!--end /menu-li -->
+            <li>
+                <a href="{{ route('news.news') }}">
+                    <div class="gui-icon"><i class="md md-new-releases"></i></div>
+                    <span class="title">News and Notices</span>
+                </a>
+            </li><!--end /menu-li -->
+            <li>
+                <a href="{{ route('slider.slider') }}">
+                    <div class="gui-icon"><i class="md md-slideshow"></i></div>
+                    <span class="title">Slider</span>
+                </a>
+            </li><!--end /menu-li -->
+            <li>
+                <a href="{{ route('popup.popup') }}">
+                    <div class="gui-icon"><i class="md md-adjust"></i></div>
+                    <span class="title">Popup</span>
                 </a>
             </li><!--end /menu-li -->
             <!-- END DASHBOARD -->

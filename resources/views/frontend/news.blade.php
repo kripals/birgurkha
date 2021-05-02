@@ -22,18 +22,21 @@
                         <div class="heading-block fancy-title border-bottom-0 title-bottom-border">
                             <h4>News</h4>
                         </div>
+                        @foreach ($news as $new)
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src="{{ asset('frontend/images/slider/IMG_2426.jpg') }}">
+                                <img src="{{ asset($new->images->path) }}">
                             </div>
                             <div class="col-lg-6">
-                                <h2>Header</h2>
-                                <p>Paragraph here</p>
-                                <small>Published: 2021-01-01</small>
+                                <h2>{{ $new->title }}</h2>
+                                <p>{{ $new->description }}</p>
+                                <small>Published: {{ $new->date }}</small>
                                 <br>
-                                <a href="#" class="btn btn-primary">Read More...</a>
+                                <a href="{{ url('news', $new->id) }}" class="btn btn-primary">Read More...</a>
                             </div>
                         </div>
+                        <hr>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -44,11 +47,13 @@
                         <div class="heading-block fancy-title border-bottom-0 title-bottom-border">
                             <h4>Notices</h4>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <a href="#">Notices <small>(Published: 2021-01-01)</small></a>
+                        @foreach ($notices as $notice)
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a href="#">{{ $notice->title }} <small>(Published: {{ $notice->date }})</small></a>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -59,11 +64,13 @@
                         <div class="heading-block fancy-title border-bottom-0 title-bottom-border">
                             <h4>Vacancies</h4>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <a href="#">Vacancy announcement <small>(Published: 2021-01-01)</small></a>
+                        @foreach ($notices as $notice)
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a href="#">{{ $notice->title }} <small>(Published: {{ $notice->date }})</small></a>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

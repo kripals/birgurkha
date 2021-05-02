@@ -38,15 +38,6 @@ class Image extends Model
     }
 
     /**
-     * @param  string $value
-     * @return string
-     */
-    public function getPathAttribute($value)
-    {
-        return 'storage/' . $value;
-    }
-
-    /**
      * @param int $w
      * @param int $h
      * @return string
